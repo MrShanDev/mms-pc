@@ -1,0 +1,154 @@
+{
+  "header": {
+    "themeSelect": "模版",
+    "themeClassic": "经典浅色",
+    "themeModern": "现代深色",
+    "langSelect": "语言",
+    "companyLine": "陕西坨钛者金属科技有限公司",
+    "login": "登录",
+    "signUp": "注册",
+    "logOut": "退出",
+    "logoutConfirm": "确定要退出登录吗？",
+    "logoutConfirmTitle": "确认",
+    "ok": "确定",
+    "cancel": "取消",
+    "loggedOut": "已退出登录"
+  },
+  "nav": {
+    "product": "产品",
+    "allCategories": "全部分类",
+    "home": "首页",
+    "about": "关于我们",
+    "news": "新闻",
+    "contact": "联系我们"
+  },
+  "common": {
+    "hotline": "热线：",
+    "hotlineWei": "热线：",
+    "address": "地址：陕西省宝鸡市高新技术产业开发区",
+    "customerHotline": "客服热线：",
+    "customerEmail": "客服邮箱：",
+    "icpSuffix": "— 胜唐嘉联跨境提供技术支持",
+    "breadcrumbHome": "首页",
+    "facilityAlt": "厂区"
+  },
+  "home": {
+    "sectionProducts": "产品与服务",
+    "sectionAbout": "公司简介",
+    "sectionNews": "公司新闻",
+    "top": "顶部",
+    "seoH1": "陕西坨钛者金属科技有限公司"
+  },
+  "product": {
+    "breadcrumb": "产品",
+    "title": "产品与服务",
+    "lead": "按类别浏览钛合金自行车产品线。各系列依托宝鸡金属加工产业优势研发制造。",
+    "viewSeries": "查看系列 →",
+    "metaTitle": "产品",
+    "metaDesc": "{company} — 钛合金自行车：山地、公路、折叠、小轮、砾石等。"
+  },
+  "productDetail": {
+    "metaDesc": "{category} — {company}。",
+    "notFound": "未找到该产品分类"
+  },
+  "about": {
+    "breadcrumb": "关于我们",
+    "sectionKicker": "公司简介",
+    "metaTitle": "关于我们",
+    "metaDesc": "公司简介 — {company}，宝鸡高新区。"
+  },
+  "news": {
+    "breadcrumb": "新闻",
+    "title": "公司新闻",
+    "metaTitle": "新闻",
+    "metaDesc": "{company} 的新闻与动态。"
+  },
+  "contact": {
+    "breadcrumb": "联系我们",
+    "title": "联系我们",
+    "metaTitle": "联系我们",
+    "metaDesc": "联系 {company} — 陕西宝鸡。"
+  },
+  "auth": {
+    "loginTitle": "登录",
+    "loginMetaDesc": "登录 — {company}",
+    "account": "账号",
+    "accountPh": "手机 / 用户名 / 邮箱",
+    "password": "密码",
+    "passwordPh": "密码",
+    "submitLogin": "登录",
+    "registerNow": "立即注册",
+    "retrievePassword": "找回密码",
+    "registerTitle": "注册",
+    "registerMetaDesc": "注册账号 — {company}",
+    "personalTab": "个人注册",
+    "companyTab": "企业注册",
+    "username": "用户名",
+    "usernamePh": "登录用户名",
+    "companyName": "企业名称",
+    "companyNamePh": "工商注册名称",
+    "fullAddress": "详细地址",
+    "companyAddressPh": "企业地址",
+    "contactName": "联系人",
+    "contactNamePh": "联系人姓名",
+    "mobile": "手机号",
+    "mobilePh": "11 位中国大陆手机号",
+    "mobileRegPh": "已注册手机号",
+    "pictureVerify": "图片算术验证",
+    "captchaPh": "请填写结果",
+    "verifyCode": "短信验证码",
+    "smsPh": "短信验证码",
+    "getCode": "获取验证码",
+    "setPassword": "设置密码",
+    "confirmPassword": "确认密码",
+    "pwdHint": "至少 8 位，须同时包含数字与字母。",
+    "agreePrefix": "阅读并同意",
+    "agreeLink": "《网站服务协议》",
+    "signUp": "注册",
+    "alreadyHave": "已有账号？",
+    "termsTitle": "网站服务协议",
+    "termsOk": "确定",
+    "forgotTitle": "找回密码",
+    "forgotMetaDesc": "重置密码 — {company}",
+    "newPassword": "新密码",
+    "submitReset": "提交",
+    "backLogin": "返回登录"
+  },
+  "validation": {
+    "enterAccount": "请输入账号",
+    "enterPassword": "请输入密码",
+    "minPass8": "至少 8 个字符",
+    "required": "此项必填",
+    "invalidMobile": "手机号格式不正确",
+    "passwordMismatch": "两次密码不一致",
+    "wrongCaptcha": "答案错误",
+    "passPattern": "至少 8 位且同时包含字母与数字",
+    "acceptAgreement": "请阅读并同意协议",
+    "validMobileFirst": "请先填写有效手机号"
+  },
+  "toast": {
+    "loginFailed": "登录失败",
+    "signedIn": "登录成功",
+    "codeSent": "验证码已发送",
+    "sendFailed": "发送失败",
+    "regFailed": "注册失败",
+    "welcome": "欢迎！",
+    "regPleaseSignIn": "注册成功，请登录。",
+    "resetFailed": "重置失败",
+    "resetOk": "密码已更新，请登录。"
+  },
+  "errors": {
+    "pageNotFound": "404",
+    "notFoundMessage": "抱歉，您访问的页面不存在或无权访问。",
+    "backHome": "返回首页",
+    "notFoundHint": "请检查网址是否正确，或点击按钮返回首页。",
+    "notFoundMeta": "404 - 页面不存在",
+    "pageNotFoundTitle": "页面不存在"
+  },
+  "meta": {
+    "homeDesc": "钛合金自行车与金属材料 — 陕西坨钛者金属科技有限公司，宝鸡高新区。"
+  },
+  "terms": {
+    "html": "<p><strong>1. 服务</strong></p><p>您承诺仅将本网站用于与陕西坨钛者金属科技有限公司相关的合法商务沟通。</p><p><strong>2. 账号</strong></p><p>您应妥善保管密码，并对账号下的活动承担责任。</p><p><strong>3. 联系</strong></p><p>如有疑问，请通过网站页脚所示热线与邮箱联系我们。</p>"
+  }
+}

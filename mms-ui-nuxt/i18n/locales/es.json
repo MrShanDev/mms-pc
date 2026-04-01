@@ -1,0 +1,154 @@
+{
+  "header": {
+    "themeSelect": "Plantilla",
+    "themeClassic": "Clásico claro",
+    "themeModern": "Moderno oscuro",
+    "langSelect": "Idioma",
+    "companyLine": "Shaanxi Tuotaizhe Metal Technology Co., Ltd.",
+    "login": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "logOut": "Cerrar sesión",
+    "logoutConfirm": "¿Cerrar sesión?",
+    "logoutConfirmTitle": "Confirmar",
+    "ok": "OK",
+    "cancel": "Cancelar",
+    "loggedOut": "Sesión cerrada"
+  },
+  "nav": {
+    "product": "Productos",
+    "allCategories": "Todas las categorías",
+    "home": "Inicio",
+    "about": "Nosotros",
+    "news": "Noticias",
+    "contact": "Contacto"
+  },
+  "common": {
+    "hotline": "Línea directa:",
+    "hotlineWei": "Línea directa:",
+    "address": "Dirección: Zona industrial high-tech de Baoji, provincia de Shaanxi, China",
+    "customerHotline": "Atención al cliente:",
+    "customerEmail": "Correo:",
+    "icpSuffix": "— Soporte técnico Shengtang Jialian",
+    "breadcrumbHome": "Inicio",
+    "facilityAlt": "Instalaciones"
+  },
+  "home": {
+    "sectionProducts": "PRODUCTOS Y SERVICIOS",
+    "sectionAbout": "PERFIL DE LA EMPRESA",
+    "sectionNews": "NOTICIAS",
+    "top": "ARRIBA",
+    "seoH1": "Shaanxi Tuotaizhe Metal Technology Co., Ltd."
+  },
+  "product": {
+    "breadcrumb": "Productos",
+    "title": "PRODUCTOS Y SERVICIOS",
+    "lead": "Explore líneas de bicicletas de aleación de titanio por categoría, basadas en la metalurgia de Baoji.",
+    "viewSeries": "Ver serie →",
+    "metaTitle": "Productos",
+    "metaDesc": "{company} — bicicletas de titanio: MTB, carretera, plegable, rueda pequeña, gravel."
+  },
+  "productDetail": {
+    "metaDesc": "{category} — {company}.",
+    "notFound": "Categoría no encontrada"
+  },
+  "about": {
+    "breadcrumb": "Nosotros",
+    "sectionKicker": "PERFIL DE LA EMPRESA",
+    "metaTitle": "Nosotros",
+    "metaDesc": "Perfil — {company}, zona high-tech de Baoji."
+  },
+  "news": {
+    "breadcrumb": "Noticias",
+    "title": "NOTICIAS DE LA EMPRESA",
+    "metaTitle": "Noticias",
+    "metaDesc": "Noticias — {company}."
+  },
+  "contact": {
+    "breadcrumb": "Contacto",
+    "title": "CONTACTO",
+    "metaTitle": "Contacto",
+    "metaDesc": "Contacto {company} — Baoji, Shaanxi."
+  },
+  "auth": {
+    "loginTitle": "Iniciar sesión",
+    "loginMetaDesc": "Inicio de sesión — {company}",
+    "account": "Cuenta",
+    "accountPh": "Teléfono / usuario / correo",
+    "password": "Contraseña",
+    "passwordPh": "Contraseña",
+    "submitLogin": "Entrar",
+    "registerNow": "Registrarse",
+    "retrievePassword": "Recuperar contraseña",
+    "registerTitle": "Registro",
+    "registerMetaDesc": "Crear cuenta — {company}",
+    "personalTab": "Personal",
+    "companyTab": "Empresa",
+    "username": "Usuario",
+    "usernamePh": "Nombre de usuario",
+    "companyName": "Razón social",
+    "companyNamePh": "Nombre legal",
+    "fullAddress": "Dirección",
+    "companyAddressPh": "Dirección de la empresa",
+    "contactName": "Contacto",
+    "contactNamePh": "Persona de contacto",
+    "mobile": "Móvil",
+    "mobilePh": "Móvil de China 11 dígitos",
+    "mobileRegPh": "Móvil registrado",
+    "pictureVerify": "Verificación aritmética",
+    "captchaPh": "Respuesta",
+    "verifyCode": "Código SMS",
+    "smsPh": "Código SMS",
+    "getCode": "Obtener código",
+    "setPassword": "Establecer contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "pwdHint": "Al menos 8 caracteres con números y letras.",
+    "agreePrefix": "Leído y aceptado",
+    "agreeLink": "(Condiciones del servicio)",
+    "signUp": "Registrarse",
+    "alreadyHave": "¿Ya tiene cuenta?",
+    "termsTitle": "Condiciones del servicio",
+    "termsOk": "OK",
+    "forgotTitle": "Recuperar contraseña",
+    "forgotMetaDesc": "Restablecer — {company}",
+    "newPassword": "Nueva contraseña",
+    "submitReset": "Enviar",
+    "backLogin": "Volver al inicio de seción"
+  },
+  "validation": {
+    "enterAccount": "Introduzca la cuenta",
+    "enterPassword": "Introduzca la contraseña",
+    "minPass8": "Al menos 8 caracteres",
+    "required": "Obligatorio",
+    "invalidMobile": "Móvil no válido",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "wrongCaptcha": "Respuesta incorrecta",
+    "passPattern": "8+ caracteres con letras y números",
+    "acceptAgreement": "Acepte el acuerdo",
+    "validMobileFirst": "Primero un móvil válido"
+  },
+  "toast": {
+    "loginFailed": "Error de inicio de sesión",
+    "signedIn": "Sesión iniciada",
+    "codeSent": "Código enviado",
+    "sendFailed": "Error al enviar",
+    "regFailed": "Error de registro",
+    "welcome": "¡Bienvenido!",
+    "regPleaseSignIn": "Registrado. Inicie sesión.",
+    "resetFailed": "Error al restablecer",
+    "resetOk": "Contraseña actualizada. Inicie sesión."
+  },
+  "errors": {
+    "pageNotFound": "404",
+    "notFoundMessage": "La página no existe o no tiene acceso.",
+    "backHome": "Volver al inicio",
+    "notFoundHint": "Compruebe la URL o vaya al inicio.",
+    "notFoundMeta": "404 - No encontrado",
+    "pageNotFoundTitle": "Página no encontrada"
+  },
+  "meta": {
+    "homeDesc": "Bicicletas de aleación de titanio y materiales — Shaanxi Tuotaizhe, zona high-tech de Baoji."
+  },
+  "terms": {
+    "html": "<p><strong>1. Servicio</strong></p><p>Acepta usar este sitio solo para consultas comerciales legítimas relacionadas con Shaanxi Tuotaizhe Metal Technology Co., Ltd.</p><p><strong>2. Cuenta</strong></p><p>Usted es responsable de su contraseña y de la actividad de la cuenta.</p><p><strong>3. Contacto</strong></p><p>Dudas: use el teléfono y el correo del pie de página.</p>"
+  }
+}

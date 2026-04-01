@@ -1,0 +1,154 @@
+export function buildIt(o) {
+  o.header = {
+    themeSelect: 'Modello',
+    themeClassic: 'Classico chiaro',
+    themeModern: 'Moderno scuro',
+    langSelect: 'Lingua',
+    companyLine: 'Shaanxi Tuotaizhe Metal Technology Co., Ltd.',
+    login: 'Accedi',
+    signUp: 'Registrati',
+    logOut: 'Esci',
+    logoutConfirm: 'Uscire dall’account?',
+    logoutConfirmTitle: 'Conferma',
+    ok: 'OK',
+    cancel: 'Annulla',
+    loggedOut: 'Disconnesso'
+  }
+  o.nav = {
+    product: 'Prodotti',
+    allCategories: 'Tutte le categorie',
+    home: 'Home',
+    about: 'Chi siamo',
+    news: 'Notizie',
+    contact: 'Contatti'
+  }
+  o.common = {
+    hotline: 'Hotline:',
+    hotlineWei: 'Hotline:',
+    address: 'Indirizzo: Zona industriale high-tech di Baoji, Shaanxi, Cina',
+    customerHotline: 'Assistenza clienti:',
+    customerEmail: 'Email:',
+    icpSuffix: '— Supporto tecnico Shengtang Jialian',
+    breadcrumbHome: 'Home',
+    facilityAlt: 'Stabilimento'
+  }
+  o.home = {
+    sectionProducts: 'PRODOTTI E SERVIZI',
+    sectionAbout: 'PROFILO AZIENDALE',
+    sectionNews: 'NOTIZIE AZIENDALI',
+    top: 'SU',
+    seoH1: 'Shaanxi Tuotaizhe Metal Technology Co., Ltd.'
+  }
+  o.product = {
+    breadcrumb: 'Prodotti',
+    title: 'PRODOTTI E SERVIZI',
+    lead: 'Linee di biciclette in lega di titanio per categoria, basate sulla metalmeccanica di Baoji.',
+    viewSeries: 'Vedi serie →',
+    metaTitle: 'Prodotti',
+    metaDesc: '{company} — biciclette in titanio: MTB, corsa, pieghevole, ruote piccole, gravel.'
+  }
+  o.productDetail = { metaDesc: '{category} — {company}.', notFound: 'Categoria non trovata' }
+  o.about = {
+    breadcrumb: 'Chi siamo',
+    sectionKicker: 'PROFILO AZIENDALE',
+    metaTitle: 'Chi siamo',
+    metaDesc: 'Profilo — {company}, zona high-tech di Baoji.'
+  }
+  o.news = {
+    breadcrumb: 'Notizie',
+    title: 'NOTIZIE AZIENDALI',
+    metaTitle: 'Notizie',
+    metaDesc: 'Notizie — {company}.'
+  }
+  o.contact = {
+    breadcrumb: 'Contatti',
+    title: 'CONTATTI',
+    metaTitle: 'Contatti',
+    metaDesc: 'Contatto {company} — Baoji, Shaanxi.'
+  }
+  o.auth = {
+    loginTitle: 'Accedi',
+    loginMetaDesc: 'Accesso — {company}',
+    account: 'Account',
+    accountPh: 'Telefono / utente / email',
+    password: 'Password',
+    passwordPh: 'Password',
+    submitLogin: 'Accedi',
+    registerNow: 'Registrati',
+    retrievePassword: 'Recupera password',
+    registerTitle: 'Registrazione',
+    registerMetaDesc: 'Crea account — {company}',
+    personalTab: 'Privato',
+    companyTab: 'Azienda',
+    username: 'Nome utente',
+    usernamePh: 'Utente di accesso',
+    companyName: 'Ragione sociale',
+    companyNamePh: 'Denominazione registrata',
+    fullAddress: 'Indirizzo',
+    companyAddressPh: 'Sede aziendale',
+    contactName: 'Contatto',
+    contactNamePh: 'Referente',
+    mobile: 'Cellulare',
+    mobilePh: 'Cellulare cinese 11 cifre',
+    mobileRegPh: 'Numero registrato',
+    pictureVerify: 'Verifica aritmetica',
+    captchaPh: 'Risposta',
+    verifyCode: 'Codice SMS',
+    smsPh: 'Codice SMS',
+    getCode: 'Ottieni codice',
+    setPassword: 'Imposta password',
+    confirmPassword: 'Conferma password',
+    pwdHint: 'Almeno 8 caratteri con numeri e lettere.',
+    agreePrefix: 'Letto e accetto',
+    agreeLink: '(Condizioni di servizio)',
+    signUp: 'Registrati',
+    alreadyHave: 'Hai già un account?',
+    termsTitle: 'Condizioni di servizio',
+    termsOk: 'OK',
+    forgotTitle: 'Recupero password',
+    forgotMetaDesc: 'Reimposta — {company}',
+    newPassword: 'Nuova password',
+    submitReset: 'Invia',
+    backLogin: 'Torna al login'
+  }
+  o.validation = {
+    enterAccount: 'Inserisci account',
+    enterPassword: 'Inserisci password',
+    minPass8: 'Almeno 8 caratteri',
+    required: 'Obbligatorio',
+    invalidMobile: 'Cellulare non valido',
+    passwordMismatch: 'Password non coincidono',
+    wrongCaptcha: 'Risposta errata',
+    passPattern: '8+ caratteri con lettere e numeri',
+    acceptAgreement: 'Accetta l’accordo',
+    validMobileFirst: 'Inserisci prima un cellulare valido'
+  }
+  o.toast = {
+    loginFailed: 'Accesso non riuscito',
+    signedIn: 'Accesso effettuato',
+    codeSent: 'Codice inviato',
+    sendFailed: 'Invio non riuscito',
+    regFailed: 'Registrazione non riuscita',
+    welcome: 'Benvenuto!',
+    regPleaseSignIn: 'Registrato. Accedi.',
+    resetFailed: 'Reimpostazione non riuscita',
+    resetOk: 'Password aggiornata. Accedi.'
+  }
+  o.errors = {
+    pageNotFound: '404',
+    notFoundMessage: 'La pagina non esiste o non hai accesso.',
+    backHome: 'Home',
+    notFoundHint: 'Controlla l’URL o torna alla home.',
+    notFoundMeta: '404 - Non trovato',
+    pageNotFoundTitle: 'Pagina non trovata'
+  }
+  o.meta = {
+    homeDesc:
+      'Biciclette in lega di titanio e materiali — Shaanxi Tuotaizhe, zona high-tech di Baoji.'
+  }
+  o.terms = {
+    html:
+      '<p><strong>1. Servizio</strong></p><p>Accetti di utilizzare questo sito solo per richieste commerciali legittime relative a Shaanxi Tuotaizhe Metal Technology Co., Ltd.</p><p><strong>2. Account</strong></p><p>Sei responsabile della password e dell’attività dell’account.</p><p><strong>3. Contatto</strong></p><p>Domande: telefono e email nel piè di pagina.</p>'
+  }
+  return o
+}

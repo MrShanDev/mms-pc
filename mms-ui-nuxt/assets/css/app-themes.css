@@ -1,0 +1,283 @@
+/**
+ * 全局模版样式：由 html[data-app-theme] 驱动（classic | modern）
+ * 页面 scoped 样式下的类名仍可被此处后代选择器命中
+ */
+
+/* ---------- Modern（深色科技风，与 classic 明显区分） ---------- */
+html[data-app-theme='modern'] body {
+  background: #0b1220;
+}
+
+/* 顶栏 */
+html[data-app-theme='modern'] .tita-header {
+  background: linear-gradient(180deg, #0f172a 0%, #0a0f1a 100%);
+  border-bottom-color: #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-header .header-bar,
+html[data-app-theme='modern'] .tita-header .brand-line {
+  color: #cbd5e1;
+}
+
+html[data-app-theme='modern'] .tita-header .header-actions .link {
+  color: #e2e8f0;
+}
+
+html[data-app-theme='modern'] .tita-header .header-actions .link:hover {
+  color: #38bdf8;
+}
+
+html[data-app-theme='modern'] .tita-header .header-actions .sep {
+  color: #475569;
+}
+
+html[data-app-theme='modern'] .tita-header .lang-select :deep(.el-input__wrapper),
+html[data-app-theme='modern'] .tita-header .theme-select :deep(.el-input__wrapper) {
+  background: #1e293b !important;
+  box-shadow: 0 0 0 1px #334155 inset !important;
+}
+
+html[data-app-theme='modern'] .tita-header .lang-select :deep(.el-input__inner),
+html[data-app-theme='modern'] .tita-header .theme-select :deep(.el-input__inner) {
+  color: #e2e8f0 !important;
+}
+
+/* 主导航 */
+html[data-app-theme='modern'] .tita-nav {
+  background: #111827;
+  border-bottom-color: #1f2937;
+}
+
+html[data-app-theme='modern'] .tita-nav .main-menu {
+  --el-menu-text-color: #cbd5e1;
+  --el-menu-hover-text-color: #38bdf8;
+  --el-menu-active-color: #38bdf8;
+  background: transparent;
+  border-bottom: none;
+}
+
+html[data-app-theme='modern'] .tita-nav .el-menu-item:hover,
+html[data-app-theme='modern'] .tita-nav .el-sub-menu__title:hover {
+  background: rgba(56, 189, 248, 0.08) !important;
+}
+
+html[data-app-theme='modern'] .tita-nav .menu-title {
+  color: inherit;
+}
+
+/* 首页 */
+html[data-app-theme='modern'] .tita-home .section-products {
+  background: #0f172a;
+}
+
+html[data-app-theme='modern'] .tita-home .section-about {
+  background: #111827;
+}
+
+html[data-app-theme='modern'] .tita-home .section-news {
+  background: #0f172a;
+}
+
+html[data-app-theme='modern'] .tita-home .section-kicker {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-home .product-title,
+html[data-app-theme='modern'] .tita-home .about-name {
+  color: #f1f5f9;
+}
+
+html[data-app-theme='modern'] .tita-home .about-text {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-home .product-img-wrap,
+html[data-app-theme='modern'] .tita-home .news-img-wrap {
+  background: #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-home .product-card:hover {
+  box-shadow: 0 12px 40px rgba(56, 189, 248, 0.12);
+}
+
+html[data-app-theme='modern'] .tita-home .news-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+html[data-app-theme='modern'] .tita-home .news-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+html[data-app-theme='modern'] .tita-home .news-body h3 {
+  color: #f1f5f9;
+}
+
+html[data-app-theme='modern'] .tita-home .news-excerpt {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-home .news-body time {
+  color: #64748b;
+}
+
+html[data-app-theme='modern'] .tita-home .about-side img {
+  background: #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-home .tita-footer {
+  background: #020617;
+  color: #94a3b8;
+  border-top: 1px solid #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-home .tita-footer a {
+  color: #7dd3fc;
+}
+
+html[data-app-theme='modern'] .tita-home .footer-lead {
+  color: #64748b;
+}
+
+html[data-app-theme='modern'] .tita-home .footer-meta {
+  border-top-color: #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-home .btn-top {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+html[data-app-theme='modern'] .tita-home .btn-top:hover {
+  background: #334155;
+}
+
+/* 内页 .tita-sub（about / product / news / contact 等） */
+html[data-app-theme='modern'] .tita-sub {
+  background: #0b1220;
+  color: #e2e8f0;
+}
+
+html[data-app-theme='modern'] .tita-sub .breadcrumb {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-sub .breadcrumb a {
+  color: #38bdf8;
+}
+
+html[data-app-theme='modern'] .tita-sub .page-title {
+  color: #f1f5f9;
+}
+
+html[data-app-theme='modern'] .tita-sub .contact-panel {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+html[data-app-theme='modern'] .tita-sub .contact-panel .lead {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-sub .contact-panel a {
+  color: #38bdf8;
+}
+
+html[data-app-theme='modern'] .tita-sub .icp,
+html[data-app-theme='modern'] .tita-sub .contact-panel .icp {
+  border-top-color: #334155;
+  color: #64748b;
+}
+
+html[data-app-theme='modern'] .tita-sub .page-lead {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-sub .category-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+html[data-app-theme='modern'] .tita-sub .category-card h2 {
+  color: #f1f5f9;
+}
+
+html[data-app-theme='modern'] .tita-sub .category-card p {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-sub .category-card .more {
+  color: #38bdf8;
+}
+
+html[data-app-theme='modern'] .tita-sub .news-card,
+html[data-app-theme='modern'] .tita-sub .news-body {
+  background: transparent;
+}
+
+html[data-app-theme='modern'] .tita-sub .news-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+html[data-app-theme='modern'] .tita-sub .product-title {
+  color: #f1f5f9;
+}
+
+html[data-app-theme='modern'] .tita-sub .product-img-wrap {
+  background: #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-sub .product-card:hover {
+  box-shadow: 0 12px 40px rgba(56, 189, 248, 0.1);
+}
+
+/* 登录注册 */
+html[data-app-theme='modern'] .tita-auth {
+  background: linear-gradient(160deg, #0f172a 0%, #020617 50%, #0a1628 100%);
+}
+
+html[data-app-theme='modern'] .tita-auth .auth-card {
+  background: rgba(30, 41, 59, 0.92);
+  border: 1px solid #334155;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+html[data-app-theme='modern'] .tita-auth .auth-title {
+  color: #f1f5f9;
+}
+
+html[data-app-theme='modern'] .tita-auth .auth-sub,
+html[data-app-theme='modern'] .tita-auth .field-label {
+  color: #94a3b8;
+}
+
+html[data-app-theme='modern'] .tita-auth .auth-footer {
+  background: rgba(15, 23, 42, 0.85);
+  color: #94a3b8;
+  border-top-color: #1e293b;
+}
+
+html[data-app-theme='modern'] .tita-auth .auth-footer a {
+  color: #38bdf8;
+}
+
+html[data-app-theme='modern'] .tita-auth .auth-links a {
+  color: #38bdf8;
+}
+
+/* 404 */
+html[data-app-theme='modern'] .error-page {
+  background: #0b1220;
+}
+
+html[data-app-theme='modern'] .error-info .error-code,
+html[data-app-theme='modern'] .error-info .error-message {
+  color: #e2e8f0;
+}
+
+html[data-app-theme='modern'] .error-info .error-hint {
+  color: #64748b;
+}

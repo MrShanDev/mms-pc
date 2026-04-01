@@ -1,0 +1,39 @@
+{
+    "private": true,
+    "scripts": {
+        "build": "cross-env NODE_ENV=production nuxt generate",
+        "local": "cross-env NUXT_PUBLIC_APP_ENV=local NODE_ENV=development nuxt dev",
+        "dev": "cross-env NUXT_PUBLIC_APP_ENV=dev NODE_ENV=development nuxt dev",
+        "prod": "cross-env NUXT_PUBLIC_APP_ENV=prod NODE_ENV=development nuxt dev",
+        "node": "nuxt build",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare",
+        "deploy": "sh scripts/deploy.sh"
+    },
+    "devDependencies": {
+        "@nuxt/devtools": "latest",
+        "@types/node": "^25.1.0",
+        "@types/qs": "^6.14.0",
+        "cross-env": "^10.1.0",
+        "nuxt": "^3.13.2",
+        "sass": "^1.79.4",
+        "sass-embedded": "^1.79.4",
+        "typescript": "^5.9.3",
+        "vue": "^3.5.10",
+        "vue-router": "^4.4.5"
+    },
+    "dependencies": {
+        "@element-plus/nuxt": "^1.0.11",
+        "@nuxtjs/i18n": "^9.5.6",
+        "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
+        "@pinia/nuxt": "^0.5.1",
+        "echarts": "^6.0.0",
+        "element-plus": "^2.8.3",
+        "nuxt-icon": "^0.6.10",
+        "ofetch": "^1.4.1",
+        "pinia": "^2.2.2",
+        "qs": "^6.13.0",
+        "vue-echarts": "^8.0.1"
+    }
+}

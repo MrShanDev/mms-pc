@@ -1,0 +1,154 @@
+{
+  "header": {
+    "themeSelect": "Template",
+    "themeClassic": "Classic light",
+    "themeModern": "Modern dark",
+    "langSelect": "Language",
+    "companyLine": "Shaanxi Tuotaizhe Metal Technology Co., Ltd.",
+    "login": "Login",
+    "signUp": "Sign up",
+    "logOut": "Log out",
+    "logoutConfirm": "Log out of your account?",
+    "logoutConfirmTitle": "Confirm",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "loggedOut": "Logged out"
+  },
+  "nav": {
+    "product": "Product",
+    "allCategories": "All categories",
+    "home": "Home",
+    "about": "About us",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "common": {
+    "hotline": "Hotline:",
+    "hotlineWei": "Hotline wei:",
+    "address": "Address: Baoji High-Tech Industrial Development Zone, Shaanxi Province",
+    "customerHotline": "Customer Service Hotline:",
+    "customerEmail": "Customer service email:",
+    "icpSuffix": "— Shengtang Jialian cross-border provides technical support",
+    "breadcrumbHome": "Home",
+    "facilityAlt": "Facility"
+  },
+  "home": {
+    "sectionProducts": "PRODUCTS SERVICES",
+    "sectionAbout": "COMPANY PROFILE",
+    "sectionNews": "COMPANY NEWS",
+    "top": "TOP",
+    "seoH1": "Shaanxi Tuotaizhe Metal Technology Co., Ltd."
+  },
+  "product": {
+    "breadcrumb": "Products",
+    "title": "PRODUCTS SERVICES",
+    "lead": "Explore titanium alloy bicycle lines by category. Each series is developed around Baoji’s metal processing strengths.",
+    "viewSeries": "View series →",
+    "metaTitle": "Products",
+    "metaDesc": "{company} — titanium alloy bicycles: mountain, road, folding, small-wheel, gravel."
+  },
+  "productDetail": {
+    "metaDesc": "{category} — {company}.",
+    "notFound": "Product category not found"
+  },
+  "about": {
+    "breadcrumb": "About us",
+    "sectionKicker": "COMPANY PROFILE",
+    "metaTitle": "About us",
+    "metaDesc": "Company profile — {company}, Baoji High-tech Zone."
+  },
+  "news": {
+    "breadcrumb": "News",
+    "title": "COMPANY NEWS",
+    "metaTitle": "News",
+    "metaDesc": "Company news and updates — {company}."
+  },
+  "contact": {
+    "breadcrumb": "Contact",
+    "title": "CONTACT US",
+    "metaTitle": "Contact",
+    "metaDesc": "Contact {company} — Baoji, Shaanxi."
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "loginMetaDesc": "Sign in — {company}",
+    "account": "Account",
+    "accountPh": "Phone / username / email",
+    "password": "Password",
+    "passwordPh": "Password",
+    "submitLogin": "Login",
+    "registerNow": "Register now",
+    "retrievePassword": "Retrieve password",
+    "registerTitle": "Register",
+    "registerMetaDesc": "Create an account — {company}",
+    "personalTab": "Personal signup",
+    "companyTab": "Company signup",
+    "username": "Username",
+    "usernamePh": "Login username",
+    "companyName": "Company name",
+    "companyNamePh": "Registered company name",
+    "fullAddress": "Full address",
+    "companyAddressPh": "Company address",
+    "contactName": "Contact name",
+    "contactNamePh": "Contact person",
+    "mobile": "Mobile",
+    "mobilePh": "11-digit China mobile",
+    "mobileRegPh": "Registered mobile",
+    "pictureVerify": "Picture verification",
+    "captchaPh": "Answer",
+    "verifyCode": "Verification code",
+    "smsPh": "SMS code",
+    "getCode": "Get code",
+    "setPassword": "Set password",
+    "confirmPassword": "Confirm password",
+    "pwdHint": "Use at least 8 characters, including digits and letters.",
+    "agreePrefix": "Read and agree",
+    "agreeLink": "(Website service agreement)",
+    "signUp": "Sign up",
+    "alreadyHave": "Already have an account?",
+    "termsTitle": "Website service agreement",
+    "termsOk": "OK",
+    "forgotTitle": "Retrieve password",
+    "forgotMetaDesc": "Reset password — {company}",
+    "newPassword": "New password",
+    "submitReset": "Submit",
+    "backLogin": "Back to Login"
+  },
+  "validation": {
+    "enterAccount": "Please enter account",
+    "enterPassword": "Please enter password",
+    "minPass8": "At least 8 characters",
+    "required": "Required",
+    "invalidMobile": "Invalid mobile",
+    "passwordMismatch": "Passwords do not match",
+    "wrongCaptcha": "Wrong answer",
+    "passPattern": "8+ chars with letters and digits",
+    "acceptAgreement": "Please accept the agreement",
+    "validMobileFirst": "Enter a valid mobile first"
+  },
+  "toast": {
+    "loginFailed": "Login failed",
+    "signedIn": "Signed in",
+    "codeSent": "Code sent",
+    "sendFailed": "Send failed",
+    "regFailed": "Registration failed",
+    "welcome": "Welcome!",
+    "regPleaseSignIn": "Registered. Please sign in.",
+    "resetFailed": "Reset failed",
+    "resetOk": "Password updated. Please sign in."
+  },
+  "errors": {
+    "pageNotFound": "404",
+    "notFoundMessage": "Sorry, the page does not exist or you do not have access.",
+    "backHome": "Back to home",
+    "notFoundHint": "Check the URL or click the button to return home.",
+    "notFoundMeta": "404 - Page not found",
+    "pageNotFoundTitle": "Page not found"
+  },
+  "meta": {
+    "homeDesc": "Titanium alloy bicycles and metal materials — Shaanxi Tuotaizhe Metal Technology Co., Ltd., Baoji High-tech Zone."
+  },
+  "terms": {
+    "html": "<p><strong>1. Service</strong></p><p>You agree to use this site only for lawful business inquiries related to Shaanxi Tuotaizhe Metal Technology Co., Ltd.</p><p><strong>2. Account</strong></p><p>You are responsible for keeping your password secure and for activity under your account.</p><p><strong>3. Contact</strong></p><p>For questions, use the hotline and email shown in the site footer.</p>"
+  }
+}

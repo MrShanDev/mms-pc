@@ -1,0 +1,159 @@
+/** @param {Record<string, unknown>} o cloned en */
+export function buildFr(o) {
+  o.header = {
+    themeSelect: 'Modèle',
+    themeClassic: 'Classique clair',
+    themeModern: 'Moderne sombre',
+    langSelect: 'Langue',
+    companyLine: 'Shaanxi Tuotaizhe Metal Technology Co., Ltd.',
+    login: 'Connexion',
+    signUp: "S'inscrire",
+    logOut: 'Déconnexion',
+    logoutConfirm: 'Se déconnecter ?',
+    logoutConfirmTitle: 'Confirmer',
+    ok: 'OK',
+    cancel: 'Annuler',
+    loggedOut: 'Déconnecté'
+  }
+  o.nav = {
+    product: 'Produits',
+    allCategories: 'Toutes les catégories',
+    home: 'Accueil',
+    about: 'À propos',
+    news: 'Actualités',
+    contact: 'Contact'
+  }
+  o.common = {
+    hotline: 'Hotline :',
+    hotlineWei: 'Hotline :',
+    address: 'Adresse : Zone industrielle high-tech de Baoji, province du Shaanxi, Chine',
+    customerHotline: 'Service client :',
+    customerEmail: 'E-mail :',
+    icpSuffix: '— Support technique Shengtang Jialian',
+    breadcrumbHome: 'Accueil',
+    facilityAlt: 'Site'
+  }
+  o.home = {
+    sectionProducts: 'PRODUITS ET SERVICES',
+    sectionAbout: "PRÉSENTATION DE L'ENTREPRISE",
+    sectionNews: "ACTUALITÉS DE L'ENTREPRISE",
+    top: 'HAUT',
+    seoH1: 'Shaanxi Tuotaizhe Metal Technology Co., Ltd.'
+  }
+  o.product = {
+    breadcrumb: 'Produits',
+    title: 'PRODUITS ET SERVICES',
+    lead: 'Découvrez nos lignes de vélos en alliage de titane par catégorie. Chaque série s’appuie sur les atouts de la filière métallurgique de Baoji.',
+    viewSeries: 'Voir la gamme →',
+    metaTitle: 'Produits',
+    metaDesc:
+      '{company} — vélos en titane : VTT, route, pliant, petites roues, gravel.'
+  }
+  o.productDetail = {
+    metaDesc: '{category} — {company}.',
+    notFound: 'Catégorie introuvable'
+  }
+  o.about = {
+    breadcrumb: 'À propos',
+    sectionKicker: "PRÉSENTATION DE L'ENTREPRISE",
+    metaTitle: 'À propos',
+    metaDesc: "Profil de l'entreprise — {company}, zone high-tech de Baoji."
+  }
+  o.news = {
+    breadcrumb: 'Actualités',
+    title: "ACTUALITÉS DE L'ENTREPRISE",
+    metaTitle: 'Actualités',
+    metaDesc: 'Actualités et mises à jour — {company}.'
+  }
+  o.contact = {
+    breadcrumb: 'Contact',
+    title: 'NOUS CONTACTER',
+    metaTitle: 'Contact',
+    metaDesc: 'Contact — {company}, Baoji, Shaanxi.'
+  }
+  o.auth = {
+    loginTitle: 'Connexion',
+    loginMetaDesc: 'Connexion — {company}',
+    account: 'Compte',
+    accountPh: 'Téléphone / identifiant / e-mail',
+    password: 'Mot de passe',
+    passwordPh: 'Mot de passe',
+    submitLogin: 'Connexion',
+    registerNow: "S'inscrire",
+    retrievePassword: 'Mot de passe oublié',
+    registerTitle: 'Inscription',
+    registerMetaDesc: 'Créer un compte — {company}',
+    personalTab: 'Particulier',
+    companyTab: 'Entreprise',
+    username: "Nom d'utilisateur",
+    usernamePh: 'Identifiant de connexion',
+    companyName: 'Raison sociale',
+    companyNamePh: 'Nom légal enregistré',
+    fullAddress: 'Adresse complète',
+    companyAddressPh: "Adresse de l'entreprise",
+    contactName: 'Contact',
+    contactNamePh: 'Personne à contacter',
+    mobile: 'Mobile',
+    mobilePh: 'Mobile chinois à 11 chiffres',
+    mobileRegPh: 'Mobile enregistré',
+    pictureVerify: 'Vérification par calcul',
+    captchaPh: 'Réponse',
+    verifyCode: 'Code SMS',
+    smsPh: 'Code SMS',
+    getCode: 'Obtenir le code',
+    setPassword: 'Définir le mot de passe',
+    confirmPassword: 'Confirmer le mot de passe',
+    pwdHint: 'Au moins 8 caractères, chiffres et lettres.',
+    agreePrefix: 'Lu et accepté',
+    agreeLink: '(Conditions du service)',
+    signUp: "S'inscrire",
+    alreadyHave: 'Déjà un compte ?',
+    termsTitle: 'Conditions du service',
+    termsOk: 'OK',
+    forgotTitle: 'Récupération du mot de passe',
+    forgotMetaDesc: 'Réinitialisation — {company}',
+    newPassword: 'Nouveau mot de passe',
+    submitReset: 'Envoyer',
+    backLogin: 'Retour à la connexion'
+  }
+  o.validation = {
+    enterAccount: 'Saisissez le compte',
+    enterPassword: 'Saisissez le mot de passe',
+    minPass8: 'Au moins 8 caractères',
+    required: 'Obligatoire',
+    invalidMobile: 'Mobile invalide',
+    passwordMismatch: 'Les mots de passe ne correspondent pas',
+    wrongCaptcha: 'Mauvaise réponse',
+    passPattern: '8+ caractères avec lettres et chiffres',
+    acceptAgreement: 'Veuillez accepter les conditions',
+    validMobileFirst: "Saisissez d'abord un mobile valide"
+  }
+  o.toast = {
+    loginFailed: 'Échec de la connexion',
+    signedIn: 'Connecté',
+    codeSent: 'Code envoyé',
+    sendFailed: "Échec de l'envoi",
+    regFailed: "Échec de l'inscription",
+    welcome: 'Bienvenue !',
+    regPleaseSignIn: 'Inscription réussie. Veuillez vous connecter.',
+    resetFailed: 'Échec de la réinitialisation',
+    resetOk: 'Mot de passe mis à jour. Veuillez vous connecter.'
+  }
+  o.errors = {
+    pageNotFound: '404',
+    notFoundMessage: "Désolé, la page n'existe pas ou l'accès est refusé.",
+    backHome: "Retour à l'accueil",
+    notFoundHint: "Vérifiez l'URL ou cliquez pour revenir à l'accueil.",
+    notFoundMeta: '404 - Page introuvable',
+    pageNotFoundTitle: 'Page introuvable'
+  }
+  o.meta = {
+    homeDesc:
+      'Vélos en alliage de titane et matériaux — Shaanxi Tuotaizhe Metal Technology Co., Ltd., zone high-tech de Baoji.'
+  }
+  o.terms = {
+    html:
+      '<p><strong>1. Service</strong></p><p>Vous acceptez d’utiliser ce site uniquement pour des demandes commerciales licites liées à Shaanxi Tuotaizhe Metal Technology Co., Ltd.</p><p><strong>2. Compte</strong></p><p>Vous êtes responsable de la sécurité de votre mot de passe et de l’activité sous votre compte.</p><p><strong>3. Contact</strong></p><p>Pour toute question, utilisez le numéro et l’e-mail figurant en pied de page.</p>'
+  }
+  return o
+}
