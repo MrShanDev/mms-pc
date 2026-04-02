@@ -130,6 +130,9 @@ export default defineNuxtConfig({
     // 应用配置（appApiUrl/wsUrl 可由 NUXT_PUBLIC_APP_API_URL/NUXT_PUBLIC_APP_WS_URL 运行时覆盖）
     runtimeConfig: {
         public: {
+            /** MCMS 示例站模版：off | furniture | apparel | digital | shoes | appliances（可用 NUXT_PUBLIC_MCMS_DEMO_TEMPLATE 覆盖） */
+            mcmsDemoTemplate:
+                (process.env.NUXT_PUBLIC_MCMS_DEMO_TEMPLATE as string | undefined) ?? 'furniture',
             site: {
                 name: 'Shaanxi Tuotaizhe',
                 description: 'Metal technology and titanium alloy bicycles.',

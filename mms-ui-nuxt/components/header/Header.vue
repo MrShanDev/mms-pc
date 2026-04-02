@@ -56,34 +56,6 @@
 
         </el-select>
 
-        <span class="sep">|</span>
-
-        <el-select
-
-          v-model="theme"
-
-          class="theme-select"
-
-          size="small"
-
-          :aria-label="t('header.themeSelect')"
-
-        >
-
-          <el-option
-
-            v-for="tm in themes"
-
-            :key="tm.id"
-
-            :label="t(tm.nameKey)"
-
-            :value="tm.id"
-
-          />
-
-        </el-select>
-
       </div>
 
     </div>
@@ -118,17 +90,17 @@ const userStore = useUserStore()
 
 const { locale, setLocale, headerText, t } = useAppLocale()
 
-
-
 const isLoggedIn = computed(() => !!userStore.user)
 
 const isLoggingOut = ref(false)
 
 
 
-const goLogin = () => router.push('/login')
+const r = useOffSiteRoutes()
 
-const goRegister = () => router.push('/register')
+const goLogin = () => router.push(r.login)
+
+const goRegister = () => router.push(r.register)
 
 
 
@@ -172,7 +144,7 @@ const handleLogout = async () => {
 
     ElMessage.success(headerText.value.loggedOut)
 
-    router.push('/login')
+    router.push(r.login)
 
   } catch (e: any) {
 
@@ -180,7 +152,7 @@ const handleLogout = async () => {
 
       userStore.logout()
 
-      router.push('/login')
+      router.push(r.login)
 
     }
 
@@ -289,20 +261,6 @@ const handleLogout = async () => {
   .lang-select {
 
     width: 128px;
-
-    margin-left: 4px;
-
-    :deep(.el-input__wrapper) {
-
-      box-shadow: 0 0 0 1px #ddd inset;
-
-    }
-
-  }
-
-  .theme-select {
-
-    width: 132px;
 
     margin-left: 4px;
 

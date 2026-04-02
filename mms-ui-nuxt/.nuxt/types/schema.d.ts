@@ -136,6 +136,8 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
+   mcmsDemoTemplate: string,
+
    site: {
       name: string,
 

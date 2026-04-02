@@ -13,7 +13,7 @@
           <template #title>
             <span class="menu-title">{{ t('nav.product') }}</span>
           </template>
-          <el-menu-item index="/product">
+          <el-menu-item :index="r.product">
             {{ t('nav.allCategories') }}
           </el-menu-item>
           <el-menu-item
@@ -25,16 +25,16 @@
           </el-menu-item>
         </el-sub-menu>
 
-        <el-menu-item index="/">
+        <el-menu-item :index="r.home">
           {{ t('nav.home') }}
         </el-menu-item>
-        <el-menu-item index="/about">
+        <el-menu-item :index="r.about">
           {{ t('nav.about') }}
         </el-menu-item>
-        <el-menu-item index="/news">
+        <el-menu-item :index="r.news">
           {{ t('nav.news') }}
         </el-menu-item>
-        <el-menu-item index="/contact">
+        <el-menu-item :index="r.contact">
           {{ t('nav.contact') }}
         </el-menu-item>
       </el-menu>
@@ -51,20 +51,23 @@ const router = useRouter()
 const { t, locale } = useAppLocale()
 const { theme } = useAppTheme()
 const { navProductCategories } = useTitaSite()
+const r = useOffSiteRoutes()
 
 /** el-menu default-active 仅在挂载时生效，用 key 强制在路由或语言变化时刷新选中态 */
 const menuKey = ref(0)
 
 const activeKey = computed(() => {
   const path = route.path
-  if (path === '/') return '/'
-  if (path === '/about') return '/about'
-  if (path === '/news') return '/news'
-  if (path === '/contact') return '/contact'
-  if (path === '/product') return '/product'
-  const m = path.match(/^\/product\/([^/]+)$/)
+  const { home, about, news, contact, product, newsDetail, productDetail } = r
+  if (path === home || path === `${home}/`) return home
+  if (path === about) return about
+  if (path === news || path === newsDetail || path.startsWith(`${news}/`)) return news
+  if (path === contact) return contact
+  if (path === product || path === productDetail) return product
+  const esc = home.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const m = path.match(new RegExp(`^${esc}/product/([^/]+)$`))
   if (m?.[1]) return `pc-${m[1]}`
-  return '/'
+  return home
 })
 
 watch(
@@ -83,12 +86,13 @@ watch(theme, () => {
 })
 
 const handleSelect = (index: string) => {
-  if (index === '/' || index === '/about' || index === '/news' || index === '/contact' || index === '/product') {
+  const { home, about, news, contact, product } = r
+  if (index === home || index === about || index === news || index === contact || index === product) {
     router.push(index)
     return
   }
   if (index.startsWith('pc-')) {
-    router.push(`/product/${index.slice(3)}`)
+    router.push(r.productCategory(index.slice(3)))
   }
 }
 </script>

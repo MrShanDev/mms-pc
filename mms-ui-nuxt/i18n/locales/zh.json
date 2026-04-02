@@ -63,6 +63,14 @@
     "metaTitle": "新闻",
     "metaDesc": "{company} 的新闻与动态。"
   },
+  "newsDetail": {
+    "backToList": "返回新闻列表",
+    "metaDesc": "{title} — {company}。"
+  },
+  "productItem": {
+    "backToSeries": "返回系列列表",
+    "metaDesc": "{title} — {company}。"
+  },
   "contact": {
     "breadcrumb": "联系我们",
     "title": "联系我们",

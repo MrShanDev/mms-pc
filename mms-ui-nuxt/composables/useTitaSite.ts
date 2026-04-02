@@ -2,11 +2,14 @@ import { computed } from 'vue'
 import {
   aboutSideImage,
   companyName,
+  customerEmail,
   footerLead,
   getProductCategory,
   heroSlides,
   hotlineDisplay,
   hotlineTel,
+  icpRecordHref,
+  icpRecordText,
   navProductCategories,
   newsList,
   productCategoriesDetailed,
@@ -14,7 +17,7 @@ import {
   showcaseProducts
 } from '@/utils/titaSiteContent'
 
-/** 站点 mock 数据与展示字段；不随界面语言变化，见 i18n/CONVENTIONS.md */
+/** 主站（mcmsDemoTemplate=off）mock 数据与展示字段；不随界面语言变化，见 i18n/CONVENTIONS.md */
 export function useTitaSite() {
   return {
     companyName: computed(() => companyName),
@@ -28,6 +31,9 @@ export function useTitaSite() {
     aboutSideImage,
     hotlineTel,
     hotlineDisplay,
+    customerEmail: computed(() => customerEmail),
+    icpRecordHref: computed(() => icpRecordHref),
+    icpRecordText: computed(() => icpRecordText),
     categoryById: (id: string) => getProductCategory(id)
   }
 }

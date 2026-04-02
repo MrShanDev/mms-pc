@@ -7,6 +7,15 @@
  */
 import { useUserStore } from '@/stores/user'
 import { getLocalStorageItem } from '@/utils/browser'
+import { OFF_SITE_ROUTE_PREFIX } from '@/utils/mcmsDemo'
+
+const OFF_AUTH_PATHS = [
+  `${OFF_SITE_ROUTE_PREFIX}/login`,
+  `${OFF_SITE_ROUTE_PREFIX}/register`,
+  `${OFF_SITE_ROUTE_PREFIX}/forgot-password`
+]
+
+const offAuthPathSet = new Set(OFF_AUTH_PATHS)
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
     const userStore = useUserStore()
@@ -23,12 +32,11 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         // 保存当前路由以便登录后返回
         const redirect = encodeURIComponent(to.fullPath)
 
-        return navigateTo(`/login?redirect=${redirect}`)
+        return navigateTo(`${OFF_SITE_ROUTE_PREFIX}/login?redirect=${redirect}`)
     }
 
     // 已登录用户无需再进入登录/注册/找回密码页
-    const guestOnly = ['/login', '/register', '/forgot-password']
-    if ((userStore.user || userStore.isLoggedIn) && guestOnly.includes(to.path)) {
+    if ((userStore.user || userStore.isLoggedIn) && offAuthPathSet.has(to.path)) {
         const redirectUrl = (to.query.redirect as string) || '/'
         try {
             return navigateTo(decodeURIComponent(redirectUrl))

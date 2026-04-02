@@ -1,0 +1,1 @@
+import{ai as t,aj as a,e as s,ae as o,o as r,p,bH as l,an as n}from"./BsypHABc.js";const d=t({to:{type:a([String,Object]),required:!0},disabled:Boolean});var i=s({__name:"teleport",props:d,setup(u){return(e,c)=>e.disabled?o(e.$slots,"default",{key:0}):(r(),p(l,{key:1,to:e.to},[o(e.$slots,"default")],8,["to"]))}});const b=n(i);export{b as E,d as t};

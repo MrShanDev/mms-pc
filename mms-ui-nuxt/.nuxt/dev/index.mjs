@@ -912,6 +912,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "mcmsDemoTemplate": "furniture",
     "site": {
       "name": "Shaanxi Tuotaizhe",
       "description": "Metal technology and titanium alloy bicycles.",
@@ -1583,22 +1584,7 @@ const plugins = [
 _B4fmQvGVYkcIm7V6E6NU8kwUw5WekjBJeFT5oE7HY
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"1b72f-GuY8Bn/v4h2wmoKclyVN+aLw9M0\"",
-    "mtime": "2026-04-01T09:48:14.037Z",
-    "size": 112431,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"6d0ee-xlCuwrOV23UH0JlA9HTloSA8Oa4\"",
-    "mtime": "2026-04-01T09:48:14.037Z",
-    "size": 446702,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

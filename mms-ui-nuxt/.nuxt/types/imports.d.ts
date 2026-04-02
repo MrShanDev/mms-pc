@@ -302,18 +302,17 @@ declare global {
   const ID_INJECTION_KEY: typeof import('../../node_modules/element-plus/es/hooks/use-id/index').ID_INJECTION_KEY
   const IMG_BIKE: typeof import('../../utils/titaSiteContent').IMG_BIKE
   const IMG_WORKSHOP: typeof import('../../utils/titaSiteContent').IMG_WORKSHOP
-  const WebSocketClient: typeof import('../../utils/websocket').WebSocketClient
+  const MCMS_DEMO_TEMPLATES: typeof import('../../utils/mcmsDemoContent').MCMS_DEMO_TEMPLATES
+  const MCMS_DEMO_TEMPLATE_IDS: typeof import('../../utils/mcmsDemo').MCMS_DEMO_TEMPLATE_IDS
+  const OFF_SITE_ROUTE_PREFIX: typeof import('../../utils/mcmsDemo').OFF_SITE_ROUTE_PREFIX
   const ZINDEX_INJECTION_KEY: typeof import('../../node_modules/element-plus/es/hooks/use-z-index/index').ZINDEX_INJECTION_KEY
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router').abortNavigation
   const aboutSideImage: typeof import('../../utils/titaSiteContent').aboutSideImage
   const acceptHMRUpdate: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').acceptHMRUpdate
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router').addRouteMiddleware
-  const articleDetails: typeof import('../../utils/mockServiceData').articleDetails
-  const articleLists: typeof import('../../utils/mockServiceData').articleLists
   const buildFullUrl: typeof import('../../utils/mms').buildFullUrl
   const callOnce: typeof import('../../node_modules/nuxt/dist/app/composables/once').callOnce
   const cancelIdleCallback: typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback').cancelIdleCallback
-  const categoryTitles: typeof import('../../utils/mockServiceData').categoryTitles
   const clearError: typeof import('../../node_modules/nuxt/dist/app/composables/error').clearError
   const clearNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').clearNuxtData
   const clearNuxtState: typeof import('../../node_modules/nuxt/dist/app/composables/state').clearNuxtState
@@ -324,6 +323,7 @@ declare global {
   const createHttpClient: typeof import('../../utils/request').createHttpClient
   const createNuxtReadyHttpClient: typeof import('../../utils/request').createNuxtReadyHttpClient
   const customRef: typeof import('vue').customRef
+  const customerEmail: typeof import('../../utils/titaSiteContent').customerEmail
   const deepMerge: typeof import('../../utils/mms').deepMerge
   const defineAppConfig: typeof import('../../node_modules/nuxt/dist/app/nuxt').defineAppConfig
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
@@ -344,33 +344,20 @@ declare global {
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
   const footerLead: typeof import('../../utils/titaSiteContent').footerLead
-  const formatDate: typeof import('../../utils/format').formatDate
   const formatParams: typeof import('../../utils/mms').formatParams
-  const formatTimeAgo: typeof import('../../utils/format').formatTimeAgo
   const get: typeof import('../../utils/mms').get
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
-  const getArticleDesc: typeof import('../../utils/format').getArticleDesc
-  const getArticleDetail: typeof import('../../utils/mockServiceData').getArticleDetail
   const getBasePath: typeof import('../../utils/mms').getBasePath
-  const getCompanyName: typeof import('../../utils/titaSiteContent').getCompanyName
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
   const getEnv: typeof import('../../utils/mms').getEnv
   const getErrorMessage: typeof import('../../utils/mms').getErrorMessage
-  const getFooterLead: typeof import('../../utils/titaSiteContent').getFooterLead
-  const getHeroSlides: typeof import('../../utils/titaSiteContent').getHeroSlides
   const getHttpChatClient: typeof import('../../utils/request').getHttpChatClient
   const getHttpClient: typeof import('../../utils/request').getHttpClient
   const getLocalStorageItem: typeof import('../../utils/browser').getLocalStorageItem
-  const getNavProductCategories: typeof import('../../utils/titaSiteContent').getNavProductCategories
-  const getNewsList: typeof import('../../utils/titaSiteContent').getNewsList
-  const getProductCategoriesDetailed: typeof import('../../utils/titaSiteContent').getProductCategoriesDetailed
   const getProductCategory: typeof import('../../utils/titaSiteContent').getProductCategory
-  const getProfileParagraphs: typeof import('../../utils/titaSiteContent').getProfileParagraphs
   const getRouteRules: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getRouteRules
   const getSessionStorageItem: typeof import('../../utils/browser').getSessionStorageItem
-  const getShowcaseProducts: typeof import('../../utils/titaSiteContent').getShowcaseProducts
-  const getWebSocketClient: typeof import('../../utils/websocket').getWebSocketClient
   const h: typeof import('vue').h
   const handleResponseData: typeof import('../../utils/mms').handleResponseData
   const hasInjectionContext: typeof import('vue').hasInjectionContext
@@ -380,9 +367,15 @@ declare global {
   const http: typeof import('../../utils/request').http
   const httpChatClient: typeof import('../../utils/request').httpChatClient
   const httpClient: typeof import('../../utils/request').httpClient
+  const icpRecordHref: typeof import('../../utils/titaSiteContent').icpRecordHref
+  const icpRecordText: typeof import('../../utils/titaSiteContent').icpRecordText
   const inject: typeof import('vue').inject
   const injectHead: typeof import('../../node_modules/nuxt/dist/app/composables/head').injectHead
+  const isAuthLoginRoutePath: typeof import('../../utils/mcmsDemo').isAuthLoginRoutePath
   const isClient: typeof import('../../utils/browser').isClient
+  const isLegacyOffSitePath: typeof import('../../utils/mcmsDemo').isLegacyOffSitePath
+  const isMcmsDemoOff: typeof import('../../utils/mcmsDemo').isMcmsDemoOff
+  const isMcmsDemoTemplateId: typeof import('../../utils/mcmsDemo').isMcmsDemoTemplateId
   const isNuxtError: typeof import('../../node_modules/nuxt/dist/app/composables/error').isNuxtError
   const isPrerendered: typeof import('../../node_modules/nuxt/dist/app/composables/payload').isPrerendered
   const isProxy: typeof import('vue').isProxy
@@ -419,6 +412,7 @@ declare global {
   const onServerPrefetch: typeof import('vue').onServerPrefetch
   const onUnmounted: typeof import('vue').onUnmounted
   const onUpdated: typeof import('vue').onUpdated
+  const parseMcmsDemoTemplate: typeof import('../../utils/mcmsDemo').parseMcmsDemoTemplate
   const persistedState: typeof import('../../node_modules/@pinia-plugin-persistedstate/nuxt/dist/runtime/storages').persistedState
   const post: typeof import('../../utils/mms').post
   const prefetchComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload').prefetchComponents
@@ -442,7 +436,6 @@ declare global {
   const removeSessionStorageItem: typeof import('../../utils/browser').removeSessionStorageItem
   const request: typeof import('../../utils/request').default
   const requestIdleCallback: typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback').requestIdleCallback
-  const resetWebSocketClient: typeof import('../../utils/websocket').resetWebSocketClient
   const resolveComponent: typeof import('vue').resolveComponent
   const safeLocalStorage: typeof import('../../utils/browser').safeLocalStorage
   const safeSessionStorage: typeof import('../../utils/browser').safeSessionStorage
@@ -493,13 +486,15 @@ declare global {
   const useLocaleHead: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useLocaleHead
   const useLocalePath: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useLocalePath
   const useLocaleRoute: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useLocaleRoute
+  const useMcmsElMenuNav: typeof import('../../composables/useMcmsElMenuNav').useMcmsElMenuNav
+  const useMcmsHashScroll: typeof import('../../composables/useMcmsHashScroll').useMcmsHashScroll
   const useModel: typeof import('vue').useModel
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt').useNuxtApp
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').useNuxtData
   const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools').useNuxtDevTools
+  const useOffSiteRoutes: typeof import('../../composables/useOffSiteRoutes').useOffSiteRoutes
   const usePinia: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').usePinia
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview').usePreviewMode
-  const useQrCodeLogin: typeof import('../../composables/useQrCodeLogin').useQrCodeLogin
   const useRequestEvent: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').useRequestEvent
   const useRequestFetch: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').useRequestFetch
   const useRequestHeader: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').useRequestHeader
@@ -574,17 +569,14 @@ declare global {
   export type { AppLocale, SiteLocaleCode } from '../../utils/appLocale'
   import('../../utils/appLocale')
   // @ts-ignore
-  export type { Article } from '../../utils/mockServiceData'
-  import('../../utils/mockServiceData')
+  export type { McmsDemoTemplateId, McmsDemoConfigValue, McmsNavItem, McmsNewsItem, McmsProductTile, McmsSlide, McmsTemplateContent } from '../../utils/mcmsDemo'
+  import('../../utils/mcmsDemo')
   // @ts-ignore
   export type { HttpClient } from '../../utils/request'
   import('../../utils/request')
   // @ts-ignore
   export type { ProductCategoryId, ShowcaseProduct, ProductCategoryDetail, NewsItem } from '../../utils/titaSiteContent'
   import('../../utils/titaSiteContent')
-  // @ts-ignore
-  export type { WebSocketClient } from '../../utils/websocket'
-  import('../../utils/websocket')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -891,18 +883,17 @@ declare module 'vue' {
     readonly ID_INJECTION_KEY: UnwrapRef<typeof import('../../node_modules/element-plus/es/hooks/use-id/index')['ID_INJECTION_KEY']>
     readonly IMG_BIKE: UnwrapRef<typeof import('../../utils/titaSiteContent')['IMG_BIKE']>
     readonly IMG_WORKSHOP: UnwrapRef<typeof import('../../utils/titaSiteContent')['IMG_WORKSHOP']>
-    readonly WebSocketClient: UnwrapRef<typeof import('../../utils/websocket')['WebSocketClient']>
+    readonly MCMS_DEMO_TEMPLATES: UnwrapRef<typeof import('../../utils/mcmsDemoContent')['MCMS_DEMO_TEMPLATES']>
+    readonly MCMS_DEMO_TEMPLATE_IDS: UnwrapRef<typeof import('../../utils/mcmsDemo')['MCMS_DEMO_TEMPLATE_IDS']>
+    readonly OFF_SITE_ROUTE_PREFIX: UnwrapRef<typeof import('../../utils/mcmsDemo')['OFF_SITE_ROUTE_PREFIX']>
     readonly ZINDEX_INJECTION_KEY: UnwrapRef<typeof import('../../node_modules/element-plus/es/hooks/use-z-index/index')['ZINDEX_INJECTION_KEY']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly aboutSideImage: UnwrapRef<typeof import('../../utils/titaSiteContent')['aboutSideImage']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['acceptHMRUpdate']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
-    readonly articleDetails: UnwrapRef<typeof import('../../utils/mockServiceData')['articleDetails']>
-    readonly articleLists: UnwrapRef<typeof import('../../utils/mockServiceData')['articleLists']>
     readonly buildFullUrl: UnwrapRef<typeof import('../../utils/mms')['buildFullUrl']>
     readonly callOnce: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/once')['callOnce']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
-    readonly categoryTitles: UnwrapRef<typeof import('../../utils/mockServiceData')['categoryTitles']>
     readonly clearError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['clearError']>
     readonly clearNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['clearNuxtData']>
     readonly clearNuxtState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['clearNuxtState']>
@@ -913,6 +904,7 @@ declare module 'vue' {
     readonly createHttpClient: UnwrapRef<typeof import('../../utils/request')['createHttpClient']>
     readonly createNuxtReadyHttpClient: UnwrapRef<typeof import('../../utils/request')['createNuxtReadyHttpClient']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
+    readonly customerEmail: UnwrapRef<typeof import('../../utils/titaSiteContent')['customerEmail']>
     readonly deepMerge: UnwrapRef<typeof import('../../utils/mms')['deepMerge']>
     readonly defineAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineAppConfig']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -933,33 +925,20 @@ declare module 'vue' {
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly footerLead: UnwrapRef<typeof import('../../utils/titaSiteContent')['footerLead']>
-    readonly formatDate: UnwrapRef<typeof import('../../utils/format')['formatDate']>
     readonly formatParams: UnwrapRef<typeof import('../../utils/mms')['formatParams']>
-    readonly formatTimeAgo: UnwrapRef<typeof import('../../utils/format')['formatTimeAgo']>
     readonly get: UnwrapRef<typeof import('../../utils/mms')['get']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
-    readonly getArticleDesc: UnwrapRef<typeof import('../../utils/format')['getArticleDesc']>
-    readonly getArticleDetail: UnwrapRef<typeof import('../../utils/mockServiceData')['getArticleDetail']>
     readonly getBasePath: UnwrapRef<typeof import('../../utils/mms')['getBasePath']>
-    readonly getCompanyName: UnwrapRef<typeof import('../../utils/titaSiteContent')['getCompanyName']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getEnv: UnwrapRef<typeof import('../../utils/mms')['getEnv']>
     readonly getErrorMessage: UnwrapRef<typeof import('../../utils/mms')['getErrorMessage']>
-    readonly getFooterLead: UnwrapRef<typeof import('../../utils/titaSiteContent')['getFooterLead']>
-    readonly getHeroSlides: UnwrapRef<typeof import('../../utils/titaSiteContent')['getHeroSlides']>
     readonly getHttpChatClient: UnwrapRef<typeof import('../../utils/request')['getHttpChatClient']>
     readonly getHttpClient: UnwrapRef<typeof import('../../utils/request')['getHttpClient']>
     readonly getLocalStorageItem: UnwrapRef<typeof import('../../utils/browser')['getLocalStorageItem']>
-    readonly getNavProductCategories: UnwrapRef<typeof import('../../utils/titaSiteContent')['getNavProductCategories']>
-    readonly getNewsList: UnwrapRef<typeof import('../../utils/titaSiteContent')['getNewsList']>
-    readonly getProductCategoriesDetailed: UnwrapRef<typeof import('../../utils/titaSiteContent')['getProductCategoriesDetailed']>
     readonly getProductCategory: UnwrapRef<typeof import('../../utils/titaSiteContent')['getProductCategory']>
-    readonly getProfileParagraphs: UnwrapRef<typeof import('../../utils/titaSiteContent')['getProfileParagraphs']>
     readonly getRouteRules: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getRouteRules']>
     readonly getSessionStorageItem: UnwrapRef<typeof import('../../utils/browser')['getSessionStorageItem']>
-    readonly getShowcaseProducts: UnwrapRef<typeof import('../../utils/titaSiteContent')['getShowcaseProducts']>
-    readonly getWebSocketClient: UnwrapRef<typeof import('../../utils/websocket')['getWebSocketClient']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly handleResponseData: UnwrapRef<typeof import('../../utils/mms')['handleResponseData']>
     readonly hasInjectionContext: UnwrapRef<typeof import('vue')['hasInjectionContext']>
@@ -969,9 +948,15 @@ declare module 'vue' {
     readonly http: UnwrapRef<typeof import('../../utils/request')['http']>
     readonly httpChatClient: UnwrapRef<typeof import('../../utils/request')['httpChatClient']>
     readonly httpClient: UnwrapRef<typeof import('../../utils/request')['httpClient']>
+    readonly icpRecordHref: UnwrapRef<typeof import('../../utils/titaSiteContent')['icpRecordHref']>
+    readonly icpRecordText: UnwrapRef<typeof import('../../utils/titaSiteContent')['icpRecordText']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly injectHead: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/head')['injectHead']>
+    readonly isAuthLoginRoutePath: UnwrapRef<typeof import('../../utils/mcmsDemo')['isAuthLoginRoutePath']>
     readonly isClient: UnwrapRef<typeof import('../../utils/browser')['isClient']>
+    readonly isLegacyOffSitePath: UnwrapRef<typeof import('../../utils/mcmsDemo')['isLegacyOffSitePath']>
+    readonly isMcmsDemoOff: UnwrapRef<typeof import('../../utils/mcmsDemo')['isMcmsDemoOff']>
+    readonly isMcmsDemoTemplateId: UnwrapRef<typeof import('../../utils/mcmsDemo')['isMcmsDemoTemplateId']>
     readonly isNuxtError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['isNuxtError']>
     readonly isPrerendered: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['isPrerendered']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
@@ -1008,6 +993,7 @@ declare module 'vue' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly parseMcmsDemoTemplate: UnwrapRef<typeof import('../../utils/mcmsDemo')['parseMcmsDemoTemplate']>
     readonly persistedState: UnwrapRef<typeof import('../../node_modules/@pinia-plugin-persistedstate/nuxt/dist/runtime/storages')['persistedState']>
     readonly post: UnwrapRef<typeof import('../../utils/mms')['post']>
     readonly prefetchComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['prefetchComponents']>
@@ -1031,7 +1017,6 @@ declare module 'vue' {
     readonly removeSessionStorageItem: UnwrapRef<typeof import('../../utils/browser')['removeSessionStorageItem']>
     readonly request: UnwrapRef<typeof import('../../utils/request')['default']>
     readonly requestIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['requestIdleCallback']>
-    readonly resetWebSocketClient: UnwrapRef<typeof import('../../utils/websocket')['resetWebSocketClient']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly safeLocalStorage: UnwrapRef<typeof import('../../utils/browser')['safeLocalStorage']>
     readonly safeSessionStorage: UnwrapRef<typeof import('../../utils/browser')['safeSessionStorage']>
@@ -1082,13 +1067,15 @@ declare module 'vue' {
     readonly useLocaleHead: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useLocaleHead']>
     readonly useLocalePath: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useLocalePath']>
     readonly useLocaleRoute: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useLocaleRoute']>
+    readonly useMcmsElMenuNav: UnwrapRef<typeof import('../../composables/useMcmsElMenuNav')['useMcmsElMenuNav']>
+    readonly useMcmsHashScroll: UnwrapRef<typeof import('../../composables/useMcmsHashScroll')['useMcmsHashScroll']>
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly useOffSiteRoutes: UnwrapRef<typeof import('../../composables/useOffSiteRoutes')['useOffSiteRoutes']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
-    readonly useQrCodeLogin: UnwrapRef<typeof import('../../composables/useQrCodeLogin')['useQrCodeLogin']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
     readonly useRequestFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']>
     readonly useRequestHeader: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeader']>

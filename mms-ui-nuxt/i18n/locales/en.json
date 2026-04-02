@@ -63,6 +63,14 @@
     "metaTitle": "News",
     "metaDesc": "Company news and updates — {company}."
   },
+  "newsDetail": {
+    "backToList": "Back to news",
+    "metaDesc": "{title} — {company}."
+  },
+  "productItem": {
+    "backToSeries": "Back to series",
+    "metaDesc": "{title} — {company}."
+  },
   "contact": {
     "breadcrumb": "Contact",
     "title": "CONTACT US",
