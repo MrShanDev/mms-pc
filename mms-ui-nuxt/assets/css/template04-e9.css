@@ -1,0 +1,49 @@
+/* template04：e9 官方样式之上的 SPA 修正 */
+.e9-layout {
+  padding-top: 70px;
+  padding-bottom: 56px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* 首页 flash 内 Element 轮播 */
+.e9-layout .flash .el-carousel {
+  width: 100%;
+}
+
+.e9-layout .flash .el-carousel__container,
+.e9-layout .flash .el-carousel__item {
+  min-height: 320px;
+}
+
+@media (min-width: 768px) {
+  .e9-layout .flash .el-carousel__container,
+  .e9-layout .flash .el-carousel__item {
+    min-height: 420px;
+  }
+}
+
+/* 内页主栏与 e9 一致：右侧主内容 float */
+.e9-layout .e9-main-float {
+  float: right !important;
+}
+
+/* 下拉：桌面悬停展开 */
+@media (min-width: 768px) {
+  .e9-layout .navbar-nav > li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
+}
+
+/* 导航当前页：.cur */
+.e9-layout .navbar-nav > li > a.cur,
+.e9-layout .navbar-nav > li > a.router-link-active {
+  color: #555;
+  background-color: #e7e7e7;
+}
+
+/* 底部固定条占位 */
+.e9-layout .footer_nav {
+  z-index: 1030;
+}

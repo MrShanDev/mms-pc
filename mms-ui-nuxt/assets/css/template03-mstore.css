@@ -1,0 +1,138 @@
+/* template03：引入 392 官方样式后的少量修正 */
+.ms392-layout .layout-template--template03 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ms392-layout .ms392-slot {
+  flex: 1 0 auto;
+}
+
+.c_1530_4 .text h4,
+.tit_1 h3 {
+  font-family: 'ITC Avant Garde Gothic', 'Microsoft YaHei', sans-serif !important;
+}
+
+/* 首页主轮播：与组件内高度配合，大屏更高 */
+.ms392-layout .slide_banner .el-carousel.el-carousel--horizontal {
+  min-height: 560px;
+}
+
+/* 内页顶图：明显高于默认随图比例，统一 cover */
+.ms392-layout .ms392-inner-banner .ms392-inner-banner__pic {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 2.35 / 1;
+  min-height: 220px;
+  max-height: min(52vh, 520px);
+}
+
+.ms392-layout .ms392-inner-banner .ms392-inner-banner__pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* MESSAGE / CONTACT 表单区：与 tit_1、面包屑留白一致 */
+.tpl03-form-page__body {
+  padding-bottom: 3rem;
+}
+
+.tpl03-form-page__lead {
+  margin-bottom: 1.5rem;
+  max-width: 48rem;
+  line-height: 1.65;
+}
+
+.tpl03-form-page__form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.tpl03-form-page__form .form-group.tpl03-form-group--last {
+  margin-bottom: 0;
+}
+
+.tpl03-form-page__form label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #444;
+}
+
+/* 发送按钮：与上方表单项拉开，右对齐（与 392 留言区习惯一致） */
+.tpl03-form-page__form .tpl03-form-actions {
+  margin-top: 1.5rem;
+  padding-top: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tpl03-form-page__form .tpl03-form-submit {
+  min-width: 148px;
+  padding: 0.65rem 1.85rem;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+@media (max-width: 575px) {
+  .tpl03-form-page__form .tpl03-form-actions {
+    justify-content: stretch;
+  }
+
+  .tpl03-form-page__form .tpl03-form-submit {
+    width: 100%;
+  }
+}
+
+.tpl03-contact-card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding: 1.5rem 1.25rem;
+}
+
+.tpl03-contact-card__item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.tpl03-contact-card__item:last-child {
+  margin-bottom: 0;
+}
+
+.tpl03-contact-card__item .ico {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.tpl03-contact-card__item .ico img {
+  width: 40px;
+  height: auto;
+  display: block;
+}
+
+.tpl03-contact-card__item h6 {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #888;
+}
+
+.tpl03-contact-card__item p,
+.tpl03-contact-card__item .body {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+}

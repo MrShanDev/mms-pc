@@ -1,0 +1,1 @@
+import{e,c as o,o as t}from"./BfuTd02G.js";import{_ as s}from"./DlAUqK2U.js";const r={class:"route-root-stub","aria-hidden":"true"},a=e({__name:"index",setup(n){return(_,c)=>(t(),o("div",r))}}),p=s(a,[["__scopeId","data-v-d39f50e3"]]);export{p as default};

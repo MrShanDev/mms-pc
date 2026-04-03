@@ -51,7 +51,7 @@ const router = useRouter()
 const { t, locale } = useAppLocale()
 const { theme } = useAppTheme()
 const { navProductCategories } = useTitaSite()
-const r = useOffSiteRoutes()
+const r = useTemplate06Routes()
 
 /** el-menu default-active 仅在挂载时生效，用 key 强制在路由或语言变化时刷新选中态 */
 const menuKey = ref(0)

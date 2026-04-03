@@ -1,10 +1,10 @@
-import { OFF_SITE_ROUTE_PREFIX } from '@/utils/mcmsDemo'
+import { MAIN_SITE_ROUTE_PREFIX } from '@/utils/demoSite'
 
-/** 认证相关页面仅保留在 `pages/off/`，旧根路径重定向（需在 auth.global 之前执行） */
+/** 认证相关页面在 `pages/template06/`，旧根路径重定向（需在 auth.global 之前执行） */
 const AUTH_LEGACY: Record<string, string> = {
-  '/login': `${OFF_SITE_ROUTE_PREFIX}/login`,
-  '/register': `${OFF_SITE_ROUTE_PREFIX}/register`,
-  '/forgot-password': `${OFF_SITE_ROUTE_PREFIX}/forgot-password`
+  '/login': `${MAIN_SITE_ROUTE_PREFIX}/login`,
+  '/register': `${MAIN_SITE_ROUTE_PREFIX}/register`,
+  '/forgot-password': `${MAIN_SITE_ROUTE_PREFIX}/forgot-password`
 }
 
 export default defineNuxtRouteMiddleware((to) => {

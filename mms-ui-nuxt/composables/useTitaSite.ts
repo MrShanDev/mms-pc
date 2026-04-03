@@ -17,7 +17,7 @@ import {
   showcaseProducts
 } from '@/utils/titaSiteContent'
 
-/** 主站（mcmsDemoTemplate=off）mock 数据与展示字段；不随界面语言变化，见 i18n/CONVENTIONS.md */
+/** 主站（demoSiteTemplate=template06）mock 数据与展示字段；不随界面语言变化，见 i18n/CONVENTIONS.md */
 export function useTitaSite() {
   return {
     companyName: computed(() => companyName),

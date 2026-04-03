@@ -1,14 +1,34 @@
 // API 配置统一由 api/config.ts 提供（单一数据源）
 import { apiConfig, currentEnv } from './api/config'
 import { availableLocales } from './i18n/available-locales'
+import { TEMPLATE01_NEWS_PRERENDER_PATHS, TEMPLATE01_PRODUCT_PRERENDER_PATHS } from './utils/template01MingsoftMock'
 
 export default defineNuxtConfig({
+    imports: {
+        /** 与 composables、utils 并列扫描，演示站接口见 `api/demoSite.ts` */
+        dirs: ['api']
+    },
     hooks: {
         listen() {
             if (process.env.NODE_ENV === 'development') {
                 // eslint-disable-next-line no-console
                 console.log('\n  📦 mms-ui-nuxt\n  🌐 环境:', currentEnv, '\n  🔗 API:', apiConfig.appApiUrl, '\n')
             }
+        },
+        // 局部组件目录 pages/.../_components 不应注册为路由
+        'pages:extend'(pages) {
+            const strip = (routes: typeof pages) => {
+                for (let i = routes.length - 1; i >= 0; i--) {
+                    const r = routes[i] as { path?: string; file?: string; children?: typeof pages }
+                    const file = r.file ?? ''
+                    if (file.includes('_components') || r.path?.includes('_components')) {
+                        routes.splice(i, 1)
+                        continue
+                    }
+                    if (r.children?.length) strip(r.children)
+                }
+            }
+            strip(pages)
         },
     },
     vite: {
@@ -99,6 +119,17 @@ export default defineNuxtConfig({
         experimental: {
             wasm: false,
         },
+        prerender: {
+            routes: [
+                '/template01/products',
+                '/template01/product-detail',
+                '/template01/news-detail',
+                '/template01/cases',
+                '/template01/missing',
+                ...TEMPLATE01_PRODUCT_PRERENDER_PATHS,
+                ...TEMPLATE01_NEWS_PRERENDER_PATHS
+            ]
+        },
         routeRules: {
             '/**': {
                 headers: {
@@ -130,9 +161,11 @@ export default defineNuxtConfig({
     // 应用配置（appApiUrl/wsUrl 可由 NUXT_PUBLIC_APP_API_URL/NUXT_PUBLIC_APP_WS_URL 运行时覆盖）
     runtimeConfig: {
         public: {
-            /** MCMS 示例站模版：off | furniture | apparel | digital | shoes | appliances（可用 NUXT_PUBLIC_MCMS_DEMO_TEMPLATE 覆盖） */
-            mcmsDemoTemplate:
-                (process.env.NUXT_PUBLIC_MCMS_DEMO_TEMPLATE as string | undefined) ?? 'furniture',
+            /** 示例站模版：仅 `template01` … `template06`；优先 `NUXT_PUBLIC_DEMO_SITE_TEMPLATE`，兼容旧变量 `NUXT_PUBLIC_MCMS_DEMO_TEMPLATE`；非法值按 `utils/demoSite.ts` 默认回退 */
+            demoSiteTemplate:
+                (process.env.NUXT_PUBLIC_DEMO_SITE_TEMPLATE ||
+                    process.env.NUXT_PUBLIC_MCMS_DEMO_TEMPLATE ||
+                    'template02') as string,
             site: {
                 name: 'Shaanxi Tuotaizhe',
                 description: 'Metal technology and titanium alloy bicycles.',

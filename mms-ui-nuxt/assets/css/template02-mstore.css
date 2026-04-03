@@ -1,0 +1,20 @@
+/* template02：在引入 361 官方样式表后的少量修正（避免与 Nuxt/布局冲突） */
+.mstore-layout .site-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mstore-layout .site-wrap > *:nth-child(2) {
+  flex: 1 0 auto;
+}
+
+/* 演示站导航在窄屏也展示链接（不依赖 jQuery 移动菜单） */
+@media (max-width: 991px) {
+  .mstore-layout .site-navigation .site-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px 8px;
+  }
+}

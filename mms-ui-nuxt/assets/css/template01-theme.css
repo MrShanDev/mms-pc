@@ -1,0 +1,63 @@
+/**
+ * template01 — 对齐 https://193.mstore.demo.mingsoft.net/ （#029c6a 主色、顶栏 4px 绿线、1440 版心）
+ */
+.layout-template--template01.ms-layout {
+  --ms-green: #029c6a;
+  --ms-green-hover: #028055;
+  --ms-nav-text: #666565;
+  --ms-footer-bg: #232323;
+  --ms-footer-border: #3f3f3f;
+  --ms-footer-muted: #a6a5a5;
+  --ms-news-bg: #f8f8f8;
+  --ms-side-gray: #f5f5f5;
+  padding-top: 100px;
+}
+
+@media (max-width: 1199px) {
+  .layout-template--template01.ms-layout {
+    padding-top: 70px;
+  }
+}
+
+.layout-template--template01 .tpl-sub-page .page-title {
+  padding-left: 0;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+.layout-template--template01 .tpl-sub-page .page-title::before {
+  display: none;
+}
+
+.layout-template--template01 .tpl-sub-page .crumb a {
+  color: var(--ms-green);
+}
+
+.layout-template--template01 .tpl-sub-page .crumb a:hover {
+  opacity: 0.85;
+}
+
+.layout-template--template01 .tpl-sub-page--about .about-grid {
+  background: #fff;
+  padding: 28px;
+  border: 1px solid #eee;
+  box-shadow: none;
+}
+
+.layout-template--template01 .tpl-sub-page .news-card {
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid #eee;
+  transform: none;
+}
+
+.layout-template--template01 .tpl-sub-page .news-card:hover {
+  transform: none;
+  box-shadow: 0 4px 16px rgba(2, 156, 106, 0.12);
+}
+
+.layout-template--template01 .tpl-sub-page .news-card h2:hover {
+  color: var(--ms-green);
+}

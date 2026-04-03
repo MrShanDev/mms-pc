@@ -96,7 +96,7 @@ const isLoggingOut = ref(false)
 
 
 
-const r = useOffSiteRoutes()
+const r = useTemplate06Routes()
 
 const goLogin = () => router.push(r.login)
 
