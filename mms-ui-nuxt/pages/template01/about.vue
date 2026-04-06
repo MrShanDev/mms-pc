@@ -49,7 +49,7 @@ const { t, locale } = useI18n()
 
 const crumbs = computed(() => [
   { label: t('demo.common.home'), to: '/template01' },
-  { label: a.kicker, to: '/template01/about' }
+  { label: t('nav.about'), to: '/template01/about' }
 ])
 
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template01/about')

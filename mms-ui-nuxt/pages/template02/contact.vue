@@ -1,8 +1,7 @@
 <template>
-  <!-- 对齐 361 Contact：内顶区 + Contact Us 标题行 + 左表单右 Contact Info -->
   <main>
     <InnerPageCover
-      :title="p.title"
+      :title="t('demo.common.contactUs')"
       :lead="bannerLeadLine"
       :background-image="innerBannerSrc"
     />
@@ -10,13 +9,13 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-7 text-center mx-auto">
-            <span class="subtitle-39293">Contact Us</span>
+            <span class="subtitle-39293">{{ t('demo.common.contactUsHeading') }}</span>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-8 mb-5">
             <div v-if="productTitle" class="alert alert-secondary small mb-3">
-              Product inquiry: <strong>{{ productTitle }}</strong>
+              {{ t('demo.common.productInquiryBanner') }} <strong>{{ productTitle }}</strong>
             </div>
             <form id="form" @submit.prevent="onSubmit">
               <div class="form-group row">
@@ -26,7 +25,7 @@
                     type="text"
                     name="contacts"
                     class="form-control"
-                    placeholder="Your name"
+                    :placeholder="t('demo.common.namePlaceholder')"
                     autocomplete="name"
                   >
                 </div>
@@ -50,7 +49,7 @@
                     type="email"
                     name="email"
                     class="form-control"
-                    placeholder="Email address"
+                    :placeholder="t('demo.common.emailPlaceholder')"
                     autocomplete="email"
                     required
                   >
@@ -62,7 +61,7 @@
                     v-model="form.content"
                     name="content"
                     class="form-control"
-                    placeholder="Write your message."
+                    :placeholder="t('demo.common.placeholderMessageDemo')"
                     cols="30"
                     rows="10"
                   />
@@ -73,7 +72,7 @@
                   <input
                     type="submit"
                     class="btn btn-block btn-primary text-white py-3 px-5"
-                    value="Send Message"
+                    :value="t('demo.common.sendMessageSubmit')"
                   >
                 </div>
               </div>
@@ -81,22 +80,22 @@
           </div>
           <div class="col-lg-4 ml-auto">
             <div class="bg-white p-3 p-md-3">
-              <h3 class="text-black mb-4">Contact Info</h3>
+              <h3 class="text-black mb-4">{{ t('demo.common.contactInfoHeading') }}</h3>
               <ul class="list-unstyled footer-link">
                 <li class="d-block mb-3">
-                  <span class="d-block text-black">Address:</span>
+                  <span class="d-block text-black">{{ t('demo.common.addressLine') }}</span>
                   <span>{{ p.address || '—' }}</span>
                 </li>
                 <li class="d-block mb-3">
-                  <span class="d-block text-black">Phone:</span>
+                  <span class="d-block text-black">{{ t('demo.common.telephoneLine') }}</span>
                   <span>{{ phonesLine }}</span>
                 </li>
                 <li class="d-block mb-3">
-                  <span class="d-block text-black">Email:</span>
+                  <span class="d-block text-black">{{ t('demo.common.emailLine') }}</span>
                   <span>{{ p.email }}</span>
                 </li>
                 <li v-if="qqLine" class="d-block mb-3">
-                  <span class="d-block text-black">QQ:</span>
+                  <span class="d-block text-black">{{ t('demo.common.qqLabel') }}</span>
                   <span>{{ qqLine }}</span>
                 </li>
               </ul>
@@ -131,6 +130,8 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 import InnerPageCover from './_components/InnerPageCover.vue'
 
 definePageMeta({ layout: 'demo-template02', requiresAuth: false })
+
+const { t, locale } = useI18n()
 
 const C = DEMO_SITE_TEMPLATES.template02
 const p = C.contactPage
@@ -168,17 +169,16 @@ const form = reactive({
 
 function onSubmit() {
   if (!form.email.trim()) {
-    ElMessage.warning('Please enter email')
+    ElMessage.warning(t('demo.common.fillEmail'))
     return
   }
-  ElMessage.success('Demo: form is not submitted to server.')
+  ElMessage.success(t('demo.common.demoContactNoSubmit'))
 }
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template02/contact')
 
 useHead(() => ({
-  title: `${p.title} — ${C.siteTitle}`,
+  title: `${t('demo.common.contactUs')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: p.formIntro ?? C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

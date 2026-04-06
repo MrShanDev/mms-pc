@@ -1,6 +1,6 @@
 <template>
   <main class="ms-home">
-    <section class="ms-banner">
+    <section class="ms-banner" :aria-label="t('demo.common.heroBannerAria')">
       <el-carousel
         class="ms-banner-carousel"
         :height="bannerCarouselHeight"
@@ -95,6 +95,8 @@
 
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
+
+const { t } = useI18n()
 
 const c = DEMO_SITE_TEMPLATES.template01
 

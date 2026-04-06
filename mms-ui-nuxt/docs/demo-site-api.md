@@ -1,42 +1,95 @@
-# 演示站统一数据与接口约定
+# 演示站（template01～template05）统一数据与接口说明
 
-MCMS 演示模版 `template01` … `template05` 共用**同一套数据结构**（以 `utils/template01MingsoftMock.ts` 中 `TEMPLATE01_MCMS_CONTENT` 为源）。各模版仅通过 **`/template0X` 路由前缀**区分；上线后由同一 CMS / BFF 按模版 ID 返回同构 JSON。
+## 1. 五套模版是否共用同一套数据？
 
-## 数据入口
+**是。** 逻辑如下：
 
-| 模块 | 说明 |
+| 文件 | 作用 |
 |------|------|
-| `utils/demoSiteContent.ts` | `SITE_DEMO_CONTENT`、`buildDemoContentForTemplate(id)` |
-| `utils/mcmsDemoContent.ts` | `MCMS_DEMO_TEMPLATES`（各 key 均为 `buildDemoContentForTemplate` 结果） |
-| `utils/mcmsDemo.ts` | TypeScript 类型 `McmsTemplateContent` |
+| `utils/template01MingsoftMock.ts` | 定义源数据 `TEMPLATE01_DEMO_SITE_CONTENT`（结构与字段与 B2B 演示站对齐） |
+| `utils/demoSiteContent.ts` | `SITE_DEMO_CONTENT` 与 `buildDemoContentForTemplate(id)`：在源数据上做深拷贝，并把站内路径前缀 `/template01` 重写为 `/template0X`，同时设置 `id` |
+| `utils/demoSiteTemplates.ts` | `DEMO_SITE_TEMPLATES`：`template01`～`template05` 各一份，**除 `id` 与 URL 前缀外结构一致** |
+| `utils/demoSite.ts` | TypeScript 类型：`DemoTemplateContent`、`DemoNavItem`、`DemoNewsItem` 等 |
 
-## 前端封装（mock / 可替换为 HTTP）
+页面中统一使用：
 
-文件：`utils/demoSiteApi.ts`
+```ts
+import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
+const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template05
+```
 
-| 函数 | 作用 | 未来 HTTP 映射（示例） |
-|------|------|-------------------------|
-| `getDemoSiteContentSync(id)` | 同步取当前构建的整站内容 | `GET /api/mcms/site/:templateId` |
-| `fetchDemoSiteContent(id)` | 异步整站内容 | 同上 |
-| `fetchDemoNewsList(id)` | 新闻列表 | `GET /api/mcms/site/:templateId/news` |
-| `fetchDemoNewsById(id, newsId)` | 单篇新闻 | `GET /api/mcms/site/:templateId/news/:newsId` |
-| `fetchDemoProductCatalog(id)` | 产品分类 + 列表 | `GET /api/mcms/site/:templateId/products` |
-| `fetchDemoProductBySlug(id, slug)` | 产品详情 | `GET /api/mcms/site/:templateId/products/by-slug/:slug` |
-| `fetchDemoContactPage(id)` | 联系信息 | `GET /api/mcms/site/:templateId/contact` |
+异步/可替换的访问入口见 **`api/demoSite.ts`**（当前为内存实现，无独立 HTTP 路由）。
 
-实现上当前为**零延迟内存数据**；对接真实接口时保留函数签名，在内部改为 `$fetch` / `useFetch` 即可。
+---
 
-## 模版与路由
+## 2. 静态文案与中英文切换
 
-- `templateId`：`template01` | `template02` | `template03` | `template04` | `template05`
-- 站内链接、预渲染路径中的前缀与 `id` 一致，例如 `/template02/products`、`/template02/news-detail?id=1`
+### 2.1 已走 i18n 的部分（`zh` / `en` 等）
 
-## 页面组织约定
+- 各模版页面与组件中的**界面壳层**文案：通过 `useI18n()` 的 `t('demo.common.*')` 等键读取。
+- 语言资源：`i18n/locales/zh.json`、`i18n/locales/en.json` 等（`demo` 命名空间下为演示站专用键）。
+- `html` 的 `lang` / `dir`：多数页面通过 `getLocaleLanguage` / `getLocaleDir`（`i18n/available-locales.ts`）与当前 `locale` 同步。
 
-- 各模版业务壳层放在 **`pages/template0X.vue`**（顶栏 + `<NuxtPage />` + 共用 **`components/demo/DemoSiteFooter.vue`**），子页面放在 **`pages/template0X/**`**，避免在全局 `layouts/` 堆积模版专用代码。
-- `template01` … `template05` 的 **MCMS 演示数据** 均由 `buildDemoContentForTemplate` 从 template01 同源生成，仅替换 `/template01` 路由前缀。
-- 不同模版仅 **布局与样式** 不同；列表/详情字段与 template01 对齐。
+### 2.2 仍来自演示数据 JSON 的部分（当前主要为中文）
 
-## 类型
+- `C.nav[].label`、`C.aboutPage`、`C.newsPage`、`C.contactPage`、`C.productCatalog` 等 **CMS 形态字段**来自 `TEMPLATE01_DEMO_SITE_CONTENT` 经前缀重写后的结果，**未按 locale 拆中英文副本**。
+- 类型上预留 `siteTitleEn` 等字段，但**页面标题与正文目前仍以 `siteTitle` 等主字段为主**；切到英文界面时，**正文与导航标签仍会显示中文演示文案**（与「界面语言」分离）。
 
-以 `McmsTemplateContent` 为准；扩展字段时同步更新 `utils/mcmsDemo.ts` 与本文档。
+若上线需要全文双语，建议在 `DemoTemplateContent` 侧增加 `en` 分支或由后端按 `Accept-Language` 返回对应语言块，再在页面用 `locale` 选择展示字段。
+
+---
+
+## 3. 前端模块 API（`api/demoSite.ts`）
+
+当前均为 **TypeScript 函数**，构建时与运行时直接读 `DEMO_SITE_TEMPLATES`，**无 `server/api` HTTP 端点**。对接真实后端时，可保持同名函数，在内部改为 `$fetch` / `useFetch`。
+
+| 函数 | 参数 | 返回 | 说明 |
+|------|------|------|------|
+| `getDemoSiteContentSync` | `id: DemoSiteTemplateId` | `DemoTemplateContent` | 同步整站内容 |
+| `fetchDemoSiteContent` | 同上 | `Promise<DemoTemplateContent>` | 异步整站（预留延迟，当前为 0ms） |
+| `fetchDemoNewsList` | `id` | `Promise<{ title: string; items: DemoNewsItem[] }>` | 新闻列表（含列表页标题） |
+| `fetchDemoNewsById` | `id`, `newsId: string` | `Promise<DemoNewsItem \| undefined>` | 单篇新闻 |
+| `fetchDemoProductCatalog` | `id` | `Promise<DemoProductCatalog \| null>` | 产品分类 + 全部商品；无目录时为 `null` |
+| `fetchDemoProductBySlug` | `id`, `slug: string` | `Promise<DemoProductDetail \| undefined>` | 按 slug 查产品 |
+| `fetchDemoContactPage` | `id` | `Promise<DemoTemplateContent['contactPage']>` | 联系页数据 |
+
+### 未来 HTTP 映射（示例）
+
+| 函数 | 建议方法 / 路径 |
+|------|-----------------|
+| `fetchDemoSiteContent` | `GET /api/site/:templateId` |
+| `fetchDemoNewsList` | `GET /api/site/:templateId/news` |
+| `fetchDemoNewsById` | `GET /api/site/:templateId/news/:newsId` |
+| `fetchDemoProductCatalog` | `GET /api/site/:templateId/products` |
+| `fetchDemoProductBySlug` | `GET /api/site/:templateId/products/by-slug/:slug` |
+| `fetchDemoContactPage` | `GET /api/site/:templateId/contact` |
+
+---
+
+## 4. 核心类型（`utils/demoSite.ts`）
+
+以下为 `DemoTemplateContent` 的要点（完整定义见源码）：
+
+- **标识**：`id: 'template01' \| … \| 'template05'`
+- **站点元信息**：`referenceUrl`, `siteTitle`, `siteTitleEn?`, `metaTitle`, `metaDescription`, `footerCopyright`, `techSupport?`
+- **导航**：`nav: DemoNavItem[]`（`label`, `to?`, `hash?`, `children?`）
+- **首页**：`home: Record<string, unknown>`（各模版可解不同形状）
+- **关于**：`aboutPage`（`kicker`, `title`, `lead`, `paragraphs`, `image`, `cta?`, `trustBlocks?`）
+- **新闻**：`newsPage: { title, items: DemoNewsItem[] }`
+- **联系**：`contactPage`（标题、邮箱、电话、地址、表单说明、横幅图等）
+- **产品**：`productCatalog?`（`pageTitle`, `categories`, `products` 等）
+- **可选**：`privacyPage?`, `faqPage?`, `casesPage?`
+
+---
+
+## 5. 模版 ID 与运行配置
+
+- 合法演示模版 ID：`template01` … `template05`（见 `DEMO_SITE_TEMPLATE_IDS`）。
+- `nuxt.config` 中 `runtimeConfig.public.demoSiteTemplate`（或环境变量 `NUXT_PUBLIC_DEMO_SITE_TEMPLATE`）用于选择默认演示模版；**`template06` 为主站**，不在 `DEMO_SITE_TEMPLATES` 五套聚合内。
+
+---
+
+## 6. 页面与数据引用约定
+
+- 各模版业务页位于 `pages/template0X/**`；子目录 `_components` 不参与路由（由 `nuxt.config` `pages:extend` 剔除）。
+- 站内链接在演示数据中为 **`/template0X/...`**，与 `buildDemoContentForTemplate` 的前缀重写一致。

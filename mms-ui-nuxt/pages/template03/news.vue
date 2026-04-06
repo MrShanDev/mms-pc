@@ -5,9 +5,9 @@
       <div class="container-fluid">
         <div class="container">
           <div class="headline">
-            <NuxtLink to="/template03" class="ms-channel-path-index">Home</NuxtLink>
+            <NuxtLink to="/template03" class="ms-channel-path-index">{{ t('demo.common.home') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <span class="ms-channel-path-link">NEWS</span>
+            <span class="ms-channel-path-link">{{ t('demo.common.crumbNewsCenter') }}</span>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
                   </div>
                   <div class="detail">
                     <NuxtLink :to="{ path: '/template03/news-detail', query: { id: feature.id } }">
-                      more<img src="https://392.mstore.demo.mingsoft.net/392/picture/index16.png" alt="">
+                      {{ t('demo.common.moreButton') }}<img src="https://392.mstore.demo.mingsoft.net/392/picture/index16.png" alt="">
                     </NuxtLink>
                   </div>
                 </div>
@@ -63,6 +63,8 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template03', requiresAuth: false })
 
+const { t, locale } = useI18n()
+
 const C = DEMO_SITE_TEMPLATES.template03
 
 const bannerSrc =
@@ -77,7 +79,6 @@ function formatTime(date: string) {
   return date
 }
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/news')
 
 useHead(() => ({

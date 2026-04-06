@@ -1,5 +1,5 @@
 <template>
-  <SidebarPageLayout title="Download" :crumbs="[{ label: 'Download' }]" sidebar-mode="download">
+  <SidebarPageLayout :title="t('demo.common.pageDownload')" :crumbs="[{ label: t('demo.common.pageDownload') }]" sidebar-mode="download">
     <ul class="list_news">
       <li>
         <a href="javascript:void(0)">Download case 2</a>
@@ -11,11 +11,11 @@
       </li>
     </ul>
     <section id="help" class="contents" style="margin-top: 2rem">
-      <h3>Help documentation</h3>
+      <h3>{{ t('demo.common.helpDocumentation') }}</h3>
       <p>{{ helpText }}</p>
     </section>
     <section id="files" class="contents">
-      <h3>File download</h3>
+      <h3>{{ t('demo.common.fileDownloadSection') }}</h3>
       <p>{{ filesText }}</p>
       <ul>
         <li v-for="(row, i) in fileRows" :key="i">
@@ -34,6 +34,8 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template04', requiresAuth: false })
 
+const { t, locale } = useI18n()
+
 const C = DEMO_SITE_TEMPLATES.template04
 
 const helpText =
@@ -43,11 +45,10 @@ const filesText = 'Demo file list (no real downloads):'
 
 const fileRows = ['Product catalog PDF (demo)', 'Specification sheet (demo)', 'After-sales policy (demo)']
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template04/download')
 
 useHead(() => ({
-  title: `Download — ${C.siteTitle}`,
+  title: `${t('demo.common.pageDownload')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

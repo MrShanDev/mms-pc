@@ -5,11 +5,11 @@
       <div class="container-fluid">
         <div class="container">
           <div class="headline">
-            <NuxtLink to="/template03" class="ms-channel-path-index">Home</NuxtLink>
+            <NuxtLink to="/template03" class="ms-channel-path-index">{{ t('nav.home') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <NuxtLink to="/template03/about" class="ms-channel-path-link">ABOUT US</NuxtLink>
+            <NuxtLink to="/template03/about" class="ms-channel-path-link">{{ t('nav.about') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <span class="ms-channel-path-link">FACTORY</span>
+            <span class="ms-channel-path-link">{{ t('demo.common.crumbFactory') }}</span>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ const page = C.casesPage!
 const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/image/20230703/1688374377849050.jpg')
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/cases')
 
 useHead(() => ({

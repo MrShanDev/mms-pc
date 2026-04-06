@@ -1,5 +1,5 @@
 <template>
-  <SidebarPageLayout variant="plain" :title="a.kicker" :crumbs="[{ label: a.kicker }]" sidebar-mode="default">
+  <SidebarPageLayout variant="plain" :title="t('demo.common.aboutUsNav')" :crumbs="[{ label: t('demo.common.aboutUsNav') }]" sidebar-mode="default">
     <div class="contents">
       <p v-for="(para, j) in a.paragraphs" :key="j">{{ para }}</p>
       <p>
@@ -20,11 +20,11 @@ definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 const C = DEMO_SITE_TEMPLATES.template05
 const a = C.aboutPage
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/about')
 
 useHead(() => ({
-  title: `${a.kicker} — ${C.siteTitle}`,
+  title: `${t('demo.common.aboutUsNav')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: a.paragraphs[0] ?? C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

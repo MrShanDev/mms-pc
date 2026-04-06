@@ -9,7 +9,7 @@
     >
       <template #sidenav>
         <li
-          v-for="tab in TEMPLATE01_NEWS_TABS"
+          v-for="tab in newsTabs"
           :key="tab.query"
           :class="{ active: activeCategory === tab.query }"
         >
@@ -63,6 +63,14 @@ const C = DEMO_SITE_TEMPLATES.template01
 const route = useRoute()
 const { t, locale } = useI18n()
 
+const newsTabs = computed(() =>
+  TEMPLATE01_NEWS_TABS.map((tab) => ({
+    ...tab,
+    label:
+      tab.category === 'company' ? t('demo.common.newsTabCompany') : t('demo.common.newsTabIndustry')
+  }))
+)
+
 const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/cms/category/1688608258562.jpg')
 const bannerLead = C.contactPage.bannerLead ?? C.productCatalog?.pageLead ?? ''
@@ -75,14 +83,14 @@ const crumbs = computed(() => [
 const activeCategory = computed(() => {
   const q = route.query.category as string | undefined
   if (!q) return ''
-  return TEMPLATE01_NEWS_TABS.some((t) => t.query === q) ? q : ''
+  return TEMPLATE01_NEWS_TABS.some((row) => row.query === q) ? q : ''
 })
 
 const filteredItems = computed(() => {
   const items = C.newsPage.items
   const cat = activeCategory.value
   if (!cat) return items
-  const key = TEMPLATE01_NEWS_TABS.find((t) => t.query === cat)?.category
+  const key = TEMPLATE01_NEWS_TABS.find((row) => row.query === cat)?.category
   if (!key) return items
   return items.filter((i) => i.category === key)
 })

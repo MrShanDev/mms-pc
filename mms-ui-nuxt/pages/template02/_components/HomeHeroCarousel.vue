@@ -3,7 +3,7 @@
     对齐 361.mstore 首页首屏：h700 背景图 + overlay + 左侧约 7/12 文案 + primary 标题 + More 按钮
     参考：https://361.mstore.demo.mingsoft.net/html/web/index.html （ftco-blocks-cover-1 / site-section-cover overlay h700）
   -->
-  <section class="ms361-hero" aria-label="首页横幅">
+  <section class="ms361-hero" :aria-label="t('demo.common.heroBannerAria')">
     <div v-if="slides.length <= 1">
       <div
         v-for="(s, i) in slides"
@@ -54,6 +54,8 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
 export type HomeHeroSlide = {
   image: string
   title: string

@@ -3,41 +3,46 @@
   <header>
     <div class="container">
       <div class="row e7-top-row">
-        <div class="col-xs-12 col-sm-9 col-md-9">
+        <div class="col-xs-12 col-sm-7 col-md-7">
           <div class="e7-logo-locale">
             <NuxtLink to="/template05">
               <img :src="logoSrc" class="logo" :alt="c.siteTitle">
             </NuxtLink>
-            <DemoLocaleSwitch />
           </div>
         </div>
-        <div id="topsearch" class="col-xs-12 col-sm-3 col-md-3">
-          <form id="e7-search-form" @submit.prevent="onSearchSubmit">
-            <div class="input-group search_group">
-              <input
-                v-model="searchQ"
-                type="text"
-                name="content_title"
-                class="form-control input-sm"
-                :placeholder="t('demo.common.productSearch')"
-                autocomplete="off"
-              >
-              <span class="input-group-btn">
-                <button
-                  id="submit_search"
-                  type="submit"
-                  class="e7-search-submit"
-                  :title="t('demo.common.productSearch')"
-                  :aria-label="t('demo.common.productSearch')"
+        <div id="topsearch" class="col-xs-12 col-sm-5 col-md-5">
+          <div class="e7-topsearch-row">
+            <form id="e7-search-form" class="e7-topsearch-form" @submit.prevent="onSearchSubmit">
+              <div class="input-group search_group">
+                <input
+                  v-model="searchQ"
+                  type="text"
+                  name="content_title"
+                  class="form-control e7-search-input"
+                  :placeholder="t('demo.common.productSearch')"
+                  autocomplete="off"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                  </svg>
-                </button>
-              </span>
+                <span class="input-group-btn">
+                  <button
+                    id="submit_search"
+                    type="submit"
+                    class="e7-search-submit"
+                    :title="t('demo.common.productSearch')"
+                    :aria-label="t('demo.common.productSearch')"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+            </form>
+            <div class="e7-topsearch-locale">
+              <DemoLocaleSwitch />
             </div>
-          </form>
+          </div>
         </div>
+         
       </div>
     </div>
     <div class="container">
@@ -175,6 +180,81 @@ defineExpose({ openMobileMenu })
 </script>
 
 <style scoped>
+/* 顶栏第一行：与 Logo 列等高时搜索区垂直居中（避免 float 列顶对齐） */
+/* 与 e7 style.css 一致：769px 以上才显示 #topsearch，此处同步用 769px */
+@media (min-width: 769px) {
+  .e7-top-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .e7-top-row > [class*='col-'] {
+    float: none !important;
+  }
+
+  #topsearch {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+/* 搜索框与语言切换同一行：垂直居中对齐，不拉伸占满整列高度 */
+.e7-topsearch-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: nowrap;
+  padding: 4px 0 2px;
+}
+
+.e7-topsearch-form {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.e7-topsearch-form :deep(.input-group) {
+  width: 100%;
+}
+
+.e7-topsearch-form :deep(.search_group) {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.e7-search-input {
+  min-height: 38px;
+  font-size: 14px;
+  border-color: #ccc;
+}
+
+.e7-topsearch-locale {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.e7-topsearch-locale :deep(.demo-locale-switch) {
+  display: flex;
+  align-items: center;
+}
+
+.e7-topsearch-locale :deep(.demo-locale-select) {
+  min-width: 100px;
+  max-width: 118px;
+  min-height: 38px;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  border-color: #ccc;
+}
+
 .e7-logo-locale {
   display: flex;
   align-items: center;
@@ -208,16 +288,18 @@ defineExpose({ openMobileMenu })
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 8px 12px;
+  min-width: 42px;
+  min-height: 38px;
+  height: 38px;
+  padding: 0 12px;
   margin: 0;
   border: none;
   border-radius: 0;
-  background-color: #1260aa;
+  background: linear-gradient(180deg, #1a6fc4 0%, #1260aa 100%);
   color: #fff;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.15s ease;
 }
 
 .e7-search-submit:hover,

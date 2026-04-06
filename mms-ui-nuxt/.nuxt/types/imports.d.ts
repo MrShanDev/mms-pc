@@ -324,10 +324,6 @@ declare global {
   const acceptHMRUpdate: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').acceptHMRUpdate
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router').addRouteMiddleware
   const apiConfig: typeof import('../../api/config').apiConfig
-  const applyTemplate02Mstore361Patch: typeof import('../../utils/demoSiteContent').applyTemplate02Mstore361Patch
-  const applyTemplate03Mstore392Patch: typeof import('../../utils/demoSiteContent').applyTemplate03Mstore392Patch
-  const applyTemplate04MstoreE9Patch: typeof import('../../utils/demoSiteContent').applyTemplate04MstoreE9Patch
-  const applyTemplate05MstoreE7Patch: typeof import('../../utils/demoSiteContent').applyTemplate05MstoreE7Patch
   const buildDemoContentForTemplate: typeof import('../../utils/demoSiteContent').buildDemoContentForTemplate
   const buildFullUrl: typeof import('../../utils/mms').buildFullUrl
   const callOnce: typeof import('../../node_modules/nuxt/dist/app/composables/once').callOnce
@@ -941,10 +937,6 @@ declare module 'vue' {
     readonly acceptHMRUpdate: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['acceptHMRUpdate']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly apiConfig: UnwrapRef<typeof import('../../api/config')['apiConfig']>
-    readonly applyTemplate02Mstore361Patch: UnwrapRef<typeof import('../../utils/demoSiteContent')['applyTemplate02Mstore361Patch']>
-    readonly applyTemplate03Mstore392Patch: UnwrapRef<typeof import('../../utils/demoSiteContent')['applyTemplate03Mstore392Patch']>
-    readonly applyTemplate04MstoreE9Patch: UnwrapRef<typeof import('../../utils/demoSiteContent')['applyTemplate04MstoreE9Patch']>
-    readonly applyTemplate05MstoreE7Patch: UnwrapRef<typeof import('../../utils/demoSiteContent')['applyTemplate05MstoreE7Patch']>
     readonly buildDemoContentForTemplate: UnwrapRef<typeof import('../../utils/demoSiteContent')['buildDemoContentForTemplate']>
     readonly buildFullUrl: UnwrapRef<typeof import('../../utils/mms')['buildFullUrl']>
     readonly callOnce: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/once')['callOnce']>

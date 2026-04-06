@@ -1,7 +1,7 @@
 <template>
   <main class="tita-sub">
     <div class="inner width_1400_auto">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" :aria-label="t('common.breadcrumbNav')">
         <NuxtLink :to="r.home">{{ t('common.breadcrumbHome') }}</NuxtLink>
         <span class="sep">/</span>
         <span>{{ t('about.breadcrumb') }}</span>

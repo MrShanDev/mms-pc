@@ -1,14 +1,14 @@
 <template>
-  <SidebarPageLayout title="Feedback" :crumbs="[{ label: 'Feedback' }]" sidebar-mode="default" variant="plain">
+  <SidebarPageLayout :title="t('demo.common.feedbackPageTitle')" :crumbs="[{ label: t('demo.common.feedbackPageTitle') }]" sidebar-mode="default" variant="plain">
     <div class="contents">
       <p>{{ lead }}</p>
       <form class="e7-feedback-form" @submit.prevent="onSubmit">
         <div class="form-group">
-          <label for="fb-name">Name</label>
+          <label for="fb-name">{{ t('demo.common.feedbackNameLabel') }}</label>
           <input id="fb-name" v-model="form.name" type="text" class="form-control" autocomplete="name">
         </div>
         <div class="form-group">
-          <label for="fb-email">Email <span class="text-danger">*</span></label>
+          <label for="fb-email">{{ t('demo.common.email') }} <span class="text-danger">*</span></label>
           <input
             id="fb-email"
             v-model="form.email"
@@ -19,10 +19,10 @@
           >
         </div>
         <div class="form-group">
-          <label for="fb-msg">Message</label>
+          <label for="fb-msg">{{ t('demo.common.feedbackMessageLabel') }}</label>
           <textarea id="fb-msg" v-model="form.content" class="form-control" rows="6" />
         </div>
-        <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" class="btn btn-primary">{{ t('demo.common.sendButton') }}</button>
       </form>
     </div>
   </SidebarPageLayout>
@@ -37,25 +37,26 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 
+const { t, locale } = useI18n()
+
 const C = DEMO_SITE_TEMPLATES.template05
 
-const lead = computed(() => C.contactPage.formIntro?.trim() || 'We value your feedback (demo).')
+const lead = computed(() => C.contactPage.formIntro?.trim() || t('demo.common.feedbackLeadDefault'))
 
 const form = reactive({ name: '', email: '', content: '' })
 
 function onSubmit() {
   if (!form.email.trim()) {
-    ElMessage.warning('Please enter email')
+    ElMessage.warning(t('demo.common.fillEmail'))
     return
   }
-  ElMessage.success('Demo: not sent.')
+  ElMessage.success(t('demo.common.demoFormNoSubmit'))
 }
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/feedback')
 
 useHead(() => ({
-  title: `Feedback — ${C.siteTitle}`,
+  title: `${t('demo.common.feedbackPageTitle')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

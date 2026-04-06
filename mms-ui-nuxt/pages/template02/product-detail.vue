@@ -8,7 +8,7 @@
     <div class="site-section">
       <div class="container">
         <div class="pro-category mb-4 mt-0">
-          <NuxtLink :to="{ path: '/template02/products', query: {} }" class="category">All</NuxtLink>
+          <NuxtLink :to="{ path: '/template02/products', query: {} }" class="category">{{ t('demo.common.all') }}</NuxtLink>
           <NuxtLink
             v-for="cat in catalog.categories"
             :key="cat.id"
@@ -19,8 +19,8 @@
             {{ cat.label }}
           </NuxtLink>
         </div>
-        <nav class="small text-muted mb-3" aria-label="Breadcrumb">
-          <NuxtLink to="/template02">Home</NuxtLink>
+        <nav class="small text-muted mb-3" :aria-label="t('demo.common.breadcrumb')">
+          <NuxtLink to="/template02">{{ t('demo.common.home') }}</NuxtLink>
           /
           <NuxtLink to="/template02/products">{{ catalog.pageTitle }}</NuxtLink>
           /
@@ -52,46 +52,46 @@
             <p v-if="product.subtitle" class="p-d-c-right-sub">{{ product.subtitle }}</p>
             <p class="p-d-c-right-intro">{{ product.summary }}</p>
             <div class="p-d-c-right-link">
-              <NuxtLink class="btn-contact" :to="inquiryLink">联系我们</NuxtLink>
-              <button type="button" class="btn-msg" @click="scrollToMessage">留言</button>
+              <NuxtLink class="btn-contact" :to="inquiryLink">{{ t('demo.common.contactUs') }}</NuxtLink>
+              <button type="button" class="btn-msg" @click="scrollToMessage">{{ t('demo.common.message') }}</button>
             </div>
           </div>
         </div>
 
         <div class="p-d-c-txt-3">
-          <h2 class="p-d-c-title-1">产品详情</h2>
+          <h2 class="p-d-c-title-1">{{ t('demo.common.productDetail') }}</h2>
           <div class="p-d-c-p-1">
             <p v-for="(para, pi) in detailBody" :key="pi">{{ para }}</p>
           </div>
         </div>
 
         <div id="product-detail-message" class="p-d-c-form-wrap">
-          <h2 class="p-d-c-title-1">留言</h2>
+          <h2 class="p-d-c-title-1">{{ t('demo.common.leaveMessageTitle') }}</h2>
           <form class="p-d-c-form" @submit.prevent="onMessageSubmit">
             <div class="p-d-c-form-row">
               <label class="p-d-c-field">
-                <span class="p-d-c-label">您的姓名</span>
-                <input v-model="msgForm.name" type="text" name="name" autocomplete="name" placeholder="怎么称呼您">
+                <span class="p-d-c-label">{{ t('demo.common.yourName') }}</span>
+                <input v-model="msgForm.name" type="text" name="name" autocomplete="name" :placeholder="t('demo.common.namePlaceholder')">
               </label>
               <label class="p-d-c-field">
-                <span class="p-d-c-label">联系电话</span>
-                <input v-model="msgForm.phone" type="tel" name="phone" autocomplete="tel" placeholder="手机或座机">
+                <span class="p-d-c-label">{{ t('demo.common.phone') }}</span>
+                <input v-model="msgForm.phone" type="tel" name="phone" autocomplete="tel" :placeholder="t('demo.common.phonePlaceholder')">
               </label>
               <label class="p-d-c-field">
-                <span class="p-d-c-label">电子邮箱</span>
-                <input v-model="msgForm.email" type="email" name="email" autocomplete="email" placeholder="name@example.com">
+                <span class="p-d-c-label">{{ t('demo.common.email') }}</span>
+                <input v-model="msgForm.email" type="email" name="email" autocomplete="email" :placeholder="t('demo.common.emailPlaceholder')">
               </label>
             </div>
             <label class="p-d-c-field p-d-c-field-full">
-              <span class="p-d-c-label">留言内容</span>
+              <span class="p-d-c-label">{{ t('demo.common.messageContent') }}</span>
               <textarea v-model="msgForm.message" name="message" rows="5" :placeholder="messagePlaceholder" />
             </label>
-            <button type="submit" class="p-d-c-submit">提交留言</button>
+            <button type="submit" class="p-d-c-submit">{{ t('demo.common.submitMessage') }}</button>
           </form>
         </div>
 
         <section v-if="relatedProducts.length" class="p-d-c-related">
-          <h2 class="p-d-c-title-1">相关产品</h2>
+          <h2 class="p-d-c-title-1">{{ t('demo.common.relatedProducts') }}</h2>
           <div class="p-d-c-related-list">
             <ul>
               <li v-for="rp in relatedProducts" :key="rp.id">
@@ -136,6 +136,7 @@ definePageMeta({
 })
 
 const route = useRoute()
+const { t, locale } = useI18n()
 const slug = computed(() => String(route.query.slug || '').trim())
 const C = DEMO_SITE_TEMPLATES.template02
 const catalog = C.productCatalog!
@@ -145,7 +146,7 @@ watch(
   () => slug.value,
   (s) => {
     if (s && !template01ProductBySlug(C, s)) {
-      throw createError({ statusCode: 404, statusMessage: '未找到该产品' })
+      throw createError({ statusCode: 404, statusMessage: t('demo.common.productNotFound') })
     }
   },
   { immediate: true }
@@ -190,8 +191,8 @@ const detailBody = computed(() => {
   const fromSpec = p.specs.map((s) => `${s.label}：${s.value}`).join('；')
   return [
     p.summary ?? '',
-    fromSpec ? `规格概要：${fromSpec}` : '',
-    `MOQ：${p.moq}；交期：${p.leadTime}。`
+    fromSpec ? `${t('demo.common.specSummary')}${fromSpec}` : '',
+    t('demo.common.moqLead', { moq: p.moq, lead: p.leadTime })
   ].filter(Boolean)
 })
 
@@ -199,8 +200,8 @@ const relatedProducts = computed(() =>
   slug.value ? template01RelatedProducts(C, slug.value, 3) : []
 )
 
-const messagePlaceholder = computed(
-  () => `咨询「${product.value?.title ?? ''}」的数量、包装、认证等（演示表单不提交服务器）`
+const messagePlaceholder = computed(() =>
+  t('demo.common.msgInquiryPlaceholder', { title: product.value?.title ?? '' })
 )
 
 const msgForm = reactive({
@@ -216,13 +217,12 @@ function scrollToMessage() {
 
 function onMessageSubmit() {
   if (!msgForm.email.trim()) {
-    ElMessage.warning('请填写电子邮箱')
+    ElMessage.warning(t('demo.common.fillEmail'))
     return
   }
-  ElMessage.success('演示站：留言不会提交到服务器；上线请接入 CRM 或邮件服务。')
+  ElMessage.success(t('demo.common.demoFormNoSubmit'))
 }
 
-const { locale } = useI18n()
 useHead(() => {
   const config = useRuntimeConfig()
   const base = (config.public?.site?.url as string)?.replace(/\/$/, '') || ''
@@ -230,7 +230,7 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${product.value?.title ?? '产品'} — ${C.siteTitle}`,
+    title: `${product.value?.title ?? t('demo.common.productTitleFallback')} — ${C.siteTitle}`,
     meta: [{ name: 'description', content: product.value?.summary ?? C.metaDescription }, ...og],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

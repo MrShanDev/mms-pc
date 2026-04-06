@@ -1,8 +1,7 @@
 <template>
-  <!-- 对齐 361 Brand 内页：内顶区 + site-section bg-white about-me 左图右文 -->
   <main>
     <InnerPageCover
-      :title="a.kicker"
+      :title="t('demo.common.aboutUsNav')"
       :lead="leadText"
       :background-image="innerBannerSrc"
     />
@@ -45,11 +44,11 @@ const innerBannerSrc = computed(
     template01DemoAsset('/upload/image/20230524/1684918832729100.jpg')
 )
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template02/about')
 
 useHead(() => ({
-  title: `${a.kicker} — ${C.siteTitle}`,
+  title: `${t('demo.common.aboutUsNav')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: a.paragraphs[0] ?? C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

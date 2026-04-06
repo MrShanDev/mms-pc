@@ -10,7 +10,7 @@
       <div class="container">
         <div class="pro-category mb-4 mt-0">
           <NuxtLink :to="{ path: '/template02/products', query: {} }" class="category" :class="{ active: !activeSlug }">
-            All
+            {{ t('demo.common.all') }}
           </NuxtLink>
           <NuxtLink
             v-for="cat in catalog.categories"
@@ -38,7 +38,7 @@
             </NuxtLink>
           </div>
         </div>
-        <div class="basic-pagination text-center mt-2 mb-0" role="navigation" aria-label="Pagination">
+        <div class="basic-pagination text-center mt-2 mb-0" role="navigation" :aria-label="t('demo.common.paginationDemo')">
           <a href="javascript:;">&lt;&lt;</a>
           <a href="javascript:;">&lt;</a>
           <a>1/1</a>
@@ -77,7 +77,7 @@ const filteredProducts = computed(() => {
   return catalog.products.filter((p) => p.categoryId === cat.id)
 })
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template02/products')
 
 useHead(() => ({

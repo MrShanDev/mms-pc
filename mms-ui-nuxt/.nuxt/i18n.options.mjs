@@ -3,8 +3,8 @@
 
 
 export const localeCodes =  [
-  "en",
   "zh",
+  "en",
   "ja",
   "ko",
   "fr",
@@ -17,17 +17,17 @@ export const localeCodes =  [
 ]
 
 export const localeLoaders = {
-  en: [
-    {
-      key: "locale_en_46json_d8071198",
-      load: () => import("#nuxt-i18n/d8071198" /* webpackChunkName: "locale_en_46json_d8071198" */),
-      cache: true
-    }
-  ],
   zh: [
     {
       key: "locale_zh_46json_b4579193",
       load: () => import("#nuxt-i18n/b4579193" /* webpackChunkName: "locale_zh_46json_b4579193" */),
+      cache: true
+    }
+  ],
+  en: [
+    {
+      key: "locale_en_46json_d8071198",
+      load: () => import("#nuxt-i18n/d8071198" /* webpackChunkName: "locale_en_46json_d8071198" */),
       cache: true
     }
   ],
@@ -129,23 +129,23 @@ export const nuxtI18nOptions = {
   },
   locales: [
     {
-      code: "en",
-      language: "en-US",
-      name: "English",
-      files: [
-        {
-          path: "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/en.json",
-          cache: undefined
-        }
-      ]
-    },
-    {
       code: "zh",
       language: "zh-CN",
       name: "简体中文",
       files: [
         {
           path: "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/zh.json",
+          cache: undefined
+        }
+      ]
+    },
+    {
+      code: "en",
+      language: "en-US",
+      name: "English",
+      files: [
+        {
+          path: "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/en.json",
           cache: undefined
         }
       ]
@@ -251,7 +251,7 @@ export const nuxtI18nOptions = {
       ]
     }
   ],
-  defaultLocale: "en",
+  defaultLocale: "zh",
   defaultDirection: "ltr",
   routesNameSeparator: "___",
   trailingSlash: false,
@@ -260,16 +260,7 @@ export const nuxtI18nOptions = {
   lazy: true,
   langDir: "locales",
   rootRedirect: undefined,
-  detectBrowserLanguage: {
-    alwaysRedirect: false,
-    cookieCrossOrigin: false,
-    cookieDomain: null,
-    cookieKey: "app-locale",
-    cookieSecure: false,
-    fallbackLocale: "en",
-    redirectOn: false,
-    useCookie: true
-  },
+  detectBrowserLanguage: false,
   differentDomains: false,
   baseUrl: "",
   customRoutes: "page",
@@ -284,23 +275,23 @@ export const nuxtI18nOptions = {
 
 export const normalizedLocales = [
   {
-    code: "en",
-    language: "en-US",
-    name: "English",
-    files: [
-      {
-        path: "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/en.json",
-        cache: undefined
-      }
-    ]
-  },
-  {
     code: "zh",
     language: "zh-CN",
     name: "简体中文",
     files: [
       {
         path: "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/zh.json",
+        cache: undefined
+      }
+    ]
+  },
+  {
+    code: "en",
+    language: "en-US",
+    name: "English",
+    files: [
+      {
+        path: "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/en.json",
         cache: undefined
       }
     ]
@@ -475,14 +466,14 @@ async function loadCfg(config) {
 }
 
 
-  import.meta.hot.accept("../i18n/locales/en.json", async mod => {
-    localeLoaders["en"][0].load = () => Promise.resolve(mod.default)
-    await useNuxtApp()._nuxtI18nDev.resetI18nProperties("en")
-  })
-
   import.meta.hot.accept("../i18n/locales/zh.json", async mod => {
     localeLoaders["zh"][0].load = () => Promise.resolve(mod.default)
     await useNuxtApp()._nuxtI18nDev.resetI18nProperties("zh")
+  })
+
+  import.meta.hot.accept("../i18n/locales/en.json", async mod => {
+    localeLoaders["en"][0].load = () => Promise.resolve(mod.default)
+    await useNuxtApp()._nuxtI18nDev.resetI18nProperties("en")
   })
 
   import.meta.hot.accept("../i18n/locales/ja.json", async mod => {

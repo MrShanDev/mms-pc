@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="path_bg">
-            <NuxtLink to="/template05">首页</NuxtLink>
+            <NuxtLink to="/template05">{{ t('demo.common.home') }}</NuxtLink>
             <template v-for="(bc, i) in crumbs" :key="i">
               <NuxtLink v-if="bc.to" :to="bc.to">> {{ bc.label }}</NuxtLink>
               <span v-else>> {{ bc.label }}</span>
@@ -40,6 +40,8 @@
 <script setup lang="ts">
 import type { E7Crumb } from '@/utils/template05E7'
 import PageSidebar from './PageSidebar.vue'
+
+const { t } = useI18n()
 
 withDefaults(
   defineProps<{

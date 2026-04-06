@@ -5,7 +5,7 @@
         class="pd-banner-bg"
         :style="{ backgroundImage: `url(${contactBannerImg})` }"
         role="img"
-        :aria-label="p.title"
+        :aria-label="t('nav.contact')"
       >
         <div class="pd-banner-overlay">
           <div class="pd-page-inner">
@@ -27,7 +27,7 @@
           <span class="pd-addr-sep">&gt;&gt;</span>
           <NuxtLink to="/template01">{{ t('demo.common.home') }}</NuxtLink>
           <span class="pd-addr-sep">&gt;&gt;</span>
-          <span class="pd-addr-current">{{ p.title }}</span>
+          <span class="pd-addr-current">{{ t('nav.contact') }}</span>
         </nav>
       </div>
     </div>

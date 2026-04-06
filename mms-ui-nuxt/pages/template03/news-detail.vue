@@ -5,9 +5,9 @@
       <div class="container-fluid">
         <div class="container">
           <div class="headline">
-            <NuxtLink to="/template03" class="ms-channel-path-index">Home</NuxtLink>
+            <NuxtLink to="/template03" class="ms-channel-path-index">{{ t('demo.common.home') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <NuxtLink to="/template03/news" class="ms-channel-path-link">NEWS</NuxtLink>
+            <NuxtLink to="/template03/news" class="ms-channel-path-link">{{ t('demo.common.crumbNewsCenter') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
             <span class="ms-channel-path-link">{{ article.title }}</span>
           </div>
@@ -18,7 +18,7 @@
           <h1 class="news-details-1-title">{{ article.title }}</h1>
           <div class="news-details-1-time">
             {{ article.date }}
-            <span> · demo</span>
+            <span> · {{ t('demo.common.viewsDemo') }}</span>
           </div>
           <div class="news-details-1-txt">
             <p v-for="(para, i) in bodyParagraphs" :key="i">{{ para }}</p>
@@ -29,17 +29,17 @@
               :to="{ path: '/template03/news-detail', query: { id: adjacent.prev.id } }"
               :title="adjacent.prev.title"
             >
-              Previous: {{ adjacent.prev.title }}
+              {{ t('demo.common.prevArticle') }} {{ adjacent.prev.title }}
             </NuxtLink>
-            <span v-else class="news-nav-muted">Previous: none</span>
+            <span v-else class="news-nav-muted">{{ t('demo.common.prevNone') }}</span>
             <NuxtLink
               v-if="adjacent.next"
               :to="{ path: '/template03/news-detail', query: { id: adjacent.next.id } }"
               :title="adjacent.next.title"
             >
-              Next: {{ adjacent.next.title }}
+              {{ t('demo.common.nextArticle') }} {{ adjacent.next.title }}
             </NuxtLink>
-            <span v-else class="news-nav-muted">Next: none</span>
+            <span v-else class="news-nav-muted">{{ t('demo.common.nextNone') }}</span>
           </div>
         </article>
       </div>
@@ -65,6 +65,8 @@ definePageMeta({
   ]
 })
 
+const { t, locale } = useI18n()
+
 const C = DEMO_SITE_TEMPLATES.template03
 const route = useRoute()
 const newsId = computed(() => String(route.query.id || '').trim())
@@ -75,7 +77,7 @@ watch(
   () => newsId.value,
   (id) => {
     if (id && !template01NewsById(C, id)) {
-      throw createError({ statusCode: 404, statusMessage: '未找到该新闻' })
+      throw createError({ statusCode: 404, statusMessage: t('demo.common.newsNotFound') })
     }
   },
   { immediate: true }
@@ -96,8 +98,6 @@ const bodyParagraphs = computed(() => {
 
 const adjacent = computed(() => template01NewsAdjacent(C, newsId.value))
 
-const { locale } = useI18n()
-
 useHead(() => {
   const config = useRuntimeConfig()
   const base = (config.public?.site?.url as string)?.replace(/\/$/, '') || ''
@@ -105,7 +105,7 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${article.value?.title ?? 'News'} — ${C.siteTitle}`,
+    title: `${article.value?.title ?? t('demo.common.blogTitleFallback')} — ${C.siteTitle}`,
     meta: [{ name: 'description', content: article.value?.excerpt ?? C.metaDescription }, ...og],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

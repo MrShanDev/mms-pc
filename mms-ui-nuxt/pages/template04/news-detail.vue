@@ -28,15 +28,24 @@ definePageMeta({
 
 const C = DEMO_SITE_TEMPLATES.template04
 const route = useRoute()
+const { t, locale } = useI18n()
+
 const newsId = computed(() => String(route.query.id || '').trim())
 
 const article = computed(() => (newsId.value ? template01NewsById(C, newsId.value) : undefined))
+
+function newsTabLabelByQuery(query: string | undefined) {
+  if (query === 'company') return t('demo.common.newsTabCompany')
+  if (query === 'industry') return t('demo.common.newsTabIndustry')
+  if (query === 'faq') return t('demo.common.newsTabFaq')
+  return t('demo.common.crumbNewsCenter')
+}
 
 watch(
   () => newsId.value,
   (id) => {
     if (id && !template01NewsById(C, id)) {
-      throw createError({ statusCode: 404, statusMessage: '未找到该新闻' })
+      throw createError({ statusCode: 404, statusMessage: t('demo.common.newsNotFound') })
     }
   },
   { immediate: true }
@@ -44,20 +53,24 @@ watch(
 
 const sectionTitle = computed(() => {
   const a = article.value
-  if (!a?.category) return C.newsPage.title
-  const t = TEMPLATE04_E9_NEWS_TABS.find((x) => x.category === a.category)
-  return t?.label ?? C.newsPage.title
+  if (!a?.category) return t('demo.common.crumbNewsCenter')
+  const tab =
+    TEMPLATE04_E9_NEWS_TABS.find((x) => x.category === a.category) ??
+    (a.category === 'faq' ? TEMPLATE04_E9_NEWS_TABS.find((row) => row.query === 'faq') : undefined)
+  return tab ? newsTabLabelByQuery(tab.query) : t('demo.common.crumbNewsCenter')
 })
 
 const detailCrumbs = computed((): E9Crumb[] => {
   const a = article.value
   if (!a) return []
-  const tab = TEMPLATE04_E9_NEWS_TABS.find((x) => x.category === a.category)
+  const tab =
+    TEMPLATE04_E9_NEWS_TABS.find((x) => x.category === a.category) ??
+    (a.category === 'faq' ? TEMPLATE04_E9_NEWS_TABS.find((row) => row.query === 'faq') : undefined)
   const subQ = tab?.query
   return [
-    { label: C.newsPage.title, to: '/template04/news' },
+    { label: t('demo.common.crumbNewsCenter'), to: '/template04/news' },
     {
-      label: tab?.label ?? C.newsPage.title,
+      label: tab ? newsTabLabelByQuery(subQ) : t('demo.common.crumbNewsCenter'),
       to: subQ ? { path: '/template04/news', query: { category: subQ } } : '/template04/news'
     },
     { label: a.title }
@@ -71,8 +84,6 @@ const bodyParagraphs = computed(() => {
   return [a.excerpt]
 })
 
-const { locale } = useI18n()
-
 useHead(() => {
   const config = useRuntimeConfig()
   const base = (config.public?.site?.url as string)?.replace(/\/$/, '') || ''
@@ -80,7 +91,7 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${article.value?.title ?? 'News'} — ${C.siteTitle}`,
+    title: `${article.value?.title ?? t('demo.common.blogTitleFallback')} — ${C.siteTitle}`,
     meta: [{ name: 'description', content: article.value?.excerpt ?? C.metaDescription }, ...og],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

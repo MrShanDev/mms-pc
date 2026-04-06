@@ -5,7 +5,7 @@
       <el-carousel height="360px" arrow="hover" :interval="5000">
         <el-carousel-item v-for="(s, i) in slides" :key="i">
           <a href="javascript:void(0)">
-            <img :src="s.image" :alt="`banner ${i + 1}`" width="100%">
+            <img :src="s.image" :alt="t('demo.common.carouselBannerAlt', { n: i + 1 })" width="100%">
           </a>
         </el-carousel-item>
       </el-carousel>
@@ -61,21 +61,21 @@
     <div class="box_contact">
       <div class="container">
         <div class="foot_logo" data-move-y="-100px">
-          <img :src="footLogoSrc" alt="Lankecms Enterprise website system">
+          <img :src="footLogoSrc" :alt="t('demo.common.footLogoAlt')">
         </div>
         <div class="col-sm-4 col-md-4 contact_btn" data-move-y="160px">
           <span class="glyphicon glyphicon-map-marker" style="font-size: 40px" aria-hidden="true" />
-          <h4>Address</h4>
+          <h4>{{ t('demo.common.homeAddressTitle') }}</h4>
           <p>{{ cp.address || '—' }}</p>
         </div>
         <div class="col-sm-4 col-md-4 contact_btn" data-move-y="160px">
           <span class="glyphicon glyphicon-phone" style="font-size: 40px" aria-hidden="true" />
-          <h4>Phones</h4>
+          <h4>{{ t('demo.common.homePhonesTitle') }}</h4>
           <p>{{ phonesLine }}</p>
         </div>
         <div class="col-sm-4 col-md-4 contact_btn" data-move-y="160px">
           <span class="glyphicon glyphicon-envelope" style="font-size: 40px" aria-hidden="true" />
-          <h4>Email</h4>
+          <h4>{{ t('demo.common.homeEmailTitle') }}</h4>
           <p>
             <a href="javascript:void(0)">{{ cp.email }}</a>
           </p>
@@ -104,18 +104,18 @@
 
   <div class="link_box">
     <span class="link_title">
-      Link
+      {{ t('demo.common.homeLinkTitle') }}
       <button
         type="button"
         id="link_btn"
         class="glyphicon glyphicon-plus"
         aria-hidden="true"
-        aria-label="Toggle links"
+        :aria-label="t('demo.common.toggleLinksAria')"
         @click="linkOpen = !linkOpen"
       />
     </span>
     <span class="link_list" :class="{ 'link_list--open': linkOpen }">
-      <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">百度</a>
+      <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">{{ t('demo.common.baiduName') }}</a>
     </span>
   </div>
 </template>
@@ -123,12 +123,14 @@
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 
+const { t } = useI18n()
+
 const c = DEMO_SITE_TEMPLATES.template05
 const home = c.home as Record<string, unknown>
 const cp = c.contactPage
 
-const productTitle = computed(() => String(home.productKicker ?? 'Product'))
-const newsTitle = computed(() => String(home.newsKicker ?? 'News'))
+const productTitle = computed(() => String(home.productKicker ?? t('demo.common.productTitleFallback')))
+const newsTitle = computed(() => String(home.newsKicker ?? t('demo.common.blogTitleFallback')))
 
 const footLogoSrc = computed(
   () =>

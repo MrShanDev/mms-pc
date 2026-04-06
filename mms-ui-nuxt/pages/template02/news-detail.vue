@@ -9,7 +9,7 @@
       <div class="container">
         <div class="pro-category mb-4 mt-0 text-center">
           <NuxtLink
-            v-for="tab in NEWS_TABS_EN"
+            v-for="tab in newsTabs"
             :key="tab.query"
             class="category"
             :class="{ active: article.category === tab.category }"
@@ -18,8 +18,8 @@
             {{ tab.label }}
           </NuxtLink>
         </div>
-        <nav class="small text-muted mb-3" aria-label="Breadcrumb">
-          <NuxtLink to="/template02">Home</NuxtLink>
+        <nav class="small text-muted mb-3" :aria-label="t('demo.common.breadcrumb')">
+          <NuxtLink to="/template02">{{ t('demo.common.home') }}</NuxtLink>
           /
           <NuxtLink to="/template02/news">{{ C.newsPage.title }}</NuxtLink>
           /
@@ -29,8 +29,8 @@
       <article class="news-details-1">
         <h1 class="news-details-1-title">{{ article.title }}</h1>
         <div class="news-details-1-time">
-          Date: {{ article.date }}
-          <span> ? Views: {{ viewCountLabel }}</span>
+          {{ t('demo.common.datePublished') }} {{ article.date }}
+          <span> · {{ t('demo.common.views') }} {{ t('demo.common.viewsDemo') }}</span>
         </div>
         <div class="news-details-1-txt">
           <p v-for="(para, i) in bodyParagraphs" :key="i">{{ para }}</p>
@@ -41,17 +41,17 @@
             :to="{ path: '/template02/news-detail', query: { id: adjacent.prev.id } }"
             :title="adjacent.prev.title"
           >
-            Previous: {{ adjacent.prev.title }}
+            {{ t('demo.common.prevArticle') }} {{ adjacent.prev.title }}
           </NuxtLink>
-          <span v-else class="news-nav-muted">Previous: none</span>
+          <span v-else class="news-nav-muted">{{ t('demo.common.prevNone') }}</span>
           <NuxtLink
             v-if="adjacent.next"
             :to="{ path: '/template02/news-detail', query: { id: adjacent.next.id } }"
             :title="adjacent.next.title"
           >
-            Next: {{ adjacent.next.title }}
+            {{ t('demo.common.nextArticle') }} {{ adjacent.next.title }}
           </NuxtLink>
-          <span v-else class="news-nav-muted">Next: none</span>
+          <span v-else class="news-nav-muted">{{ t('demo.common.nextNone') }}</span>
         </div>
       </article>
       </div>
@@ -77,10 +77,12 @@ definePageMeta({
   ]
 })
 
-const NEWS_TABS_EN = [
-  { category: 'company' as const, label: 'Company', query: 'company' },
-  { category: 'industry' as const, label: 'Industry', query: 'industry' }
-]
+const { t, locale } = useI18n()
+
+const newsTabs = computed(() => [
+  { category: 'company' as const, label: t('demo.common.newsTabCompany'), query: 'company' },
+  { category: 'industry' as const, label: t('demo.common.newsTabIndustry'), query: 'industry' }
+])
 
 const C = DEMO_SITE_TEMPLATES.template02
 const route = useRoute()
@@ -92,7 +94,7 @@ watch(
   () => newsId.value,
   (id) => {
     if (id && !template01NewsById(C, id)) {
-      throw createError({ statusCode: 404, statusMessage: 'Article not found' })
+      throw createError({ statusCode: 404, statusMessage: t('demo.common.articleNotFound') })
     }
   },
   { immediate: true }
@@ -100,8 +102,6 @@ watch(
 
 const bannerSrc = template01DemoAsset('/upload/image/20230524/1684918832729100.jpg')
 const bannerLead = computed(() => C.productCatalog?.pageLead ?? '')
-const viewCountLabel = 'Demo'
-
 const bodyParagraphs = computed(() => {
   const a = article.value
   if (!a) return []
@@ -111,8 +111,6 @@ const bodyParagraphs = computed(() => {
 
 const adjacent = computed(() => template01NewsAdjacent(C, newsId.value))
 
-const { locale } = useI18n()
-
 useHead(() => {
   const config = useRuntimeConfig()
   const base = (config.public?.site?.url as string)?.replace(/\/$/, '') || ''
@@ -120,7 +118,7 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${article.value?.title ?? 'Blog'} ? ${C.siteTitle}`,
+    title: `${article.value?.title ?? t('demo.common.blogTitleFallback')} — ${C.siteTitle}`,
     meta: [{ name: 'description', content: article.value?.excerpt ?? C.metaDescription }, ...og],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

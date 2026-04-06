@@ -9,7 +9,7 @@
         @click.prevent="shareOpen = !shareOpen"
       >
         <span class="glyphicon glyphicon-share btn-lg" aria-hidden="true" />
-        Share
+        {{ t('demo.common.footerShare') }}
       </a>
       <div class="dropdown-menu webshare" :style="{ display: shareOpen ? 'block' : '' }">
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
@@ -25,17 +25,17 @@
     <div class="foot_nav">
       <a :href="`tel:${mainPhone}`">
         <span class="glyphicon glyphicon-phone btn-lg" aria-hidden="true" />
-        Call
+        {{ t('demo.common.footerCall') }}
       </a>
     </div>
     <div class="foot_nav" role="button" tabindex="0" @click="emit('open-menu')">
       <span class="glyphicon glyphicon-th-list btn-lg" />
-      Menu
+      {{ t('demo.common.footerMenu') }}
     </div>
     <div class="foot_nav">
       <a id="gototop" href="#" @click.prevent="scrollTop">
         <span class="glyphicon glyphicon-circle-arrow-up btn-lg" aria-hidden="true" />
-        Top
+        {{ t('demo.common.footerTop') }}
       </a>
     </div>
   </nav>
@@ -43,6 +43,8 @@
 
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
+
+const { t } = useI18n()
 
 const emit = defineEmits<{ 'open-menu': [] }>()
 

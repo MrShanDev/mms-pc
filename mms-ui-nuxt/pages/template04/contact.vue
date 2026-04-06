@@ -1,23 +1,23 @@
 <template>
-  <SidebarPageLayout :title="p.title" :crumbs="[{ label: p.title }]" sidebar-mode="default">
+  <SidebarPageLayout :title="t('demo.common.contactUs')" :crumbs="[{ label: t('demo.common.contactUs') }]" sidebar-mode="default">
     <div class="contents">
       <p v-if="productTitle" style="text-align: center">
-        Inquiry: <strong>{{ productTitle }}</strong>
+        {{ t('demo.common.contactInquiryLine') }} <strong>{{ productTitle }}</strong>
       </p>
-      <p style="text-align: center">Address: {{ p.address || '—' }}</p>
-      <p style="text-align: center">Telephone: {{ phonesLine }}</p>
-      <p style="text-align: center">E-mail: <a :href="`mailto:${p.email}`">{{ p.email }}</a></p>
+      <p style="text-align: center">{{ t('demo.common.addressLine') }} {{ p.address || '—' }}</p>
+      <p style="text-align: center">{{ t('demo.common.telephoneLine') }} {{ phonesLine }}</p>
+      <p style="text-align: center">{{ t('demo.common.emailLine') }} <a :href="`mailto:${p.email}`">{{ p.email }}</a></p>
     </div>
     <template #after>
       <div class="contact-form-wrap" id="message">
-        <h2 class="list_h2" style="margin-top: 1.5rem">Message</h2>
+        <h2 class="list_h2" style="margin-top: 1.5rem">{{ t('demo.common.messageBlockTitle') }}</h2>
         <div class="contact-form-1">
           <form class="ms-contact-form" @submit.prevent="onSubmit" @reset.prevent="onReset">
             <input
               v-model="form.username"
               type="text"
               name="contacts"
-              placeholder="Name:"
+              :placeholder="t('demo.common.placeholderNameColon')"
               class="p-d-c-form-1-input-1"
               autocomplete="name"
             >
@@ -25,7 +25,7 @@
               v-model="form.mobile"
               type="text"
               name="mobile"
-              placeholder="Phone:"
+              :placeholder="t('demo.common.placeholderPhoneColon')"
               class="p-d-c-form-1-input-1"
               autocomplete="tel"
             >
@@ -33,7 +33,7 @@
               v-model="form.email"
               type="text"
               name="email"
-              placeholder="Email:"
+              :placeholder="t('demo.common.placeholderEmailColon')"
               class="p-d-c-form-1-input-1 mr-0"
               autocomplete="email"
             >
@@ -41,11 +41,11 @@
               v-model="form.content"
               name="content"
               class="p-d-c-form-1-input-2"
-              placeholder="Message:"
+              :placeholder="t('demo.common.placeholderMessageColon')"
               rows="5"
             />
-            <button type="submit" class="p-d-c-form-1-input-3">Send</button>
-            <button type="button" class="p-d-c-form-1-input-3 bg-323232" @click="onReset">Reset</button>
+            <button type="submit" class="p-d-c-form-1-input-3">{{ t('demo.common.sendButton') }}</button>
+            <button type="button" class="p-d-c-form-1-input-3 bg-323232" @click="onReset">{{ t('demo.common.reset') }}</button>
           </form>
         </div>
       </div>
@@ -62,6 +62,8 @@ import { useTitaCanonical } from '@/utils/titaSiteContent'
 import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template04', requiresAuth: false })
+
+const { t, locale } = useI18n()
 
 const C = DEMO_SITE_TEMPLATES.template04
 const p = C.contactPage
@@ -84,10 +86,10 @@ const form = reactive({
 
 function onSubmit() {
   if (!form.email.trim()) {
-    ElMessage.warning('Please enter email')
+    ElMessage.warning(t('demo.common.fillEmail'))
     return
   }
-  ElMessage.success('Demo: form not submitted.')
+  ElMessage.success(t('demo.common.demoContactNoSubmit'))
 }
 
 function onReset() {
@@ -97,11 +99,10 @@ function onReset() {
   form.content = ''
 }
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template04/contact')
 
 useHead(() => ({
-  title: `${p.title} — ${C.siteTitle}`,
+  title: `${t('demo.common.contactUs')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: p.formIntro ?? C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

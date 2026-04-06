@@ -189,23 +189,7 @@ declare module 'nuxt/schema' {
 
       }>,
 
-      detectBrowserLanguage: {
-         alwaysRedirect: boolean,
-
-         cookieCrossOrigin: boolean,
-
-         cookieDomain: any,
-
-         cookieKey: string,
-
-         cookieSecure: boolean,
-
-         fallbackLocale: string,
-
-         redirectOn: boolean,
-
-         useCookie: boolean,
-      },
+      detectBrowserLanguage: boolean,
 
       experimental: {
          localeDetector: string,
@@ -228,11 +212,11 @@ declare module 'nuxt/schema' {
       multiDomainLocales: boolean,
 
       domainLocales: {
-         en: {
+         zh: {
             domain: string,
          },
 
-         zh: {
+         en: {
             domain: string,
          },
 

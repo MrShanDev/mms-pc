@@ -97,3 +97,32 @@
 .e7-layout .footer_nav {
   z-index: 1030;
 }
+
+/*
+ * 顶栏产品搜索：e7 style.css 全局写了
+ *   .search_group { float:right; margin:50px 0 0 0; height:50px; }
+ *   .search_group input.form-control { padding:25px 14px 20px 14px; }
+ * 在 SPA 里与 flex 布局叠加后，搜索块会在列内被顶下去或撑成 ~100px 高，看起来像「无法垂直居中」。
+ * 此处用 .e7-layout 提高优先级，在桌面端重置为紧凑一行并与 Logo 行 flex 对齐。
+ */
+@media (min-width: 769px) {
+  .e7-layout #topsearch .search_group {
+    float: none !important;
+    margin: 0 !important;
+    height: auto !important;
+    max-height: none;
+  }
+
+  .e7-layout #topsearch .search_group input.form-control {
+    padding: 8px 12px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
+  }
+
+  .e7-layout #e7-search-form {
+    margin: 0;
+    align-self: center;
+  }
+}

@@ -14,7 +14,7 @@
             class="category"
             :class="{ active: !activeCategory }"
           >
-            All
+            {{ t('demo.common.all') }}
           </NuxtLink>
           <NuxtLink
             v-for="tab in NEWS_TABS"
@@ -34,7 +34,7 @@
           >
             <div class="post-entry-1 h-100">
               <NuxtLink :to="{ path: '/template02/news-detail', query: { id: n.id } }">
-                <img :src="n.image" alt="Image" class="img-fluid" loading="lazy">
+                <img :src="n.image" :alt="t('demo.common.imageAltGeneric')" class="img-fluid" loading="lazy">
               </NuxtLink>
               <div class="post-entry-1-contents">
                 <h2>
@@ -48,7 +48,7 @@
             </div>
           </div>
         </div>
-        <div class="basic-pagination text-center mt-2 mb-0" role="navigation" aria-label="Pagination">
+        <div class="basic-pagination text-center mt-2 mb-0" role="navigation" :aria-label="t('demo.common.paginationDemo')">
           <a href="javascript:;">&lt;&lt;</a>
           <a href="javascript:;">&lt;</a>
           <a>1/1</a>
@@ -69,11 +69,12 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template02', requiresAuth: false })
 
-/** 与 361 英文导航一致的分页标签 */
-const NEWS_TABS = [
-  { category: 'company' as const, label: 'Company', query: 'company' },
-  { category: 'industry' as const, label: 'Industry', query: 'industry' }
-]
+const { t, locale } = useI18n()
+
+const NEWS_TABS = computed(() => [
+  { category: 'company' as const, label: t('demo.common.newsTabCompany'), query: 'company' },
+  { category: 'industry' as const, label: t('demo.common.newsTabIndustry'), query: 'industry' }
+])
 
 const C = DEMO_SITE_TEMPLATES.template02
 const route = useRoute()
@@ -85,19 +86,18 @@ const bannerLead = C.contactPage.bannerLead ?? C.productCatalog?.pageLead ?? ''
 const activeCategory = computed(() => {
   const q = route.query.category as string | undefined
   if (!q) return ''
-  return NEWS_TABS.some((t) => t.query === q) ? q : ''
+  return NEWS_TABS.value.some((tab) => tab.query === q) ? q : ''
 })
 
 const filteredItems = computed(() => {
   const items = C.newsPage.items
   const cat = activeCategory.value
   if (!cat) return items
-  const key = NEWS_TABS.find((t) => t.query === cat)?.category
+  const key = NEWS_TABS.value.find((tab) => tab.query === cat)?.category
   if (!key) return items
   return items.filter((i) => i.category === key)
 })
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template02/news')
 
 useHead(() => ({

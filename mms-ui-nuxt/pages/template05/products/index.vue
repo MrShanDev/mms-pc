@@ -1,7 +1,7 @@
 <template>
   <SidebarPageLayout
-    :title="catalog.pageTitle"
-    :crumbs="[{ label: catalog.pageTitle }]"
+    :title="pageListTitle"
+    :crumbs="productCrumbs"
     sidebar-mode="product"
     variant="listbox"
   >
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="page">
-      <div class="case-btn page" role="navigation" aria-label="Pagination demo">
+      <div class="case-btn page" role="navigation" :aria-label="t('demo.common.paginationDemo')">
         <span class="page-item page-link is-disabled">&lt;</span>
         <span class="page-info">1 / 1</span>
         <span class="page-item page-link is-disabled">&gt;</span>
@@ -45,6 +45,10 @@ definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 const C = DEMO_SITE_TEMPLATES.template05
 const catalog = C.productCatalog!
 const route = useRoute()
+const { t, locale } = useI18n()
+
+const pageListTitle = computed(() => t('demo.common.crumbProductCenter'))
+const productCrumbs = computed(() => [{ label: t('demo.common.crumbProductCenter') }])
 
 const activeSlug = computed(() => (route.query.category as string | undefined) || null)
 const searchQ = computed(() => String(route.query.q || '').trim().toLowerCase())
@@ -62,11 +66,10 @@ const filteredProducts = computed(() => {
   return list
 })
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/products')
 
 useHead(() => ({
-  title: `${catalog.pageTitle} — ${C.siteTitle}`,
+  title: `${t('demo.common.crumbProductCenter')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

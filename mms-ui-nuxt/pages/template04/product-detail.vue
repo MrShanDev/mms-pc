@@ -1,61 +1,98 @@
 <template>
-  <SidebarPageLayout v-if="product" :title="categoryLabel || 'Product'" :crumbs="pdCrumbs" sidebar-mode="product">
-    <div class="row">
-      <div class="col-sm-12 col-md-6 showpic_box">
-        <ul class="showpic_flash">
-          <li v-for="(src, i) in gallerySlides" :key="i">
-            <a href="javascript:void(0)" class="example-image-link">
-              <img class="example-image" :src="src" :alt="product.title">
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-6 proinfo_box">
-        <h1 class="product_h1">{{ product.title }}</h1>
-        <ul class="product_info">
-          <li v-for="(s, i) in product.specs.slice(0, 4)" :key="i">{{ s.label }}: {{ s.value }}</li>
-          <li>
-            <NuxtLink :to="inquiryLink" class="btn btn-info page-btn">
+  <SidebarPageLayout v-if="product" :title="categoryLabel || t('demo.common.productTitleFallback')" :crumbs="pdCrumbs" sidebar-mode="product">
+    <div class="e9-pd">
+      <div class="row e9-pd-hero">
+        <div class="col-xs-12 col-md-6 e9-pd-gallery">
+          <div class="e9-pd-gallery__main">
+            <div class="e9-pd-gallery__frame">
+              <img
+                class="img-responsive e9-pd-gallery__img"
+                :src="heroSrc"
+                :alt="product.title"
+                loading="eager"
+              >
+            </div>
+          </div>
+          <ul v-if="gallerySlides.length > 1" class="e9-pd-gallery__thumbs list-unstyled">
+            <li
+              v-for="(src, i) in gallerySlides"
+              :key="i"
+              :class="{ active: i === galleryActive }"
+            >
+              <button
+                type="button"
+                class="e9-pd-gallery__thumb"
+                :aria-label="t('demo.common.carouselBannerAlt', { n: i + 1 })"
+                :aria-current="i === galleryActive ? 'true' : undefined"
+                @click="galleryActive = i"
+              >
+                <img class="img-responsive" :src="src" alt="">
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-6 e9-pd-meta">
+          <h1 class="product_h1 e9-pd-title">{{ product.title }}</h1>
+          <p v-if="product.subtitle" class="e9-pd-subtitle">{{ product.subtitle }}</p>
+
+          <dl v-if="specRows.length" class="e9-pd-specs">
+            <template v-for="(s, i) in specRows" :key="i">
+              <dt>{{ s.label }}</dt>
+              <dd>{{ s.value }}</dd>
+            </template>
+          </dl>
+
+          <div class="e9-pd-actions">
+            <NuxtLink :to="inquiryLink" class="btn btn-info btn-lg page-btn e9-pd-inquiry">
               <span class="glyphicon glyphicon-triangle-right" aria-hidden="true" />
-              INQUIRY
+              {{ t('demo.common.inquiryCta') }}
             </NuxtLink>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
+
+      <section class="e9-pd-body product_con">
+        <h3 class="e9-pd-body__title">{{ t('demo.common.productDetail') }}</h3>
+        <p v-for="(para, pi) in detailBody" :key="pi">{{ para }}</p>
+      </section>
+
+      <nav class="e9-pd-adj point" :aria-label="t('demo.common.pdAdjacentNav')">
+        <div class="row clearfix">
+          <div class="e9-pd-adj__item e9-pd-adj__prev col-xs-12 col-sm-6">
+            <span class="e9-pd-adj__label">{{ t('demo.common.pdPrevLabel') }}</span>
+            <NuxtLink
+              v-if="adjacent.prev"
+              class="e9-pd-adj__link"
+              :to="{ path: '/template04/product-detail', query: { slug: adjacent.prev.slug } }"
+            >
+              {{ adjacent.prev.title }}
+            </NuxtLink>
+            <span v-else class="e9-pd-adj__none">{{ t('demo.common.noneShort') }}</span>
+          </div>
+          <div class="e9-pd-adj__item e9-pd-adj__next col-xs-12 col-sm-6">
+            <span class="e9-pd-adj__label">{{ t('demo.common.pdNextLabel') }}</span>
+            <NuxtLink
+              v-if="adjacent.next"
+              class="e9-pd-adj__link"
+              :to="{ path: '/template04/product-detail', query: { slug: adjacent.next.slug } }"
+            >
+              {{ adjacent.next.title }}
+            </NuxtLink>
+            <span v-else class="e9-pd-adj__none">{{ t('demo.common.noneShort') }}</span>
+          </div>
+        </div>
+      </nav>
     </div>
-    <div class="product_con">
-      <p v-for="(para, pi) in detailBody" :key="pi">{{ para }}</p>
-    </div>
-    <div class="point">
-      <span class="to_prev col-xs-12 col-sm-6 col-md-6">
-        PREVIOUS:
-        <NuxtLink
-          v-if="adjacent.prev"
-          :to="{ path: '/template04/product-detail', query: { slug: adjacent.prev.slug } }"
-        >
-          {{ adjacent.prev.title }}
-        </NuxtLink>
-        <span v-else>none</span>
-      </span>
-      <span class="to_next col-xs-12 col-sm-6 col-md-6">
-        NEXT:
-        <NuxtLink
-          v-if="adjacent.next"
-          :to="{ path: '/template04/product-detail', query: { slug: adjacent.next.slug } }"
-        >
-          {{ adjacent.next.title }}
-        </NuxtLink>
-        <span v-else>none</span>
-      </span>
-    </div>
+
     <template #after>
-      <div v-if="relatedProducts.length" class="list_related">
-        <h2 class="list_h2">Related Products</h2>
-        <div class="product_list related_list">
+      <div v-if="relatedProducts.length" class="list_related e9-pd-related">
+        <h2 class="list_h2">{{ t('demo.common.relatedProducts') }}</h2>
+        <div class="product_list related_list row clearfix">
           <div
             v-for="rp in relatedProducts"
             :key="rp.id"
-            class="col-sm-4 col-md-3 col-mm-6 product_img"
+            class="col-xs-6 col-sm-4 col-md-4 col-mm-6 product_img"
           >
             <NuxtLink :to="{ path: '/template04/product-detail', query: { slug: rp.slug } }">
               <img :src="rp.image" class="img-thumbnail" :alt="rp.title">
@@ -95,6 +132,7 @@ definePageMeta({
 })
 
 const route = useRoute()
+const { t, locale } = useI18n()
 const slug = computed(() => String(route.query.slug || '').trim())
 const C = DEMO_SITE_TEMPLATES.template04
 const catalog = C.productCatalog!
@@ -104,7 +142,7 @@ watch(
   () => slug.value,
   (s) => {
     if (s && !template01ProductBySlug(C, s)) {
-      throw createError({ statusCode: 404, statusMessage: '未找到该产品' })
+      throw createError({ statusCode: 404, statusMessage: t('demo.common.productNotFound') })
     }
   },
   { immediate: true }
@@ -113,6 +151,8 @@ watch(
 const categoryLabel = computed(
   () => catalog.categories.find((c) => c.id === product.value?.categoryId)?.label ?? ''
 )
+
+const specRows = computed(() => product.value?.specs?.slice(0, 5) ?? [])
 
 const pdCrumbs = computed((): E9Crumb[] => {
   const p = product.value
@@ -141,6 +181,21 @@ const gallerySlides = computed(() => {
   return raw.length ? raw : [p.image]
 })
 
+const galleryActive = ref(0)
+
+const heroSrc = computed(() => gallerySlides.value[galleryActive.value] ?? '')
+
+watch(
+  () => product.value?.slug,
+  () => {
+    galleryActive.value = 0
+  }
+)
+
+watch(gallerySlides, (slides) => {
+  if (galleryActive.value >= slides.length) galleryActive.value = 0
+})
+
 const detailBody = computed(() => {
   const p = product.value
   if (!p) return []
@@ -148,8 +203,8 @@ const detailBody = computed(() => {
   const fromSpec = p.specs.map((s) => `${s.label}：${s.value}`).join('；')
   return [
     p.summary ?? '',
-    fromSpec ? `规格概要：${fromSpec}` : '',
-    `MOQ：${p.moq}；交期：${p.leadTime}。`
+    fromSpec ? `${t('demo.common.specSummary')}${fromSpec}` : '',
+    t('demo.common.moqLead', { moq: p.moq, lead: p.leadTime })
   ].filter(Boolean)
 })
 
@@ -167,7 +222,6 @@ const adjacent = computed(() => {
   }
 })
 
-const { locale } = useI18n()
 useHead(() => {
   const config = useRuntimeConfig()
   const base = (config.public?.site?.url as string)?.replace(/\/$/, '') || ''
@@ -175,7 +229,7 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${product.value?.title ?? 'Product'} — ${C.siteTitle}`,
+    title: `${product.value?.title ?? t('demo.common.productTitleFallback')} — ${C.siteTitle}`,
     meta: [{ name: 'description', content: product.value?.summary ?? C.metaDescription }, ...og],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

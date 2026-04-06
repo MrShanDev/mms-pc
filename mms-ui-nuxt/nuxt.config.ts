@@ -59,19 +59,15 @@ export default defineNuxtConfig({
 
     i18n: {
         locales: [...availableLocales],
-        defaultLocale: 'en',
+        defaultLocale: 'zh',
         lazy: true,
         langDir: 'locales',
         strategy: 'no_prefix',
         bundle: {
             optimizeTranslationDirective: false
         },
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'app-locale',
-            fallbackLocale: 'en',
-            redirectOn: false
-        },
+        /** 关闭浏览器语言探测，无 Cookie 时使用 defaultLocale（简体中文），避免英文浏览器首访被切成英文 */
+        detectBrowserLanguage: false,
         compilation: {
             strictMessage: false
         },

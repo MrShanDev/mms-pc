@@ -5,7 +5,7 @@
       <el-carousel height="420px" arrow="hover" :interval="5000">
         <el-carousel-item v-for="(s, i) in slides" :key="i">
           <a href="javascript:void(0)">
-            <img :src="s.image" :alt="`banner ${i + 1}`" width="100%">
+            <img :src="s.image" :alt="t('demo.common.carouselBannerAlt', { n: i + 1 })" width="100%">
           </a>
         </el-carousel-item>
       </el-carousel>
@@ -100,17 +100,17 @@
         </div>
         <div class="col-sm-4 col-md-4 contact_img">
           <span class="glyphicon glyphicon-map-marker" style="font-size: 40px" aria-hidden="true" />
-          <h4>Address</h4>
+          <h4>{{ t('demo.common.homeAddressTitle') }}</h4>
           <p>{{ cp.address || '—' }}</p>
         </div>
         <div class="col-sm-4 col-md-4 contact_img">
           <span class="glyphicon glyphicon-phone" style="font-size: 40px" aria-hidden="true" />
-          <h4>Phones</h4>
+          <h4>{{ t('demo.common.homePhonesTitle') }}</h4>
           <p>{{ phonesLine }}</p>
         </div>
         <div class="col-sm-4 col-md-4 contact_img">
           <span class="glyphicon glyphicon-envelope" style="font-size: 40px" aria-hidden="true" />
-          <h4>Email</h4>
+          <h4>{{ t('demo.common.homeEmailTitle') }}</h4>
           <p><a :href="`mailto:${cp.email}`">{{ cp.email }}</a></p>
         </div>
       </div>
@@ -118,9 +118,9 @@
 
     <div class="link_box">
       <div class="container">
-        <span class="link_title">Link</span>
+        <span class="link_title">{{ t('demo.common.homeLinkTitle') }}</span>
         <span class="link_list">
-          <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">百度</a>
+          <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">{{ t('demo.common.baiduName') }}</a>
         </span>
       </div>
     </div>
@@ -130,14 +130,16 @@
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 
+const { t } = useI18n()
+
 const c = DEMO_SITE_TEMPLATES.template04
 const home = c.home as Record<string, unknown>
 const cp = c.contactPage
 
-const productTitle = computed(() => String(home.productKicker ?? 'Product'))
-const newsTitle = computed(() => String(home.newsKicker ?? 'News'))
-const caseTitle = computed(() => String(home.caseKicker ?? 'Case'))
-const contactTitle = computed(() => String(home.contactKicker ?? 'Contact us'))
+const productTitle = computed(() => String(home.productKicker ?? t('demo.common.productTitleFallback')))
+const newsTitle = computed(() => String(home.newsKicker ?? t('demo.common.blogTitleFallback')))
+const caseTitle = computed(() => String(home.caseKicker ?? t('demo.common.caseHeading')))
+const contactTitle = computed(() => String(home.contactKicker ?? t('demo.common.contactUs')))
 
 const slides = computed(() => {
   const raw = (home.bannerSlides as { image: string }[] | undefined) || []

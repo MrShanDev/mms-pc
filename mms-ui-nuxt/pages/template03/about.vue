@@ -5,9 +5,9 @@
       <div class="container-fluid">
         <div class="container">
           <div class="headline">
-            <NuxtLink to="/template03" class="ms-channel-path-index">Home</NuxtLink>
+            <NuxtLink to="/template03" class="ms-channel-path-index">{{ t('nav.home') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <span class="ms-channel-path-link">ABOUT US</span>
+            <span class="ms-channel-path-link">{{ t('nav.about') }}</span>
           </div>
         </div>
       </div>
@@ -48,11 +48,11 @@ const a = C.aboutPage
 const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/image/20230703/1688374377849050.jpg')
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/about')
 
 useHead(() => ({
-  title: `ABOUT US — ${C.siteTitle}`,
+  title: `${t('nav.about')} — ${C.siteTitle}`,
   meta: [{ name: 'description', content: a.paragraphs[0] ?? C.metaDescription }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

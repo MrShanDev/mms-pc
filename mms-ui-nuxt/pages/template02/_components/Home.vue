@@ -92,6 +92,8 @@
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 import HomeHeroCarousel from './HomeHeroCarousel.vue'
 
+const { t } = useI18n()
+
 const c = DEMO_SITE_TEMPLATES.template02
 const home = c.home as Record<string, any>
 const a = c.aboutPage
@@ -99,9 +101,9 @@ const a = c.aboutPage
 const slides = computed(() =>
   (home.bannerSlides || [{ image: c.aboutPage.image }]).map(
     (s: { image: string }, i: number) => ({
-      title: `幻灯${i + 1}`,
+      title: t('demo.common.slideTitle', { n: i + 1 }),
       image: s.image,
-      more: 'More',
+      more: t('demo.common.moreButton'),
       lead: i === 0 ? String(home.productLead ?? '').trim() : ''
     })
   )

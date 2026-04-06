@@ -7,8 +7,8 @@
       :value="demoLocale"
       @change="onChange"
     >
-      <option value="en">{{ t('demo.locale.enLabel') }}</option>
       <option value="zh">{{ t('demo.locale.zhLabel') }}</option>
+      <option value="en">{{ t('demo.locale.enLabel') }}</option>
     </select>
   </div>
 </template>

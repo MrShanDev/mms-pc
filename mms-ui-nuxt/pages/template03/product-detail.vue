@@ -5,9 +5,9 @@
       <div class="container-fluid">
         <div class="container">
           <div class="headline">
-            <NuxtLink to="/template03" class="ms-channel-path-index">Home</NuxtLink>
+            <NuxtLink to="/template03" class="ms-channel-path-index">{{ t('demo.common.home') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <NuxtLink to="/template03/products" class="ms-channel-path-link">PRODUCTS</NuxtLink>
+            <NuxtLink to="/template03/products" class="ms-channel-path-link">{{ t('demo.common.productsUpper') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
             <NuxtLink
               :to="{ path: '/template03/products', query: categoryQuery }"
@@ -22,11 +22,11 @@
       </div>
       <div class="container-fluid">
         <div class="container py-3">
-          <nav class="tpl03-pd-cats" aria-label="Product categories">
+          <nav class="tpl03-pd-cats" :aria-label="t('demo.common.productCategoryNav')">
             <ul>
               <li>
                 <NuxtLink class="tpl03-cat-link" :to="{ path: '/template03/products', query: {} }">
-                  All
+                  {{ t('demo.common.all') }}
                 </NuxtLink>
               </li>
               <li v-for="cat in catalog.categories" :key="cat.id">
@@ -67,46 +67,46 @@
               <p v-if="product.subtitle" class="p-d-c-right-sub">{{ product.subtitle }}</p>
               <p class="p-d-c-right-intro">{{ product.summary }}</p>
               <div class="p-d-c-right-link">
-                <NuxtLink class="btn-contact" :to="inquiryLink">Contact</NuxtLink>
-                <button type="button" class="btn-msg" @click="scrollToMessage">Message</button>
+                <NuxtLink class="btn-contact" :to="inquiryLink">{{ t('demo.common.contactShort') }}</NuxtLink>
+                <button type="button" class="btn-msg" @click="scrollToMessage">{{ t('demo.common.messageShort') }}</button>
               </div>
             </div>
           </div>
 
           <div class="p-d-c-txt-3">
-            <h2 class="p-d-c-title-1">Details</h2>
+            <h2 class="p-d-c-title-1">{{ t('demo.common.detailsShort') }}</h2>
             <div class="p-d-c-p-1">
               <p v-for="(para, pi) in detailBody" :key="pi">{{ para }}</p>
             </div>
           </div>
 
           <div id="product-detail-message" class="p-d-c-form-wrap">
-            <h2 class="p-d-c-title-1">Message</h2>
+            <h2 class="p-d-c-title-1">{{ t('demo.common.messageShort') }}</h2>
             <form class="p-d-c-form" @submit.prevent="onMessageSubmit">
               <div class="p-d-c-form-row">
                 <label class="p-d-c-field">
-                  <span class="p-d-c-label">Name</span>
-                  <input v-model="msgForm.name" type="text" name="name" autocomplete="name" placeholder="Your name">
+                  <span class="p-d-c-label">{{ t('demo.common.yourName') }}</span>
+                  <input v-model="msgForm.name" type="text" name="name" autocomplete="name" :placeholder="t('demo.common.namePlaceholder')">
                 </label>
                 <label class="p-d-c-field">
-                  <span class="p-d-c-label">Phone</span>
-                  <input v-model="msgForm.phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone">
+                  <span class="p-d-c-label">{{ t('demo.common.phone') }}</span>
+                  <input v-model="msgForm.phone" type="tel" name="phone" autocomplete="tel" :placeholder="t('demo.common.phonePlaceholder')">
                 </label>
                 <label class="p-d-c-field">
-                  <span class="p-d-c-label">Email</span>
-                  <input v-model="msgForm.email" type="email" name="email" autocomplete="email" placeholder="Email">
+                  <span class="p-d-c-label">{{ t('demo.common.email') }}</span>
+                  <input v-model="msgForm.email" type="email" name="email" autocomplete="email" :placeholder="t('demo.common.emailPlaceholder')">
                 </label>
               </div>
               <label class="p-d-c-field p-d-c-field-full">
-                <span class="p-d-c-label">Message</span>
+                <span class="p-d-c-label">{{ t('demo.common.messageContent') }}</span>
                 <textarea v-model="msgForm.message" name="message" rows="5" :placeholder="messagePlaceholder" />
               </label>
-              <button type="submit" class="p-d-c-submit">Submit</button>
+              <button type="submit" class="p-d-c-submit">{{ t('demo.common.submitShort') }}</button>
             </form>
           </div>
 
           <section v-if="relatedProducts.length" class="p-d-c-related">
-            <h2 class="p-d-c-title-1">Related</h2>
+            <h2 class="p-d-c-title-1">{{ t('demo.common.relatedShort') }}</h2>
             <div class="p-d-c-related-list">
               <ul>
                 <li v-for="rp in relatedProducts" :key="rp.id">
@@ -146,6 +146,7 @@ definePageMeta({
 })
 
 const route = useRoute()
+const { t, locale } = useI18n()
 const slug = computed(() => String(route.query.slug || '').trim())
 const C = DEMO_SITE_TEMPLATES.template03
 const catalog = C.productCatalog!
@@ -155,7 +156,7 @@ watch(
   () => slug.value,
   (s) => {
     if (s && !template01ProductBySlug(C, s)) {
-      throw createError({ statusCode: 404, statusMessage: '未找到该产品' })
+      throw createError({ statusCode: 404, statusMessage: t('demo.common.productNotFound') })
     }
   },
   { immediate: true }
@@ -179,7 +180,7 @@ const inquiryLink = computed(() => ({
 const bannerSrc = computed(
   () =>
     C.contactPage.bannerImage ??
-    C.home.bannerSlides[0]?.image ??
+    (C.home.bannerSlides as { image: string }[] | undefined)?.[0]?.image ??
     product.value?.image ??
     template01DemoAsset('/upload/image/20230703/1688374377849050.jpg')
 )
@@ -209,8 +210,8 @@ const detailBody = computed(() => {
   const fromSpec = p.specs.map((s) => `${s.label}：${s.value}`).join('；')
   return [
     p.summary ?? '',
-    fromSpec ? `规格概要：${fromSpec}` : '',
-    `MOQ：${p.moq}；交期：${p.leadTime}。`
+    fromSpec ? `${t('demo.common.specSummary')}${fromSpec}` : '',
+    t('demo.common.moqLead', { moq: p.moq, lead: p.leadTime })
   ].filter(Boolean)
 })
 
@@ -218,8 +219,8 @@ const relatedProducts = computed(() =>
   slug.value ? template01RelatedProducts(C, slug.value, 3) : []
 )
 
-const messagePlaceholder = computed(
-  () => `Inquiry about「${product.value?.title ?? ''}」 (demo; not sent to server)`
+const messagePlaceholder = computed(() =>
+  t('demo.common.msgInquiryPlaceholder', { title: product.value?.title ?? '' })
 )
 
 const msgForm = reactive({
@@ -235,13 +236,12 @@ function scrollToMessage() {
 
 function onMessageSubmit() {
   if (!msgForm.email.trim()) {
-    ElMessage.warning('Please enter email')
+    ElMessage.warning(t('demo.common.fillEmail'))
     return
   }
-  ElMessage.success('Demo: not sent.')
+  ElMessage.success(t('demo.common.demoFormNoSubmit'))
 }
 
-const { locale } = useI18n()
 useHead(() => {
   const config = useRuntimeConfig()
   const base = (config.public?.site?.url as string)?.replace(/\/$/, '') || ''
@@ -249,7 +249,7 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${product.value?.title ?? 'Product'} — ${C.siteTitle}`,
+    title: `${product.value?.title ?? t('demo.common.productTitleFallback')} — ${C.siteTitle}`,
     meta: [{ name: 'description', content: product.value?.summary ?? C.metaDescription }, ...og],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

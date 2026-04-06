@@ -3,8 +3,8 @@
  * 哪些文案进 locale、哪些走接口/mock：见同目录 CONVENTIONS.md
  */
 export const availableLocales = [
-  { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
   { code: 'zh', language: 'zh-CN', name: '简体中文', file: 'zh.json' },
+  { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
   { code: 'ja', language: 'ja-JP', name: '日本語', file: 'ja.json' },
   { code: 'ko', language: 'ko-KR', name: '한국어', file: 'ko.json' },
   { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },

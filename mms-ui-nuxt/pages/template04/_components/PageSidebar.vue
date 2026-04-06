@@ -1,7 +1,7 @@
 <template>
   <div class="col-xs-12 col-sm-4 col-md-3">
     <div class="left_nav" id="categories">
-      <h2 class="left_h2">Categories</h2>
+      <h2 class="left_h2">{{ t('demo.common.sidebarCategories') }}</h2>
       <ul class="left_nav_ul" id="firstpane">
         <li v-for="(item, i) in categoryItems" :key="i">
           <NuxtLink class="biglink" :to="item.to">{{ item.label }}</NuxtLink>
@@ -11,7 +11,7 @@
       </ul>
     </div>
     <div class="left_news">
-      <h2 class="left_h2">News</h2>
+      <h2 class="left_h2">{{ t('demo.common.sidebarNews') }}</h2>
       <ul class="left_news">
         <li v-for="n in newsSide" :key="n.id">
           <NuxtLink :to="{ path: '/template04/news-detail', query: { id: n.id } }" :title="n.title">
@@ -21,15 +21,15 @@
       </ul>
     </div>
     <div class="index_contact">
-      <h2 class="left_h2">Contact Us</h2>
-      <p style="padding-top: 14px">Contact: {{ c.siteTitle }}</p>
-      <p>Phone: {{ phonesLine }}</p>
-      <p>Tel: {{ phonesLine }}</p>
+      <h2 class="left_h2">{{ t('demo.common.sidebarContactHeading') }}</h2>
+      <p style="padding-top: 14px">{{ t('demo.common.contactPersonPrefix') }} {{ c.siteTitle }}</p>
+      <p>{{ t('demo.common.phonePrefix') }} {{ phonesLine }}</p>
+      <p>{{ t('demo.common.telPrefix') }} {{ phonesLine }}</p>
       <p>
-        E-mail:
+        {{ t('demo.common.emailPrefix') }}
         <a :href="`mailto:${cp.email}`">{{ cp.email }}</a>
       </p>
-      <p>Add: {{ cp.address || '—' }}</p>
+      <p>{{ t('demo.common.addressPrefix') }} {{ cp.address || '—' }}</p>
     </div>
   </div>
 </template>
@@ -43,6 +43,8 @@ const props = withDefaults(
   }>(),
   { sidebarMode: 'default' }
 )
+
+const { t } = useI18n()
 
 const c = DEMO_SITE_TEMPLATES.template04
 const cp = c.contactPage
@@ -58,14 +60,14 @@ const categoryItems = computed(() => {
   }
   if (props.sidebarMode === 'download') {
     return [
-      { label: 'Help documentation', to: `${base}/download#help` },
-      { label: 'File download', to: `${base}/download#files` }
+      { label: t('demo.common.helpDocumentation'), to: `${base}/download#help` },
+      { label: t('demo.common.fileDownloadSection'), to: `${base}/download#files` }
     ]
   }
   return [
-    { label: 'About us', to: `${base}/about` },
-    { label: 'Contact us', to: `${base}/contact` },
-    { label: 'Feedback', to: `${base}/feedback` }
+    { label: t('demo.common.aboutUsNav'), to: `${base}/about` },
+    { label: t('demo.common.contactUs'), to: `${base}/contact` },
+    { label: t('demo.common.feedbackNav'), to: `${base}/feedback` }
   ]
 })
 

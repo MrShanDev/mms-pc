@@ -929,7 +929,7 @@ const _inlineRuntimeConfig = {
     },
     "i18n": {
       "baseUrl": "",
-      "defaultLocale": "en",
+      "defaultLocale": "zh",
       "defaultDirection": "ltr",
       "strategy": "no_prefix",
       "lazy": true,
@@ -941,23 +941,23 @@ const _inlineRuntimeConfig = {
       "trailingSlash": false,
       "locales": [
         {
-          "code": "en",
-          "language": "en-US",
-          "name": "English",
-          "files": [
-            {
-              "path": "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/en.json",
-              "cache": ""
-            }
-          ]
-        },
-        {
           "code": "zh",
           "language": "zh-CN",
           "name": "简体中文",
           "files": [
             {
               "path": "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/zh.json",
+              "cache": ""
+            }
+          ]
+        },
+        {
+          "code": "en",
+          "language": "en-US",
+          "name": "English",
+          "files": [
+            {
+              "path": "D:/UGit/mms-unxt/mms-ui-nuxt/i18n/locales/en.json",
               "cache": ""
             }
           ]
@@ -1063,16 +1063,7 @@ const _inlineRuntimeConfig = {
           ]
         }
       ],
-      "detectBrowserLanguage": {
-        "alwaysRedirect": false,
-        "cookieCrossOrigin": false,
-        "cookieDomain": "",
-        "cookieKey": "app-locale",
-        "cookieSecure": false,
-        "fallbackLocale": "en",
-        "redirectOn": false,
-        "useCookie": true
-      },
+      "detectBrowserLanguage": false,
       "experimental": {
         "localeDetector": "",
         "switchLocalePathLinkSSR": false,
@@ -1085,10 +1076,10 @@ const _inlineRuntimeConfig = {
       },
       "multiDomainLocales": false,
       "domainLocales": {
-        "en": {
+        "zh": {
           "domain": ""
         },
-        "zh": {
+        "en": {
           "domain": ""
         },
         "ja": {

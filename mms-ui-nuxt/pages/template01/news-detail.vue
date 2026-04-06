@@ -19,7 +19,7 @@
       <div class="pd-page-inner pd-toolbar">
         <nav class="pd-sidenav" :aria-label="t('demo.common.newsCategoryNav')">
           <ul>
-            <li v-for="tab in TEMPLATE01_NEWS_TABS" :key="tab.query">
+            <li v-for="tab in newsTabs" :key="tab.query">
               <NuxtLink
                 class="pd-cat-link"
                 :class="{ active: article.category === tab.category }"
@@ -129,14 +129,25 @@ watch(
 
 const bannerSrc = template01DemoAsset('/upload/image/20220329/1648530475705552.jpg')
 const bannerLead = computed(() => C.productCatalog?.pageLead ?? '')
+
+const newsTabs = computed(() =>
+  TEMPLATE01_NEWS_TABS.map((tab) => ({
+    ...tab,
+    label:
+      tab.category === 'company' ? t('demo.common.newsTabCompany') : t('demo.common.newsTabIndustry')
+  }))
+)
+
 const categoryTabQuery = computed(() => {
   const tab = TEMPLATE01_NEWS_TABS.find((x) => x.category === article.value?.category)
   return tab?.query ?? 'industry'
 })
 
 const categoryTabLabel = computed(() => {
-  const tab = TEMPLATE01_NEWS_TABS.find((x) => x.category === article.value?.category)
-  return tab?.label ?? t('demo.common.industryNews')
+  const cat = article.value?.category
+  if (cat === 'company') return t('demo.common.newsTabCompany')
+  if (cat === 'industry') return t('demo.common.newsTabIndustry')
+  return t('demo.common.industryNews')
 })
 
 const bodyParagraphs = computed(() => {

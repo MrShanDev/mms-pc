@@ -6,7 +6,7 @@
         <div class="path_bg">
           <span class="glyphicon glyphicon-home" aria-hidden="true" />
           &nbsp;&nbsp;
-          <NuxtLink to="/template04">Home</NuxtLink>
+          <NuxtLink to="/template04">{{ t('demo.common.home') }}</NuxtLink>
           <template v-for="(bc, i) in crumbs" :key="i">
             <NuxtLink v-if="bc.to" :to="bc.to">&gt; {{ bc.label }}</NuxtLink>
             <span v-else>&gt; {{ bc.label }}</span>
@@ -30,6 +30,8 @@
 <script setup lang="ts">
 import type { E9Crumb } from '@/utils/template04E9'
 import PageSidebar from './PageSidebar.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   title: string

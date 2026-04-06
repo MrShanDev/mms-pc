@@ -12,7 +12,7 @@
       </li>
     </ul>
     <div class="page">
-      <div class="case-btn page" role="navigation" aria-label="Pagination demo">
+      <div class="case-btn page" role="navigation" :aria-label="t('demo.common.paginationDemo')">
         <span class="page-item page-link is-disabled">&lt;</span>
         <span class="page-info">1 / 1</span>
         <span class="page-item page-link is-disabled">&gt;</span>
@@ -33,11 +33,19 @@ definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 
 const C = DEMO_SITE_TEMPLATES.template05
 const route = useRoute()
+const { t, locale } = useI18n()
+
+function newsTabLabelByQuery(query: string | undefined) {
+  if (query === 'company') return t('demo.common.newsTabCompany')
+  if (query === 'industry') return t('demo.common.newsTabIndustry')
+  if (query === 'faq') return t('demo.common.newsTabFaq')
+  return t('demo.common.crumbNewsCenter')
+}
 
 const activeCategory = computed(() => {
   const q = route.query.category as string | undefined
   if (!q) return ''
-  return TEMPLATE05_E7_NEWS_TABS.some((t) => t.query === q) ? q : ''
+  return TEMPLATE05_E7_NEWS_TABS.some((row) => row.query === q) ? q : ''
 })
 
 const filteredItems = computed(() => {
@@ -52,19 +60,16 @@ const filteredItems = computed(() => {
 
 const pageTitle = computed(() => {
   const q = activeCategory.value
-  if (q === 'company') return 'Company dynamics'
-  if (q === 'industry') return 'Industry news'
-  if (q === 'faq') return 'Product FAQ'
-  return C.newsPage.title
+  if (!q) return t('demo.common.crumbNewsCenter')
+  return newsTabLabelByQuery(q)
 })
 
 const crumbs = computed((): E7Crumb[] => {
   const q = activeCategory.value
-  if (!q) return [{ label: C.newsPage.title }]
-  const sub = TEMPLATE05_E7_NEWS_TABS.find((t) => t.query === q)?.label ?? C.newsPage.title
+  if (!q) return [{ label: t('demo.common.crumbNewsCenter') }]
   return [
-    { label: C.newsPage.title, to: '/template05/news' },
-    { label: sub }
+    { label: t('demo.common.crumbNewsCenter'), to: '/template05/news' },
+    { label: newsTabLabelByQuery(q) }
   ]
 })
 
@@ -77,7 +82,6 @@ function formatNewsDate(date: string) {
   return date
 }
 
-const { locale } = useI18n()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/news')
 
 useHead(() => ({

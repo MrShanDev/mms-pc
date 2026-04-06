@@ -2,9 +2,7 @@
   <!-- 对齐 https://e9.mstore.demo.mingsoft.net/ 顶部导航：navbar-fixed-top + dropdown -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <div class="e9-demo-locale-bar">
-        <DemoLocaleSwitch />
-      </div>
+      
       <div class="navbar-header">
         <button
           type="button"
@@ -52,7 +50,11 @@
               <NuxtLink :to="item.to || '#'" :class="navLinkClass(item)">{{ item.label }}</NuxtLink>
             </template>
           </li>
+          <li class="e9-demo-locale-bar">
+            <DemoLocaleSwitch />
+          </li>
         </ul>
+      
       </div>
     </div>
   </nav>
@@ -159,6 +161,6 @@ defineExpose({ openMobileMenu })
 
 .e9-demo-locale-bar {
   text-align: right;
-  padding: 6px 0 0;
+  padding: 20px 0 0;
 }
 </style>

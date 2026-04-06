@@ -52,7 +52,7 @@
             </div>
             <div class="arr">
               <div class="zuo" />
-              <NuxtLink to="/template03/products" class="more" title="PRODUCTS" />
+              <NuxtLink to="/template03/products" class="more" :title="t('demo.common.productsUpper')" />
               <div class="you" />
             </div>
           </div>
@@ -80,7 +80,7 @@
                   </div>
                   <div class="detail">
                     <NuxtLink :to="{ path: '/template03/news-detail', query: { id: newsFeature.id } }">
-                      more<img :src="index16" alt="">
+                      {{ t('demo.common.moreButton') }}<img :src="index16" alt="">
                     </NuxtLink>
                   </div>
                 </div>
@@ -108,7 +108,7 @@
         <div class="container">
           <div class="c_1530_4">
             <div class="tit_1">
-              <h3>ABOUT US</h3>
+              <h3>{{ t('demo.common.aboutUsNav') }}</h3>
             </div>
             <div class="c_1530_4_down">
               <div class="dt">
@@ -139,6 +139,8 @@
 
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
+
+const { t } = useI18n()
 
 const base392 = 'https://392.mstore.demo.mingsoft.net'
 const bannerIco = `${base392}/392/picture/banner_ico.png`
