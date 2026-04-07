@@ -20,12 +20,12 @@ definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 const C = DEMO_SITE_TEMPLATES.template05
 const a = C.aboutPage
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/about')
 
 useHead(() => ({
-  title: `${t('demo.common.aboutUsNav')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: a.paragraphs[0] ?? C.metaDescription }, ...canonicalOg],
+  title: t('about.metaTitle'),
+  meta: [{ name: 'description', content: t('about.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

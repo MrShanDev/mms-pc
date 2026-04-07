@@ -47,7 +47,7 @@ defineProps<{
 }>()
 
 const iconHome = template01DemoAsset('/193/images/home.png')
-const { t } = useI18n()
+const { t } = useAppLocale()
 </script>
 
 <style scoped>

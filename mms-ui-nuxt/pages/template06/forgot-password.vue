@@ -3,19 +3,20 @@
     <div class="auth-card width_1400_auto">
       <h1 class="auth-title">{{ t('auth.forgotTitle') }}</h1>
       <p class="auth-sub">{{ companyName }}</p>
+      <p class="auth-email-hint">{{ t('auth.forgotEmailHint') }}</p>
 
       <el-form ref="formRef" :model="form" :rules="rules" class="auth-form">
-        <div class="field-label">{{ t('auth.mobile') }}</div>
-        <el-form-item prop="phone">
-          <el-input v-model="form.phone" size="large" maxlength="11" :placeholder="t('auth.mobileRegPh')" />
+        <div class="field-label">{{ t('auth.emailForgot') }}</div>
+        <el-form-item prop="email">
+          <el-input v-model="form.email" size="large" type="email" autocomplete="email" :placeholder="t('auth.emailForgot')" />
         </el-form-item>
 
-        <div class="field-label">{{ t('auth.verifyCode') }}</div>
-        <el-form-item prop="smsCode">
-          <el-input v-model="form.smsCode" size="large" maxlength="6" :placeholder="t('auth.smsPh')">
+        <div class="field-label">{{ t('auth.emailCode') }}</div>
+        <el-form-item prop="emailCode">
+          <el-input v-model="form.emailCode" size="large" maxlength="8" :placeholder="t('auth.emailCode')">
             <template #suffix>
-              <button type="button" class="sms-btn" :disabled="smsSeconds > 0" @click="sendSms">
-                {{ smsSeconds > 0 ? `${smsSeconds}s` : t('auth.getCode') }}
+              <button type="button" class="sms-btn" :disabled="emailSeconds > 0" @click="sendEmail">
+                {{ emailSeconds > 0 ? `${emailSeconds}s` : t('auth.getEmailCode') }}
               </button>
             </template>
           </el-input>
@@ -39,16 +40,6 @@
         <NuxtLink :to="r.login">{{ t('auth.backLogin') }}</NuxtLink>
       </div>
     </div>
-
-    <footer class="auth-footer">
-      <div class="width_1400_auto">
-        <p>{{ footerLead }}</p>
-        <p>
-          {{ t('common.hotline') }}
-          <a :href="`tel:${hotlineTel}`">{{ hotlineDisplay }}</a>
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -57,7 +48,8 @@ import { computed, reactive, ref, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
-import { resetPassword, sendSmsCode } from '@/api/user'
+import { resetPasswordByEmail, sendEmailCode } from '@/api/user'
+import { isAuthMockEnabled } from '@/api/user/mockAuth'
 import { useTitaCanonical } from '@/utils/titaSiteContent'
 import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
@@ -67,11 +59,14 @@ definePageMeta({
   layout: 'default'
 })
 
+/** 与 base-api sendEmailCode 的 type 约定；若后端不同请改此值 */
+const EMAIL_CODE_FIND_PASSWORD = 3
+
 const router = useRouter()
 const r = useTemplate06Routes()
 const { t } = useAppLocale()
 const { locale } = useI18n()
-const { companyName, footerLead, hotlineDisplay, hotlineTel } = useTitaSite()
+const { companyName } = useTitaSite()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical(r.forgotPassword)
 
 useHead(() => ({
@@ -86,15 +81,17 @@ useHead(() => ({
 
 const formRef = ref<FormInstance>()
 const loading = ref(false)
-const smsSeconds = ref(0)
-let smsTimer: ReturnType<typeof setInterval> | null = null
+const emailSeconds = ref(0)
+let emailTimer: ReturnType<typeof setInterval> | null = null
 
 const form = reactive({
-  phone: '',
-  smsCode: '',
+  email: '',
+  emailCode: '',
   password: '',
   confirmPassword: ''
 })
+
+const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v || '').trim())
 
 const validatePass2 = (_rule: unknown, value: string, callback: (e?: Error) => void) => {
   if (value !== form.password) callback(new Error(t('validation.passwordMismatch')))
@@ -102,11 +99,11 @@ const validatePass2 = (_rule: unknown, value: string, callback: (e?: Error) => v
 }
 
 const rules = computed<FormRules>(() => ({
-  phone: [
+  email: [
     { required: true, message: t('validation.required'), trigger: 'blur' },
-    { pattern: /^1[3-9]\d{9}$/, message: t('validation.invalidMobile'), trigger: 'blur' }
+    { validator: (_r, v: string, cb) => (emailOk(v) ? cb() : cb(new Error(t('validation.invalidEmail')))), trigger: 'blur' }
   ],
-  smsCode: [{ required: true, message: t('validation.required'), trigger: 'blur' }],
+  emailCode: [{ required: true, message: t('validation.required'), trigger: 'blur' }],
   password: [
     { required: true, message: t('validation.required'), trigger: 'blur' },
     { min: 8, message: t('validation.minPass8'), trigger: 'blur' }
@@ -114,26 +111,36 @@ const rules = computed<FormRules>(() => ({
   confirmPassword: [{ validator: validatePass2, trigger: 'blur' }]
 }))
 
-const sendSms = async () => {
-  if (smsSeconds.value > 0) return
-  if (!/^1[3-9]\d{9}$/.test(form.phone)) {
-    ElMessage.warning(t('validation.validMobileFirst'))
+const sendEmail = async () => {
+  if (emailSeconds.value > 0) return
+  if (!emailOk(form.email)) {
+    ElMessage.warning(t('validation.invalidEmail'))
+    return
+  }
+  if (isAuthMockEnabled()) {
+    ElMessage.success(t('toast.emailCodeSent'))
+    startEmailCooldown()
     return
   }
   try {
-    await sendSmsCode({ phone: form.phone, type: 3 })
-    ElMessage.success(t('toast.codeSent'))
-    smsSeconds.value = 59
-    smsTimer = setInterval(() => {
-      smsSeconds.value -= 1
-      if (smsSeconds.value <= 0 && smsTimer) {
-        clearInterval(smsTimer)
-        smsTimer = null
-      }
-    }, 1000)
+    await sendEmailCode({ type: EMAIL_CODE_FIND_PASSWORD, email: form.email.trim() })
+    ElMessage.success(t('toast.emailCodeSent'))
+    startEmailCooldown()
   } catch (e: unknown) {
     ElMessage.error(e instanceof Error ? e.message : t('toast.sendFailed'))
   }
+}
+
+function startEmailCooldown() {
+  emailSeconds.value = 59
+  if (emailTimer) clearInterval(emailTimer)
+  emailTimer = setInterval(() => {
+    emailSeconds.value -= 1
+    if (emailSeconds.value <= 0 && emailTimer) {
+      clearInterval(emailTimer)
+      emailTimer = null
+    }
+  }, 1000)
 }
 
 const onSubmit = async () => {
@@ -142,9 +149,14 @@ const onSubmit = async () => {
     if (!valid) return
     loading.value = true
     try {
-      const res = await resetPassword({
-        phone: form.phone.trim(),
-        smsCode: form.smsCode.trim(),
+      if (isAuthMockEnabled()) {
+        ElMessage.success(t('toast.resetOk'))
+        router.push(r.login)
+        return
+      }
+      const res = await resetPasswordByEmail({
+        email: form.email.trim(),
+        code: form.emailCode.trim(),
         password: form.password
       })
       const ok = res.code === 0 || (res.code === 200 && (res as { status?: boolean }).status !== false)
@@ -163,7 +175,7 @@ const onSubmit = async () => {
 }
 
 onUnmounted(() => {
-  if (smsTimer) clearInterval(smsTimer)
+  if (emailTimer) clearInterval(emailTimer)
 })
 </script>
 
@@ -200,9 +212,16 @@ onUnmounted(() => {
 }
 
 .auth-sub {
-  margin: 8px 0 28px;
+  margin: 8px 0 12px;
   font-size: 13px;
   color: #666;
+}
+
+.auth-email-hint {
+  margin: 0 0 20px;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
 }
 
 .field-label {
@@ -235,11 +254,10 @@ onUnmounted(() => {
   margin-top: 8px;
   height: 44px;
   font-weight: 600;
-  background: #2c2c2c;
-  border-color: #2c2c2c;
+  background: linear-gradient(180deg, #d4af37, #b8860b);
+  border-color: #b8860b;
   &:hover {
-    background: #444;
-    border-color: #444;
+    opacity: 0.95;
   }
 }
 
@@ -250,20 +268,6 @@ onUnmounted(() => {
 
   a {
     color: #b8860b;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.auth-footer {
-  padding: 24px 0;
-  background: #2b2b2b;
-  color: #bbb;
-  font-size: 13px;
-  a {
-    color: #e8e8e8;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

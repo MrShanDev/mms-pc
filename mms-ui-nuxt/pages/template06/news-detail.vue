@@ -3,26 +3,27 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import NewsDetail from './_components/NewsDetail.vue'
-import { newsList, useTitaCanonical } from '@/utils/titaSiteContent'
+import { useTitaCanonical } from '@/utils/titaSiteContent'
 import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'default', requiresAuth: false })
 
 const { t } = useAppLocale()
 const { locale } = useI18n()
-const { companyName } = useTitaSite()
+const { companyName, newsList } = useTitaSite()
 const r = useTemplate06Routes()
-const demo = newsList[0]!
+const demo = computed(() => newsList.value[0]!)
 
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical(r.newsDetail)
 
 useHead(() => ({
-  title: demo.title,
+  title: demo.value.title,
   meta: [
     {
       name: 'description',
-      content: t('newsDetail.metaDesc', { title: demo.title, company: companyName.value })
+      content: t('newsDetail.metaDesc', { title: demo.value.title, company: companyName.value })
     },
     ...canonicalOg
   ],

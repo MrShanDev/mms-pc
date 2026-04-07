@@ -112,12 +112,12 @@ const filteredProducts = computed(() => {
   return catalog.products.filter((p) => p.categoryId === cat.id)
 })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/products')
 
 useHead(() => ({
-  title: `${t('demo.common.crumbProductCenter')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: t('product.metaTitle'),
+  meta: [{ name: 'description', content: t('product.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

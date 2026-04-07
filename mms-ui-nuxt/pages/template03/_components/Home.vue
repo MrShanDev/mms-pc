@@ -140,7 +140,7 @@
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const base392 = 'https://392.mstore.demo.mingsoft.net'
 const bannerIco = `${base392}/392/picture/banner_ico.png`

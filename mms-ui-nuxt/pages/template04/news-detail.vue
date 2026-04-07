@@ -28,7 +28,7 @@ definePageMeta({
 
 const C = DEMO_SITE_TEMPLATES.template04
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const newsId = computed(() => String(route.query.id || '').trim())
 
@@ -91,8 +91,17 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${article.value?.title ?? t('demo.common.blogTitleFallback')} — ${C.siteTitle}`,
-    meta: [{ name: 'description', content: article.value?.excerpt ?? C.metaDescription }, ...og],
+    title: article.value?.title ?? t('news.metaTitle'),
+    meta: [
+      {
+        name: 'description',
+        content: t('newsDetail.metaDesc', {
+          title: article.value?.title ?? '',
+          company: C.siteTitle
+        })
+      },
+      ...og
+    ],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
   }

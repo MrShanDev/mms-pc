@@ -30,13 +30,14 @@
 </template>
 
 <script setup lang="ts">
+import DemoLocaleSwitch from '@/components/demo/DemoLocaleSwitch.vue'
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 import { template01DemoAsset } from '@/utils/template01MingsoftMock'
 
 const c = DEMO_SITE_TEMPLATES.template02
 const home = c.home as Record<string, unknown>
 const route = useRoute()
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const homePath = '/template02'
 const logoSrc = computed(

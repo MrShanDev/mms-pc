@@ -72,7 +72,7 @@ const bannerSrc =
 const bannerLead = catalog.pageLead ?? C.contactPage.bannerLead ?? ''
 
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const crumbs = computed(() => [
   { label: t('demo.common.home'), to: '/template01' },
@@ -92,8 +92,8 @@ const filteredProducts = computed(() => {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template01/products')
 
 useHead(() => ({
-  title: `${catalog.pageTitle} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: t('product.metaTitle'),
+  meta: [{ name: 'description', content: t('product.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

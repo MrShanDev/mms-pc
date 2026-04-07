@@ -29,14 +29,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { newsList } from '@/utils/titaSiteContent'
 
-const item = newsList[0]!
+const { newsList } = useTitaSite()
+const item = computed(() => newsList.value[0]!)
 const { t } = useAppLocale()
 const r = useTemplate06Routes()
 
 const paragraphs = computed(() => {
-  const text = item.body?.trim() || item.excerpt
+  const text = item.value.body?.trim() || item.value.excerpt
   return text.split(/\n+/).filter(Boolean)
 })
 </script>

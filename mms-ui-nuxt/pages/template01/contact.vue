@@ -139,7 +139,7 @@ definePageMeta({ layout: 'demo-template01', requiresAuth: false })
 const C = DEMO_SITE_TEMPLATES.template01
 const p = C.contactPage
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const contactBannerImg = p.bannerImage ?? template01DemoAsset('/upload/cms/category/1688608258562.jpg')
 const contactBannerLead = p.bannerLead ?? C.productCatalog?.pageLead ?? ''
@@ -189,8 +189,14 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${p.title} — ${C.siteTitle}`,
-    meta: [{ name: 'description', content: p.formIntro ?? C.metaDescription }, ...og],
+    title: t('contact.metaTitle'),
+    meta: [
+      {
+        name: 'description',
+        content: t('contact.metaDesc', { company: C.siteTitle })
+      },
+      ...og
+    ],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
   }

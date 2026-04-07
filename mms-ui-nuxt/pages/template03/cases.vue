@@ -7,7 +7,7 @@
           <div class="headline">
             <NuxtLink to="/template03" class="ms-channel-path-index">{{ t('nav.home') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
-            <NuxtLink to="/template03/about" class="ms-channel-path-link">{{ t('nav.about') }}</NuxtLink>
+            <NuxtLink to="/template03/about" class="ms-channel-path-link">{{ t('demo.common.aboutUsNav') }}</NuxtLink>
             &nbsp;&gt;&gt;&nbsp;
             <span class="ms-channel-path-link">{{ t('demo.common.crumbFactory') }}</span>
           </div>
@@ -50,12 +50,12 @@ const page = C.casesPage!
 const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/image/20230703/1688374377849050.jpg')
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/cases')
 
 useHead(() => ({
-  title: `${page.title} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: page.intro ?? C.metaDescription }, ...canonicalOg],
+  title: t('casesPage.metaTitle'),
+  meta: [{ name: 'description', content: t('casesPage.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

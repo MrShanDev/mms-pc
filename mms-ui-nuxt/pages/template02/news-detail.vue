@@ -77,7 +77,7 @@ definePageMeta({
   ]
 })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const newsTabs = computed(() => [
   { category: 'company' as const, label: t('demo.common.newsTabCompany'), query: 'company' },
@@ -118,8 +118,17 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${article.value?.title ?? t('demo.common.blogTitleFallback')} — ${C.siteTitle}`,
-    meta: [{ name: 'description', content: article.value?.excerpt ?? C.metaDescription }, ...og],
+    title: article.value?.title ?? t('news.metaTitle'),
+    meta: [
+      {
+        name: 'description',
+        content: t('newsDetail.metaDesc', {
+          title: article.value?.title ?? '',
+          company: C.siteTitle
+        })
+      },
+      ...og
+    ],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
   }

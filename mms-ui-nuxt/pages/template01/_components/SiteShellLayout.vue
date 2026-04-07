@@ -40,10 +40,12 @@
 import type { DemoNavItem } from '@/utils/demoSite'
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 import { template01DemoAsset } from '@/utils/template01MingsoftMock'
+import DemoLocaleSwitch from '@/components/demo/DemoLocaleSwitch.vue'
+import DemoSiteFooter from './DemoSiteFooter.vue'
 
 const c = DEMO_SITE_TEMPLATES.template01
 const route = useRoute()
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const home = c.home as { demoLogoSrc?: string }
 const demoLogo = home.demoLogoSrc ?? template01DemoAsset('/upload/image/20211205/1638673578796255.png')

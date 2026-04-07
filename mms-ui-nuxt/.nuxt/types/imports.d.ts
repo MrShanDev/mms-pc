@@ -305,8 +305,6 @@ declare global {
   const ElNotification: typeof import('../../node_modules/element-plus/es/components/notification/index').ElNotification
   const HttpClient: typeof import('../../utils/request').HttpClient
   const ID_INJECTION_KEY: typeof import('../../node_modules/element-plus/es/hooks/use-id/index').ID_INJECTION_KEY
-  const IMG_BIKE: typeof import('../../utils/titaSiteContent').IMG_BIKE
-  const IMG_WORKSHOP: typeof import('../../utils/titaSiteContent').IMG_WORKSHOP
   const MAIN_SITE_ROUTE_PREFIX: typeof import('../../utils/demoSite').MAIN_SITE_ROUTE_PREFIX
   const SITE_DEMO_CONTENT: typeof import('../../utils/demoSiteContent').SITE_DEMO_CONTENT
   const TEMPLATE01_DEMO_ORIGIN: typeof import('../../utils/template01MingsoftMock').TEMPLATE01_DEMO_ORIGIN
@@ -320,26 +318,30 @@ declare global {
   const TEMPLATE05_E7_NEWS_TABS: typeof import('../../utils/template05E7').TEMPLATE05_E7_NEWS_TABS
   const ZINDEX_INJECTION_KEY: typeof import('../../node_modules/element-plus/es/hooks/use-z-index/index').ZINDEX_INJECTION_KEY
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router').abortNavigation
-  const aboutSideImage: typeof import('../../utils/titaSiteContent').aboutSideImage
   const acceptHMRUpdate: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').acceptHMRUpdate
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router').addRouteMiddleware
   const apiConfig: typeof import('../../api/config').apiConfig
   const buildDemoContentForTemplate: typeof import('../../utils/demoSiteContent').buildDemoContentForTemplate
   const buildFullUrl: typeof import('../../utils/mms').buildFullUrl
+  const buildHeroSlidesFromDemo: typeof import('../../utils/template06ViewModel').buildHeroSlidesFromDemo
+  const buildNavProductCategoriesFromDemo: typeof import('../../utils/template06ViewModel').buildNavProductCategoriesFromDemo
+  const buildNewsListFromDemo: typeof import('../../utils/template06ViewModel').buildNewsListFromDemo
+  const buildProductCategoriesDetailedFromDemo: typeof import('../../utils/template06ViewModel').buildProductCategoriesDetailedFromDemo
+  const buildShowcaseProductsFromDemo: typeof import('../../utils/template06ViewModel').buildShowcaseProductsFromDemo
+  const buildTemplate06NavDto: typeof import('../../utils/template06Nav').buildTemplate06NavDto
+  const calcFreightCents: typeof import('../../utils/template06ShopPrice').calcFreightCents
   const callOnce: typeof import('../../node_modules/nuxt/dist/app/composables/once').callOnce
   const cancelIdleCallback: typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback').cancelIdleCallback
   const clearError: typeof import('../../node_modules/nuxt/dist/app/composables/error').clearError
   const clearNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').clearNuxtData
   const clearNuxtState: typeof import('../../node_modules/nuxt/dist/app/composables/state').clearNuxtState
   const closeChat: typeof import('../../stores/chat').closeChat
-  const companyName: typeof import('../../utils/titaSiteContent').companyName
   const computed: typeof import('vue').computed
   const createError: typeof import('../../node_modules/nuxt/dist/app/composables/error').createError
   const createHttpClient: typeof import('../../utils/request').createHttpClient
   const createNuxtReadyHttpClient: typeof import('../../utils/request').createNuxtReadyHttpClient
   const currentEnv: typeof import('../../api/config').currentEnv
   const customRef: typeof import('vue').customRef
-  const customerEmail: typeof import('../../utils/titaSiteContent').customerEmail
   const deepMerge: typeof import('../../utils/mms').deepMerge
   const defineAppConfig: typeof import('../../node_modules/nuxt/dist/app/nuxt').defineAppConfig
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
@@ -357,6 +359,7 @@ declare global {
   const definePayloadReviver: typeof import('../../node_modules/nuxt/dist/app/composables/payload').definePayloadReviver
   const defineStore: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').defineStore
   const del: typeof import('../../utils/mms').del
+  const demoProductPriceCents: typeof import('../../utils/template06ShopPrice').demoProductPriceCents
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
   const fetchDemoContactPage: typeof import('../../api/demoSite').fetchDemoContactPage
@@ -365,11 +368,12 @@ declare global {
   const fetchDemoProductBySlug: typeof import('../../api/demoSite').fetchDemoProductBySlug
   const fetchDemoProductCatalog: typeof import('../../api/demoSite').fetchDemoProductCatalog
   const fetchDemoSiteContent: typeof import('../../api/demoSite').fetchDemoSiteContent
-  const footerLead: typeof import('../../utils/titaSiteContent').footerLead
+  const fetchDemoSiteNavigation: typeof import('../../api/demoSite').fetchDemoSiteNavigation
   const formatParams: typeof import('../../utils/mms').formatParams
   const get: typeof import('../../utils/mms').get
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getBasePath: typeof import('../../utils/mms').getBasePath
+  const getCategoryByIdFromDemo: typeof import('../../utils/template06ViewModel').getCategoryByIdFromDemo
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
   const getDemoSiteContentSync: typeof import('../../api/demoSite').getDemoSiteContentSync
@@ -378,15 +382,11 @@ declare global {
   const getHttpChatClient: typeof import('../../utils/request').getHttpChatClient
   const getHttpClient: typeof import('../../utils/request').getHttpClient
   const getLocalStorageItem: typeof import('../../utils/browser').getLocalStorageItem
-  const getProductCategory: typeof import('../../utils/titaSiteContent').getProductCategory
   const getRouteRules: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getRouteRules
   const getSessionStorageItem: typeof import('../../utils/browser').getSessionStorageItem
   const h: typeof import('vue').h
   const handleResponseData: typeof import('../../utils/mms').handleResponseData
   const hasInjectionContext: typeof import('vue').hasInjectionContext
-  const heroSlides: typeof import('../../utils/titaSiteContent').heroSlides
-  const hotlineDisplay: typeof import('../../utils/titaSiteContent').hotlineDisplay
-  const hotlineTel: typeof import('../../utils/titaSiteContent').hotlineTel
   const http: typeof import('../../utils/request').http
   const httpChatClient: typeof import('../../utils/request').httpChatClient
   const httpClient: typeof import('../../utils/request').httpClient
@@ -415,9 +415,7 @@ declare global {
   const markRaw: typeof import('vue').markRaw
   const mergeModels: typeof import('vue').mergeModels
   const mms: typeof import('../../utils/mms').default
-  const navProductCategories: typeof import('../../utils/titaSiteContent').navProductCategories
   const navigateTo: typeof import('../../node_modules/nuxt/dist/app/composables/router').navigateTo
-  const newsList: typeof import('../../utils/titaSiteContent').newsList
   const nextTick: typeof import('vue').nextTick
   const onActivated: typeof import('vue').onActivated
   const onBeforeMount: typeof import('vue').onBeforeMount
@@ -438,14 +436,13 @@ declare global {
   const onUpdated: typeof import('vue').onUpdated
   const parseDemoSiteTemplate: typeof import('../../utils/demoSite').parseDemoSiteTemplate
   const persistedState: typeof import('../../node_modules/@pinia-plugin-persistedstate/nuxt/dist/runtime/storages').persistedState
+  const phoneToTelHref: typeof import('../../utils/template06ViewModel').phoneToTelHref
   const post: typeof import('../../utils/mms').post
   const prefetchComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload').prefetchComponents
   const preloadComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload').preloadComponents
   const preloadPayload: typeof import('../../node_modules/nuxt/dist/app/composables/payload').preloadPayload
   const preloadRouteComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload').preloadRouteComponents
   const prerenderRoutes: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').prerenderRoutes
-  const productCategoriesDetailed: typeof import('../../utils/titaSiteContent').productCategoriesDetailed
-  const profileParagraphs: typeof import('../../utils/titaSiteContent').profileParagraphs
   const provide: typeof import('vue').provide
   const provideGlobalConfig: typeof import('../../node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config').provideGlobalConfig
   const proxyRefs: typeof import('vue').proxyRefs
@@ -473,7 +470,6 @@ declare global {
   const shallowReadonly: typeof import('vue').shallowReadonly
   const shallowRef: typeof import('vue').shallowRef
   const showError: typeof import('../../node_modules/nuxt/dist/app/composables/error').showError
-  const showcaseProducts: typeof import('../../utils/titaSiteContent').showcaseProducts
   const sleep: typeof import('../../utils/mms').sleep
   const storeToRefs: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').storeToRefs
   const supportsLocalStorage: typeof import('../../utils/browser').supportsLocalStorage
@@ -569,13 +565,17 @@ declare global {
   const useSlots: typeof import('vue').useSlots
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state').useState
   const useSwitchLocalePath: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useSwitchLocalePath
+  const useTemplate06Navigation: typeof import('../../composables/useTemplate06Navigation').useTemplate06Navigation
+  const useTemplate06ProductLookup: typeof import('../../composables/useTemplate06ProductLookup').useTemplate06ProductLookup
   const useTemplate06Routes: typeof import('../../composables/useTemplate06Routes').useTemplate06Routes
+  const useTemplate06ShopStore: typeof import('../../stores/template06Shop').useTemplate06ShopStore
   const useTemplateElMenuNav: typeof import('../../composables/useTemplateElMenuNav').useTemplateElMenuNav
   const useTemplateHashScroll: typeof import('../../composables/useTemplateHashScroll').useTemplateHashScroll
   const useTemplateRef: typeof import('vue').useTemplateRef
   const useTitaCanonical: typeof import('../../utils/titaSiteContent').useTitaCanonical
   const useTitaSite: typeof import('../../composables/useTitaSite').useTitaSite
   const useTransitionState: typeof import('vue').useTransitionState
+  const useUserAvatarDisplay: typeof import('../../composables/useUserAvatarDisplay').useUserAvatarDisplay
   const useUserStore: typeof import('../../stores/user').useUserStore
   const user: typeof import('../../stores/user').default
   const watch: typeof import('vue').watch
@@ -607,7 +607,10 @@ declare global {
   export type { E7Crumb } from '../../utils/template05E7'
   import('../../utils/template05E7')
   // @ts-ignore
-  export type { ProductCategoryId, ShowcaseProduct, ProductCategoryDetail, NewsItem } from '../../utils/titaSiteContent'
+  export type { Template06NavProductChild, Template06NavEntry, Template06NavDto } from '../../utils/template06Nav'
+  import('../../utils/template06Nav')
+  // @ts-ignore
+  export type { ShowcaseProduct, ProductCategoryDetail, NewsItem } from '../../utils/titaSiteContent'
   import('../../utils/titaSiteContent')
 }
 // for vue template auto import
@@ -918,8 +921,6 @@ declare module 'vue' {
     readonly ElNotification: UnwrapRef<typeof import('../../node_modules/element-plus/es/components/notification/index')['ElNotification']>
     readonly HttpClient: UnwrapRef<typeof import('../../utils/request')['HttpClient']>
     readonly ID_INJECTION_KEY: UnwrapRef<typeof import('../../node_modules/element-plus/es/hooks/use-id/index')['ID_INJECTION_KEY']>
-    readonly IMG_BIKE: UnwrapRef<typeof import('../../utils/titaSiteContent')['IMG_BIKE']>
-    readonly IMG_WORKSHOP: UnwrapRef<typeof import('../../utils/titaSiteContent')['IMG_WORKSHOP']>
     readonly MAIN_SITE_ROUTE_PREFIX: UnwrapRef<typeof import('../../utils/demoSite')['MAIN_SITE_ROUTE_PREFIX']>
     readonly SITE_DEMO_CONTENT: UnwrapRef<typeof import('../../utils/demoSiteContent')['SITE_DEMO_CONTENT']>
     readonly TEMPLATE01_DEMO_ORIGIN: UnwrapRef<typeof import('../../utils/template01MingsoftMock')['TEMPLATE01_DEMO_ORIGIN']>
@@ -933,26 +934,30 @@ declare module 'vue' {
     readonly TEMPLATE05_E7_NEWS_TABS: UnwrapRef<typeof import('../../utils/template05E7')['TEMPLATE05_E7_NEWS_TABS']>
     readonly ZINDEX_INJECTION_KEY: UnwrapRef<typeof import('../../node_modules/element-plus/es/hooks/use-z-index/index')['ZINDEX_INJECTION_KEY']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
-    readonly aboutSideImage: UnwrapRef<typeof import('../../utils/titaSiteContent')['aboutSideImage']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['acceptHMRUpdate']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly apiConfig: UnwrapRef<typeof import('../../api/config')['apiConfig']>
     readonly buildDemoContentForTemplate: UnwrapRef<typeof import('../../utils/demoSiteContent')['buildDemoContentForTemplate']>
     readonly buildFullUrl: UnwrapRef<typeof import('../../utils/mms')['buildFullUrl']>
+    readonly buildHeroSlidesFromDemo: UnwrapRef<typeof import('../../utils/template06ViewModel')['buildHeroSlidesFromDemo']>
+    readonly buildNavProductCategoriesFromDemo: UnwrapRef<typeof import('../../utils/template06ViewModel')['buildNavProductCategoriesFromDemo']>
+    readonly buildNewsListFromDemo: UnwrapRef<typeof import('../../utils/template06ViewModel')['buildNewsListFromDemo']>
+    readonly buildProductCategoriesDetailedFromDemo: UnwrapRef<typeof import('../../utils/template06ViewModel')['buildProductCategoriesDetailedFromDemo']>
+    readonly buildShowcaseProductsFromDemo: UnwrapRef<typeof import('../../utils/template06ViewModel')['buildShowcaseProductsFromDemo']>
+    readonly buildTemplate06NavDto: UnwrapRef<typeof import('../../utils/template06Nav')['buildTemplate06NavDto']>
+    readonly calcFreightCents: UnwrapRef<typeof import('../../utils/template06ShopPrice')['calcFreightCents']>
     readonly callOnce: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/once')['callOnce']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
     readonly clearError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['clearError']>
     readonly clearNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['clearNuxtData']>
     readonly clearNuxtState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['clearNuxtState']>
     readonly closeChat: UnwrapRef<typeof import('../../stores/chat')['closeChat']>
-    readonly companyName: UnwrapRef<typeof import('../../utils/titaSiteContent')['companyName']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['createError']>
     readonly createHttpClient: UnwrapRef<typeof import('../../utils/request')['createHttpClient']>
     readonly createNuxtReadyHttpClient: UnwrapRef<typeof import('../../utils/request')['createNuxtReadyHttpClient']>
     readonly currentEnv: UnwrapRef<typeof import('../../api/config')['currentEnv']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
-    readonly customerEmail: UnwrapRef<typeof import('../../utils/titaSiteContent')['customerEmail']>
     readonly deepMerge: UnwrapRef<typeof import('../../utils/mms')['deepMerge']>
     readonly defineAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineAppConfig']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -970,6 +975,7 @@ declare module 'vue' {
     readonly definePayloadReviver: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['definePayloadReviver']>
     readonly defineStore: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['defineStore']>
     readonly del: UnwrapRef<typeof import('../../utils/mms')['del']>
+    readonly demoProductPriceCents: UnwrapRef<typeof import('../../utils/template06ShopPrice')['demoProductPriceCents']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly fetchDemoContactPage: UnwrapRef<typeof import('../../api/demoSite')['fetchDemoContactPage']>
@@ -978,11 +984,12 @@ declare module 'vue' {
     readonly fetchDemoProductBySlug: UnwrapRef<typeof import('../../api/demoSite')['fetchDemoProductBySlug']>
     readonly fetchDemoProductCatalog: UnwrapRef<typeof import('../../api/demoSite')['fetchDemoProductCatalog']>
     readonly fetchDemoSiteContent: UnwrapRef<typeof import('../../api/demoSite')['fetchDemoSiteContent']>
-    readonly footerLead: UnwrapRef<typeof import('../../utils/titaSiteContent')['footerLead']>
+    readonly fetchDemoSiteNavigation: UnwrapRef<typeof import('../../api/demoSite')['fetchDemoSiteNavigation']>
     readonly formatParams: UnwrapRef<typeof import('../../utils/mms')['formatParams']>
     readonly get: UnwrapRef<typeof import('../../utils/mms')['get']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getBasePath: UnwrapRef<typeof import('../../utils/mms')['getBasePath']>
+    readonly getCategoryByIdFromDemo: UnwrapRef<typeof import('../../utils/template06ViewModel')['getCategoryByIdFromDemo']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getDemoSiteContentSync: UnwrapRef<typeof import('../../api/demoSite')['getDemoSiteContentSync']>
@@ -991,15 +998,11 @@ declare module 'vue' {
     readonly getHttpChatClient: UnwrapRef<typeof import('../../utils/request')['getHttpChatClient']>
     readonly getHttpClient: UnwrapRef<typeof import('../../utils/request')['getHttpClient']>
     readonly getLocalStorageItem: UnwrapRef<typeof import('../../utils/browser')['getLocalStorageItem']>
-    readonly getProductCategory: UnwrapRef<typeof import('../../utils/titaSiteContent')['getProductCategory']>
     readonly getRouteRules: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getRouteRules']>
     readonly getSessionStorageItem: UnwrapRef<typeof import('../../utils/browser')['getSessionStorageItem']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly handleResponseData: UnwrapRef<typeof import('../../utils/mms')['handleResponseData']>
     readonly hasInjectionContext: UnwrapRef<typeof import('vue')['hasInjectionContext']>
-    readonly heroSlides: UnwrapRef<typeof import('../../utils/titaSiteContent')['heroSlides']>
-    readonly hotlineDisplay: UnwrapRef<typeof import('../../utils/titaSiteContent')['hotlineDisplay']>
-    readonly hotlineTel: UnwrapRef<typeof import('../../utils/titaSiteContent')['hotlineTel']>
     readonly http: UnwrapRef<typeof import('../../utils/request')['http']>
     readonly httpChatClient: UnwrapRef<typeof import('../../utils/request')['httpChatClient']>
     readonly httpClient: UnwrapRef<typeof import('../../utils/request')['httpClient']>
@@ -1028,9 +1031,7 @@ declare module 'vue' {
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly mergeModels: UnwrapRef<typeof import('vue')['mergeModels']>
     readonly mms: UnwrapRef<typeof import('../../utils/mms')['default']>
-    readonly navProductCategories: UnwrapRef<typeof import('../../utils/titaSiteContent')['navProductCategories']>
     readonly navigateTo: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['navigateTo']>
-    readonly newsList: UnwrapRef<typeof import('../../utils/titaSiteContent')['newsList']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
@@ -1051,14 +1052,13 @@ declare module 'vue' {
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly parseDemoSiteTemplate: UnwrapRef<typeof import('../../utils/demoSite')['parseDemoSiteTemplate']>
     readonly persistedState: UnwrapRef<typeof import('../../node_modules/@pinia-plugin-persistedstate/nuxt/dist/runtime/storages')['persistedState']>
+    readonly phoneToTelHref: UnwrapRef<typeof import('../../utils/template06ViewModel')['phoneToTelHref']>
     readonly post: UnwrapRef<typeof import('../../utils/mms')['post']>
     readonly prefetchComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['prefetchComponents']>
     readonly preloadComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['preloadComponents']>
     readonly preloadPayload: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['preloadPayload']>
     readonly preloadRouteComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['preloadRouteComponents']>
     readonly prerenderRoutes: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['prerenderRoutes']>
-    readonly productCategoriesDetailed: UnwrapRef<typeof import('../../utils/titaSiteContent')['productCategoriesDetailed']>
-    readonly profileParagraphs: UnwrapRef<typeof import('../../utils/titaSiteContent')['profileParagraphs']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly provideGlobalConfig: UnwrapRef<typeof import('../../node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config')['provideGlobalConfig']>
     readonly proxyRefs: UnwrapRef<typeof import('vue')['proxyRefs']>
@@ -1086,7 +1086,6 @@ declare module 'vue' {
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly showError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['showError']>
-    readonly showcaseProducts: UnwrapRef<typeof import('../../utils/titaSiteContent')['showcaseProducts']>
     readonly sleep: UnwrapRef<typeof import('../../utils/mms')['sleep']>
     readonly storeToRefs: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['storeToRefs']>
     readonly supportsLocalStorage: UnwrapRef<typeof import('../../utils/browser')['supportsLocalStorage']>
@@ -1182,13 +1181,17 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useSwitchLocalePath: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useSwitchLocalePath']>
+    readonly useTemplate06Navigation: UnwrapRef<typeof import('../../composables/useTemplate06Navigation')['useTemplate06Navigation']>
+    readonly useTemplate06ProductLookup: UnwrapRef<typeof import('../../composables/useTemplate06ProductLookup')['useTemplate06ProductLookup']>
     readonly useTemplate06Routes: UnwrapRef<typeof import('../../composables/useTemplate06Routes')['useTemplate06Routes']>
+    readonly useTemplate06ShopStore: UnwrapRef<typeof import('../../stores/template06Shop')['useTemplate06ShopStore']>
     readonly useTemplateElMenuNav: UnwrapRef<typeof import('../../composables/useTemplateElMenuNav')['useTemplateElMenuNav']>
     readonly useTemplateHashScroll: UnwrapRef<typeof import('../../composables/useTemplateHashScroll')['useTemplateHashScroll']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTitaCanonical: UnwrapRef<typeof import('../../utils/titaSiteContent')['useTitaCanonical']>
     readonly useTitaSite: UnwrapRef<typeof import('../../composables/useTitaSite')['useTitaSite']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
+    readonly useUserAvatarDisplay: UnwrapRef<typeof import('../../composables/useUserAvatarDisplay')['useUserAvatarDisplay']>
     readonly useUserStore: UnwrapRef<typeof import('../../stores/user')['useUserStore']>
     readonly user: UnwrapRef<typeof import('../../stores/user')['default']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>

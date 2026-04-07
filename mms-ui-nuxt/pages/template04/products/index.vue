@@ -40,7 +40,7 @@ definePageMeta({ layout: 'demo-template04', requiresAuth: false })
 const C = DEMO_SITE_TEMPLATES.template04
 const catalog = C.productCatalog!
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const pageListTitle = computed(() => t('demo.common.crumbProductCenter'))
 const productCrumbs = computed(() => [{ label: t('demo.common.crumbProductCenter') }])
@@ -58,8 +58,8 @@ const filteredProducts = computed(() => {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template04/products')
 
 useHead(() => ({
-  title: `${t('demo.common.crumbProductCenter')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: t('product.metaTitle'),
+  meta: [{ name: 'description', content: t('product.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

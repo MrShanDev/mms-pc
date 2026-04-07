@@ -20,11 +20,11 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 definePageMeta({ layout: 'demo-template01', requiresAuth: false })
 
 const C = DEMO_SITE_TEMPLATES.template01
-const { locale, t } = useI18n()
+const { locale, t } = useAppLocale()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template01/missing')
 
 useHead(() => ({
-  title: `${t('demo.common.pageNotFound')} — ${C.siteTitle}`,
+  title: t('errors.pageNotFoundTitle'),
   meta: [{ name: 'description', content: t('demo.common.missingMetaDesc') }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }

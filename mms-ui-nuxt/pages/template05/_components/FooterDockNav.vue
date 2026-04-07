@@ -44,7 +44,7 @@
 <script setup lang="ts">
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const emit = defineEmits<{ 'open-menu': [] }>()
 

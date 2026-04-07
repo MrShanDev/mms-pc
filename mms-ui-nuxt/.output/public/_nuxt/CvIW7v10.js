@@ -1,0 +1,1 @@
+import{f as n,y as r}from"./BDcoAx8F.js";function s(){const e=n();r(()=>e.fullPath,()=>{var o;const t=(o=e.hash)==null?void 0:o.replace(/^#/,"");!t||typeof document>"u"||requestAnimationFrame(()=>{var a;(a=document.getElementById(t))==null||a.scrollIntoView({behavior:"smooth"})})},{immediate:!0})}export{s as u};

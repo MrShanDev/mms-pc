@@ -1,5 +1,7 @@
 import type { DemoNewsItem, DemoProductDetail, DemoSiteTemplateId, DemoTemplateContent } from '@/utils/demoSite'
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
+import type { Template06NavDto } from '@/utils/template06Nav'
+import { buildTemplate06NavDto } from '@/utils/template06Nav'
 
 /** 模拟网络延迟（毫秒），上线对接真实接口时可移除 */
 const MOCK_DELAY_MS = 0
@@ -20,6 +22,16 @@ export function getDemoSiteContentSync(id: DemoSiteTemplateId): DemoTemplateCont
 export async function fetchDemoSiteContent(id: DemoSiteTemplateId): Promise<DemoTemplateContent> {
   await delay(MOCK_DELAY_MS)
   return getDemoSiteContentSync(id)
+}
+
+/**
+ * 主站（template06）顶部主导航：与 {@link fetchDemoSiteContent} 同源，由站点内容 + 产品分类拼装。
+ * 上线可替换为 `GET /api/site/:templateId/navigation` 或合并进站点详情接口的 `nav` 字段。
+ */
+export async function fetchDemoSiteNavigation(id: DemoSiteTemplateId): Promise<Template06NavDto> {
+  await delay(MOCK_DELAY_MS)
+  const c = getDemoSiteContentSync(id)
+  return buildTemplate06NavDto(c)
 }
 
 /** 新闻列表（列表页 / 分类筛选可在此扩展 query） */

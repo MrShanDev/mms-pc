@@ -31,7 +31,7 @@
 import type { E9Crumb } from '@/utils/template04E9'
 import PageSidebar from './PageSidebar.vue'
 
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 defineProps<{
   title: string

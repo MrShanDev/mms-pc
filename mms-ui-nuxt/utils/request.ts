@@ -239,30 +239,37 @@ export class HttpClient {
             } else {
                 fullUrl = url
             }
-            // 添加时间戳
-            if (body == null) {
-                body = { t: new Date().getTime() }
-            } else if (typeof body === 'object') {
-                body.t = new Date().getTime()
+            const isFormData = typeof FormData !== 'undefined' && body instanceof FormData
+            // 添加时间戳（multipart 不注入字段，避免破坏 FormData）
+            if (!isFormData) {
+                if (body == null) {
+                    body = { t: new Date().getTime() }
+                } else if (typeof body === 'object' && body !== null) {
+                    ;(body as Record<string, unknown>).t = new Date().getTime()
+                }
             }
 
             // 防止数据重复提交
-            if (isRepeatSubmit && (method.toUpperCase() === 'POST' || method.toUpperCase() === 'PUT')) {
-                if (typeof body === 'object') {
-                    body.nonce = new Date().getTime()
+            if (
+                !isFormData &&
+                isRepeatSubmit &&
+                (method.toUpperCase() === 'POST' || method.toUpperCase() === 'PUT')
+            ) {
+                if (typeof body === 'object' && body !== null) {
+                    ;(body as Record<string, unknown>).nonce = new Date().getTime()
                 }
             }
 
             // 加密处理
             if (isEncrypt && (method.toUpperCase() === 'POST' || method.toUpperCase() === 'PUT')) {
-                if (typeof body === 'object') {
+                if (typeof body === 'object' && body !== null && !isFormData) {
                     body = {
                         appId: mergedConfig.headers?.['App-Id'],
                         data: body,
                         sign: encrypt(body),
                         timestamp: new Date().getTime()
                     }
-                } else {
+                } else if (!isFormData) {
                     body = {}
                 }
             }
@@ -272,9 +279,19 @@ export class HttpClient {
         let headers = { ...mergedConfig.headers }
         headers = this.addAuthHeader(headers)
 
+        const isMultipart =
+            typeof FormData !== 'undefined' && mergedConfig.data instanceof FormData
+        if (isMultipart) {
+            delete (headers as Record<string, string | undefined>)['Content-Type']
+        }
+
         // 处理请求体
         if (method !== 'GET' && method !== 'DELETE' && body && typeof body === 'object') {
-            body = JSON.stringify(body)
+            if (typeof FormData !== 'undefined' && body instanceof FormData) {
+                // 保持 multipart，由运行时自动带 boundary
+            } else {
+                body = JSON.stringify(body)
+            }
         }
 
         // 构建完整请求URL

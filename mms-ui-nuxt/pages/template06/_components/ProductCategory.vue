@@ -11,7 +11,12 @@
       <h1 class="page-title">{{ category.label }}</h1>
       <p class="page-lead">{{ category.intro }}</p>
       <div class="product-grid">
-        <NuxtLink v-for="(p, i) in category.products" :key="i" :to="r.productDetail" class="product-card">
+        <NuxtLink
+          v-for="(p, i) in category.products"
+          :key="i"
+          :to="r.productDetailWithSlug(p.slug)"
+          class="product-card"
+        >
           <div class="product-img-wrap">
             <img :src="p.image" :alt="p.title" loading="lazy">
           </div>

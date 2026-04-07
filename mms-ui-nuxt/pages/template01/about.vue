@@ -45,18 +45,21 @@ const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/cms/category/1688608258562.jpg')
 const bannerLead = C.contactPage.bannerLead ?? C.productCatalog?.pageLead ?? ''
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const crumbs = computed(() => [
   { label: t('demo.common.home'), to: '/template01' },
-  { label: t('nav.about'), to: '/template01/about' }
+  { label: t('demo.common.aboutUsNav'), to: '/template01/about' }
 ])
 
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template01/about')
 
 useHead(() => ({
-  title: `${a.kicker} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: a.paragraphs[0] ?? C.metaDescription }, ...canonicalOg],
+  title: t('about.metaTitle'),
+  meta: [
+    { name: 'description', content: t('about.metaDesc', { company: C.siteTitle }) },
+    ...canonicalOg
+  ],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

@@ -40,15 +40,15 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const C = DEMO_SITE_TEMPLATES.template05
 
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/download')
 
 useHead(() => ({
-  title: `${t('demo.common.pageDownload')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: t('downloadPage.metaTitle'),
+  meta: [{ name: 'description', content: t('downloadPage.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

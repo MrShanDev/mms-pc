@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import DemoLocaleSwitch from '@/components/demo/DemoLocaleSwitch.vue'
 import type { DemoNavItem } from '@/utils/demoSite'
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 import { template01DemoAsset } from '@/utils/template01MingsoftMock'

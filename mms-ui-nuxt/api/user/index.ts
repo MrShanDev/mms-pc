@@ -13,6 +13,7 @@ import type {
     UpdateMemberRequest,
     TokenLoginResponse
 } from './type'
+import { isAuthMockEnabled, mockPasswordLogin, mockTokenLoginRequest } from './mockAuth'
 
 /**
  * 用户密码登录
@@ -20,6 +21,9 @@ import type {
  * @returns Promise<ApiResponse<LoginResponse>>
  */
 export const login = (data: LoginRequest): Promise<ApiResponse<LoginResponse>> => {
+    if (isAuthMockEnabled()) {
+        return Promise.resolve(mockPasswordLogin(data))
+    }
     return http.post<LoginResponse>('/auth/login', data)
 }
 
@@ -55,6 +59,9 @@ export const sendSmsCode = (data: SendSmsCodeRequest): Promise<ApiResponse<null>
  * @returns Promise<ApiResponse<null>>
  */
 export const logout = (data?: Record<string, any>): Promise<ApiResponse<null>> => {
+    if (isAuthMockEnabled()) {
+        return Promise.resolve({ code: 0, msg: 'ok', message: 'ok', data: null as null })
+    }
     return http.post<null>('/login-api/v1/logout', data || {})
 }
 
@@ -86,11 +93,24 @@ export const updateMember = (data: UpdateMemberRequest): Promise<ApiResponse<any
 }
 
 /**
+ * 上传头像（multipart），返回数据结构依后端而定（常见 `data.url` 或 `data` 为 URL 字符串）。
+ * 若网关路径不同，请改此处路径。
+ */
+export const uploadAvatarFile = (file: File): Promise<ApiResponse<Record<string, unknown>>> => {
+    const fd = new FormData()
+    fd.append('file', file)
+    return http.post<Record<string, unknown>>('/member-api/v1/upload', fd)
+}
+
+/**
  * Token 自动登录
  * 使用存储的 token 自动登录，token 会自动从 header 中获取
  * @returns Promise<ApiResponse<TokenLoginResponse>>
  */
 export const tokenLogin = (): Promise<ApiResponse<TokenLoginResponse>> => {
+    if (isAuthMockEnabled()) {
+        return Promise.resolve(mockTokenLoginRequest())
+    }
     return http.get<TokenLoginResponse>('/login-api/v1/tokenLogin')
 }
 

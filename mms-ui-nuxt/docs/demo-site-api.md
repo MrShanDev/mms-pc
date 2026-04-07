@@ -1,6 +1,6 @@
-# 演示站（template01～template05）统一数据与接口说明
+# 演示站（template01～template06）统一数据与接口说明
 
-## 1. 五套模版是否共用同一套数据？
+## 1. 各套模版是否共用同一套数据？
 
 **是。** 逻辑如下：
 
@@ -8,17 +8,24 @@
 |------|------|
 | `utils/template01MingsoftMock.ts` | 定义源数据 `TEMPLATE01_DEMO_SITE_CONTENT`（结构与字段与 B2B 演示站对齐） |
 | `utils/demoSiteContent.ts` | `SITE_DEMO_CONTENT` 与 `buildDemoContentForTemplate(id)`：在源数据上做深拷贝，并把站内路径前缀 `/template01` 重写为 `/template0X`，同时设置 `id` |
-| `utils/demoSiteTemplates.ts` | `DEMO_SITE_TEMPLATES`：`template01`～`template05` 各一份，**除 `id` 与 URL 前缀外结构一致** |
+| `utils/demoSiteTemplates.ts` | `DEMO_SITE_TEMPLATES`：`template01`～`template06` 各一份，**除 `id` 与 URL 前缀外结构一致** |
 | `utils/demoSite.ts` | TypeScript 类型：`DemoTemplateContent`、`DemoNavItem`、`DemoNewsItem` 等 |
 
 页面中统一使用：
 
 ```ts
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
-const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template05
+const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template06
 ```
 
 异步/可替换的访问入口见 **`api/demoSite.ts`**（当前为内存实现，无独立 HTTP 路由）。
+
+### template06（主站）
+
+- **路由前缀**：`/template06`（见 `utils/demoSite.ts` 中 `MAIN_SITE_ROUTE_PREFIX`），页面在 `pages/template06/`。
+- **数据**：与其它模版一样，取 **`DEMO_SITE_TEMPLATES.template06`**，由 `buildDemoContentForTemplate('template06')` 生成，与 template01 同源、站内链接已重写为 `/template06/...`。
+- **消费方式**：主站业务通过 **`composables/useTitaSite.ts`** 读取上述聚合数据，并由 **`utils/template06ViewModel.ts`** 转成首页轮播、产品分类、新闻列表等展示结构；备案链接等少量非 CMS 字段仍放在 **`utils/titaSiteContent.ts`**。
+- **`api/demoSite.ts`**：`DemoSiteTemplateId` 含 `template06` 时，`getDemoSiteContentSync('template06')` 等与五套子站用法相同。
 
 ---
 
@@ -70,7 +77,7 @@ const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template05
 
 以下为 `DemoTemplateContent` 的要点（完整定义见源码）：
 
-- **标识**：`id: 'template01' \| … \| 'template05'`
+- **标识**：`id: 'template01' \| … \| 'template06'`
 - **站点元信息**：`referenceUrl`, `siteTitle`, `siteTitleEn?`, `metaTitle`, `metaDescription`, `footerCopyright`, `techSupport?`
 - **导航**：`nav: DemoNavItem[]`（`label`, `to?`, `hash?`, `children?`）
 - **首页**：`home: Record<string, unknown>`（各模版可解不同形状）
@@ -84,8 +91,8 @@ const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template05
 
 ## 5. 模版 ID 与运行配置
 
-- 合法演示模版 ID：`template01` … `template05`（见 `DEMO_SITE_TEMPLATE_IDS`）。
-- `nuxt.config` 中 `runtimeConfig.public.demoSiteTemplate`（或环境变量 `NUXT_PUBLIC_DEMO_SITE_TEMPLATE`）用于选择默认演示模版；**`template06` 为主站**，不在 `DEMO_SITE_TEMPLATES` 五套聚合内。
+- 合法演示模版 ID：`template01` … `template06`（见 `DEMO_SITE_TEMPLATE_IDS`；其中 **`template06` 为钛业主站**，路由 `pages/template06/`，与其余模版共用 `DEMO_SITE_TEMPLATES` 中同构数据）。
+- `nuxt.config` 中 `runtimeConfig.public.demoSiteTemplate`（或环境变量 `NUXT_PUBLIC_DEMO_SITE_TEMPLATE`）用于选择默认演示模版。
 
 ---
 

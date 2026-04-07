@@ -2,7 +2,7 @@
  * 示例站模版：runtimeConfig.public.demoSiteTemplate 或 NUXT_PUBLIC_DEMO_SITE_TEMPLATE
  * （兼容旧环境变量 NUXT_PUBLIC_MCMS_DEMO_TEMPLATE，见 nuxt.config）
  * - 仅接受字面量 `template01` … `template06`（非法值按 {@link DEFAULT_DEMO_SITE_TEMPLATE} 回退）
- * - `template06`：钛业主站（{@link MAIN_SITE_ROUTE_PREFIX}，`pages/template06/`）
+ * - `template06`：钛业主站（{@link MAIN_SITE_ROUTE_PREFIX}，`pages/template06/`），与 template01～05 **共用同源演示数据**（见 `demoSiteTemplates.ts`）
  * - `template01` … `template05`：示例子站，路由 `/template0X`
  */
 export const DEMO_SITE_TEMPLATE_IDS = [
@@ -10,13 +10,14 @@ export const DEMO_SITE_TEMPLATE_IDS = [
   'template02',
   'template03',
   'template04',
-  'template05'
+  'template05',
+  'template06'
 ] as const
 
 export type DemoSiteTemplateId = (typeof DEMO_SITE_TEMPLATE_IDS)[number]
 
-/** 含主站，与 `demoSiteTemplate` 配置取值一致 */
-export const DEMO_SITE_CONFIG_IDS = [...DEMO_SITE_TEMPLATE_IDS, 'template06'] as const
+/** 与 `demoSiteTemplate` 配置取值一致（含主站 template06） */
+export const DEMO_SITE_CONFIG_IDS = DEMO_SITE_TEMPLATE_IDS
 
 export type DemoSiteConfigValue = (typeof DEMO_SITE_CONFIG_IDS)[number]
 

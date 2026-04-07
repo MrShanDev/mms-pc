@@ -3,6 +3,8 @@
     <div class="auth-card width_1400_auto">
       <h1 class="auth-title">{{ t('auth.loginTitle') }}</h1>
       <p class="auth-sub">{{ companyName }}</p>
+      <p v-if="showMockLoginHint" class="auth-mock-hint">{{ t('auth.mockLoginHint') }}</p>
+      <p v-if="loginRedirectHint" class="auth-redirect-hint">{{ loginRedirectHint }}</p>
 
       <el-form ref="formRef" :model="form" :rules="rules" class="auth-form" @submit.prevent>
         <div class="field-label">{{ t('auth.account') }}</div>
@@ -37,25 +39,16 @@
         <NuxtLink :to="r.forgotPassword">{{ t('auth.retrievePassword') }}</NuxtLink>
       </div>
     </div>
-
-    <footer class="auth-footer">
-      <div class="width_1400_auto">
-        <p>{{ footerLead }}</p>
-        <p>
-          {{ t('common.hotline') }}
-          <a :href="`tel:${hotlineTel}`">{{ hotlineDisplay }}</a>
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
 import { login } from '@/api/user'
+import { isAuthMockEnabled } from '@/api/user/mockAuth'
 import { useUserStore } from '@/stores/user'
 import { useTitaCanonical } from '@/utils/titaSiteContent'
 import {
@@ -72,16 +65,23 @@ definePageMeta({
 })
 
 const router = useRouter()
+const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const userStore = useUserStore()
 
 const demoHomePath = () => {
+  if (
+    route.path === MAIN_SITE_ROUTE_PREFIX ||
+    route.path.startsWith(`${MAIN_SITE_ROUTE_PREFIX}/`)
+  ) {
+    return MAIN_SITE_ROUTE_PREFIX
+  }
   const tpl = parseDemoSiteTemplate(runtimeConfig.public.demoSiteTemplate)
   return tpl === 'template06' ? MAIN_SITE_ROUTE_PREFIX : `/${tpl}`
 }
 const { t } = useAppLocale()
 const { locale } = useI18n()
-const { companyName, footerLead, hotlineDisplay, hotlineTel } = useTitaSite()
+const { companyName } = useTitaSite()
 const r = useTemplate06Routes()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical(r.login)
 
@@ -94,6 +94,21 @@ useHead(() => ({
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))
+
+const showMockLoginHint = computed(() => isAuthMockEnabled())
+
+/** 从购物车等需登录页跳转过来时的说明 */
+const loginRedirectHint = computed(() => {
+  const raw = route.query.redirect
+  if (typeof raw !== 'string' || !raw) return ''
+  try {
+    const path = decodeURIComponent(raw).split('?')[0] ?? ''
+    if (path.includes('/cart')) return t('template06Shop.loginToViewCart')
+  } catch {
+    return ''
+  }
+  return ''
+})
 
 const formRef = ref<FormInstance>()
 const loading = ref(false)
@@ -183,6 +198,28 @@ const onSubmit = async () => {
   color: #1a1a1a;
 }
 
+.auth-mock-hint {
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5c4a2a;
+  background: #fffbeb;
+  border: 1px solid #f5e6c8;
+  border-radius: 4px;
+}
+
+.auth-redirect-hint {
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #333;
+  background: #f0f7ff;
+  border: 1px solid #c8e0f5;
+  border-radius: 4px;
+}
+
 .auth-sub {
   margin: 8px 0 28px;
   font-size: 13px;
@@ -232,19 +269,4 @@ const onSubmit = async () => {
   }
 }
 
-.auth-footer {
-  padding: 24px 0;
-  background: #2b2b2b;
-  color: #bbb;
-  font-size: 13px;
-  line-height: 1.6;
-
-  a {
-    color: #e8e8e8;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
 </style>

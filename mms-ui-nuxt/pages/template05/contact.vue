@@ -65,7 +65,7 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const C = DEMO_SITE_TEMPLATES.template05
 const p = C.contactPage
@@ -104,8 +104,8 @@ function onReset() {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/contact')
 
 useHead(() => ({
-  title: `${t('demo.common.contactUs')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: p.formIntro ?? C.metaDescription }, ...canonicalOg],
+  title: t('contact.metaTitle'),
+  meta: [{ name: 'description', content: t('contact.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

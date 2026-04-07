@@ -11,12 +11,12 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 definePageMeta({ layout: 'demo-template02', requiresAuth: false })
 
 const C = DEMO_SITE_TEMPLATES.template02
-const { locale } = useI18n()
+const { t, locale } = useAppLocale()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template02')
 
 useHead(() => ({
-  title: C.metaTitle,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: C.siteTitle,
+  meta: [{ name: 'description', content: t('meta.homeDesc') }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

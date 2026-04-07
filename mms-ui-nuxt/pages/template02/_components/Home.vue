@@ -92,7 +92,7 @@
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 import HomeHeroCarousel from './HomeHeroCarousel.vue'
 
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const c = DEMO_SITE_TEMPLATES.template02
 const home = c.home as Record<string, any>

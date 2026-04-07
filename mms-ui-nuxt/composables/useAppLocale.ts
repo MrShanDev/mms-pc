@@ -5,6 +5,10 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 /**
  * 在官方 @nuxtjs/i18n 之上保留项目惯用 API：
  * `setLocale`、`t(path, params?)`、`headerText`
+ *
+ * 演示模版 template01～template06 页面应与 template06 一致：用本 composable 取 `t` / `locale`，
+ * 站点 SEO 文案使用根级键 `about` / `news` / `contact` / `product` / `meta.homeDesc` 等（见 zh.json / en.json），
+ * 正文仍来自 `DEMO_SITE_TEMPLATES` 同源数据。
  */
 export function useAppLocale() {
   const { locale, setLocale: i18nSetLocale, t: i18nT } = useI18n()

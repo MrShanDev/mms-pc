@@ -34,12 +34,12 @@ definePageMeta({ layout: 'demo-template01', requiresAuth: false })
 const C = DEMO_SITE_TEMPLATES.template01
 const page = C.casesPage!
 
-const { locale, t } = useI18n()
+const { locale, t } = useAppLocale()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template01/cases')
 
 useHead(() => ({
-  title: `${page.title} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: page.intro ?? C.metaDescription }, ...canonicalOg],
+  title: t('casesPage.metaTitle'),
+  meta: [{ name: 'description', content: t('casesPage.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

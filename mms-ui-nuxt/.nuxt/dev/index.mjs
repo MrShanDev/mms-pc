@@ -912,7 +912,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "demoSiteTemplate": "template02",
+    "demoSiteTemplate": "template06",
     "site": {
       "name": "Shaanxi Tuotaizhe",
       "description": "Metal technology and titanium alloy bicycles.",

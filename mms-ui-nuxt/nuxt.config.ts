@@ -155,13 +155,14 @@ export default defineNuxtConfig({
     },
 
     // 应用配置（appApiUrl/wsUrl 可由 NUXT_PUBLIC_APP_API_URL/NUXT_PUBLIC_APP_WS_URL 运行时覆盖）
+    // 模拟登录见 api/user/mockAuth.ts；NUXT_PUBLIC_AUTH_MOCK=false 关闭
     runtimeConfig: {
         public: {
             /** 示例站模版：仅 `template01` … `template06`；优先 `NUXT_PUBLIC_DEMO_SITE_TEMPLATE`，兼容旧变量 `NUXT_PUBLIC_MCMS_DEMO_TEMPLATE`；非法值按 `utils/demoSite.ts` 默认回退 */
             demoSiteTemplate:
                 (process.env.NUXT_PUBLIC_DEMO_SITE_TEMPLATE ||
                     process.env.NUXT_PUBLIC_MCMS_DEMO_TEMPLATE ||
-                    'template02') as string,
+                    'template06') as string,
             site: {
                 name: 'Shaanxi Tuotaizhe',
                 description: 'Metal technology and titanium alloy bicycles.',

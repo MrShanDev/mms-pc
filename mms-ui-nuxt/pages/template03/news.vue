@@ -63,7 +63,7 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template03', requiresAuth: false })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const C = DEMO_SITE_TEMPLATES.template03
 
@@ -82,8 +82,8 @@ function formatTime(date: string) {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/news')
 
 useHead(() => ({
-  title: `${C.newsPage.title} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: t('news.metaTitle'),
+  meta: [{ name: 'description', content: t('news.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

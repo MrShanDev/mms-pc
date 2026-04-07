@@ -33,7 +33,7 @@ definePageMeta({ layout: 'demo-template05', requiresAuth: false })
 
 const C = DEMO_SITE_TEMPLATES.template05
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 function newsTabLabelByQuery(query: string | undefined) {
   if (query === 'company') return t('demo.common.newsTabCompany')
@@ -85,8 +85,8 @@ function formatNewsDate(date: string) {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template05/news')
 
 useHead(() => ({
-  title: `${pageTitle.value} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: C.metaDescription }, ...canonicalOg],
+  title: t('news.metaTitle'),
+  meta: [{ name: 'description', content: t('news.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

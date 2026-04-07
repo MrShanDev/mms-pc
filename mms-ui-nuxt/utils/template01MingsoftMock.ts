@@ -183,14 +183,14 @@ export const TEMPLATE01_DEMO_SITE_CONTENT: DemoTemplateContent = {
   nav: [
     { label: '首页', to: '/template01' },
     { label: '产品中心', to: '/template01/products' },
-    { label: '关于我们', to: '/template01/about' },
+    { label: '公司介绍', to: '/template01/about' },
     { label: '新闻中心', to: '/template01/news' },
     { label: '联系我们', to: '/template01/contact' }
   ],
   footerCopyright: '站点版权信息，可配置',
   techSupport: '技术支持:',
   aboutPage: {
-    kicker: '关于我们',
+    kicker: '公司介绍',
     title: '某某清洁工具有限公司',
     lead: AUX_LINE,
     paragraphs: [COMPANY_INTRO],
@@ -313,13 +313,13 @@ export const TEMPLATE01_DEMO_SITE_CONTENT: DemoTemplateContent = {
     sideImgContact: template01DemoAsset('/193/images/video-img-1.jpg'),
     sideImgAbout: template01DemoAsset('/193/images/video-img-2.jpg'),
     about: {
-      title: '关于我们',
+      title: '公司介绍',
       lead: AUX_LINE,
       body: COMPANY_INTRO,
       cta: '了解更多 >>'
     },
     contactBanner: { label: '联系' },
-    aboutMini: { label: '关于' },
+    aboutMini: { label: '公司介绍' },
     productKicker: '产品中心',
     productLead: AUX_LINE,
     productTiles: TEMPLATE01_CATALOG.products.map((p) => ({

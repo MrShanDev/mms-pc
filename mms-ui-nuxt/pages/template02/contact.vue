@@ -131,7 +131,7 @@ import InnerPageCover from './_components/InnerPageCover.vue'
 
 definePageMeta({ layout: 'demo-template02', requiresAuth: false })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const C = DEMO_SITE_TEMPLATES.template02
 const p = C.contactPage
@@ -178,8 +178,8 @@ function onSubmit() {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template02/contact')
 
 useHead(() => ({
-  title: `${t('demo.common.contactUs')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: p.formIntro ?? C.metaDescription }, ...canonicalOg],
+  title: t('contact.metaTitle'),
+  meta: [{ name: 'description', content: t('contact.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

@@ -1,0 +1,1 @@
+import{C as t,aC as s,e as r,$ as o,o as a,l,bV as p,a4 as n}from"./BDcoAx8F.js";const d=t({to:{type:s([String,Object]),required:!0},disabled:Boolean});var i=r({__name:"teleport",props:d,setup(u){return(e,c)=>e.disabled?o(e.$slots,"default",{key:0}):(a(),l(p,{key:1,to:e.to},[o(e.$slots,"default")],8,["to"]))}});const b=n(i);export{b as E,d as t};

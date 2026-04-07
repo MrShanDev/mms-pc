@@ -113,7 +113,7 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template03', requiresAuth: false })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const base392 = 'https://392.mstore.demo.mingsoft.net'
 const icoHotline = `${base392}/392/picture/footer35935350.png`
@@ -148,8 +148,8 @@ function onSubmit() {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/contact')
 
 useHead(() => ({
-  title: `${t('demo.common.contactUs')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: formIntro.value || C.metaDescription }, ...canonicalOg],
+  title: t('contact.metaTitle'),
+  meta: [{ name: 'description', content: t('contact.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

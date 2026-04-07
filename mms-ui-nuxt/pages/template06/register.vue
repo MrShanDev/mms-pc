@@ -104,25 +104,15 @@
       :show-cancel-button="false"
       :confirm-button-text="t('auth.termsOk')"
     />
-
-    <footer class="auth-footer">
-      <div class="width_1400_auto">
-        <p>{{ footerLead }}</p>
-        <p>
-          {{ t('common.hotline') }}
-          <a :href="`tel:${hotlineTel}`">{{ hotlineDisplay }}</a>
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, ref, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
-import AgreementDialog from '@/components/common/AgreementDialog.vue'
+import AgreementDialog from '@/pages/template06/_components/AgreementDialog.vue'
 import { registerMember, sendSmsCode } from '@/api/user'
 import { useUserStore } from '@/stores/user'
 import { useTitaCanonical } from '@/utils/titaSiteContent'
@@ -136,18 +126,26 @@ definePageMeta({
 })
 
 const router = useRouter()
+const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const userStore = useUserStore()
 
 const routes = useTemplate06Routes()
 
 const goDemoHome = () => {
+  if (
+    route.path === MAIN_SITE_ROUTE_PREFIX ||
+    route.path.startsWith(`${MAIN_SITE_ROUTE_PREFIX}/`)
+  ) {
+    router.push(MAIN_SITE_ROUTE_PREFIX)
+    return
+  }
   const id = parseDemoSiteTemplate(runtimeConfig.public.demoSiteTemplate)
   router.push(id === 'template06' ? MAIN_SITE_ROUTE_PREFIX : `/${id}`)
 }
 const { t } = useAppLocale()
 const { locale } = useI18n()
-const { companyName, footerLead, hotlineDisplay, hotlineTel } = useTitaSite()
+const { companyName } = useTitaSite()
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical(routes.register)
 
 const termsHtml = computed(() => t('terms.html'))
@@ -457,20 +455,6 @@ onUnmounted(() => {
 
   a {
     color: #b8860b;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.auth-footer {
-  padding: 24px 0;
-  background: #2b2b2b;
-  color: #bbb;
-  font-size: 13px;
-  a {
-    color: #e8e8e8;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

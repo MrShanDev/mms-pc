@@ -17,7 +17,7 @@
           {{ t('common.customerEmail') }}
           <a :href="`mailto:${customerEmail}`">{{ customerEmail }}</a>
         </p>
-        <p>{{ t('common.address') }}</p>
+        <p>{{ contactAddress || t('common.address') }}</p>
         <p class="icp">
           <a :href="icpRecordHref" target="_blank" rel="noopener noreferrer">{{ icpRecordText }}</a>
           {{ t('common.icpSuffix') }}
@@ -29,8 +29,15 @@
 
 <script setup lang="ts">
 const { t } = useAppLocale()
-const { customerEmail, footerLead, hotlineDisplay, hotlineTel, icpRecordHref, icpRecordText } =
-  useTitaSite()
+const {
+  contactAddress,
+  customerEmail,
+  footerLead,
+  hotlineDisplay,
+  hotlineTel,
+  icpRecordHref,
+  icpRecordText
+} = useTitaSite()
 const r = useTemplate06Routes()
 </script>
 

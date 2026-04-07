@@ -41,7 +41,7 @@
 import type { E7Crumb } from '@/utils/template05E7'
 import PageSidebar from './PageSidebar.vue'
 
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 withDefaults(
   defineProps<{

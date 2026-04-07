@@ -44,7 +44,7 @@ const props = withDefaults(
   { sidebarMode: 'default' }
 )
 
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const c = DEMO_SITE_TEMPLATES.template05
 const cp = c.contactPage

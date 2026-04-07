@@ -75,7 +75,7 @@ import { getLocaleDir, getLocaleLanguage } from '@/i18n/available-locales'
 
 definePageMeta({ layout: 'demo-template03', requiresAuth: false })
 
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 
 const C = DEMO_SITE_TEMPLATES.template03
 const bannerSrc =
@@ -96,8 +96,8 @@ function onSubmit() {
 const { link: canonicalLink, og: canonicalOg } = useTitaCanonical('/template03/message')
 
 useHead(() => ({
-  title: `${t('demo.common.messageBoardTitle')} — ${C.siteTitle}`,
-  meta: [{ name: 'description', content: lead.value || C.metaDescription }, ...canonicalOg],
+  title: t('siteMessage.metaTitle'),
+  meta: [{ name: 'description', content: t('siteMessage.metaDesc', { company: C.siteTitle }) }, ...canonicalOg],
   link: canonicalLink,
   htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
 }))

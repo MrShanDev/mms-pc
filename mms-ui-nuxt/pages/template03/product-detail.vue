@@ -146,7 +146,7 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, locale } = useAppLocale()
 const slug = computed(() => String(route.query.slug || '').trim())
 const C = DEMO_SITE_TEMPLATES.template03
 const catalog = C.productCatalog!
@@ -249,8 +249,17 @@ useHead(() => {
   const link = base ? [{ rel: 'canonical', href: `${base}${path}` }] : []
   const og = base ? [{ property: 'og:url', content: `${base}${path}` }] : []
   return {
-    title: `${product.value?.title ?? t('demo.common.productTitleFallback')} — ${C.siteTitle}`,
-    meta: [{ name: 'description', content: product.value?.summary ?? C.metaDescription }, ...og],
+    title: product.value?.title ?? t('product.metaTitle'),
+    meta: [
+      {
+        name: 'description',
+        content: t('productItem.metaDesc', {
+          title: product.value?.title ?? '',
+          company: C.siteTitle
+        })
+      },
+      ...og
+    ],
     link,
     htmlAttrs: { lang: getLocaleLanguage(locale.value), dir: getLocaleDir(locale.value) }
   }

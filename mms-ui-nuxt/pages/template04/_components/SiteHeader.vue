@@ -61,11 +61,12 @@
 </template>
 
 <script setup lang="ts">
+import DemoLocaleSwitch from '@/components/demo/DemoLocaleSwitch.vue'
 import type { DemoNavItem } from '@/utils/demoSite'
 import { DEMO_SITE_TEMPLATES } from '@/utils/demoSiteTemplates'
 const c = DEMO_SITE_TEMPLATES.template04
 const route = useRoute()
-const { t } = useI18n()
+const { t } = useAppLocale()
 
 const logoSrc = computed(
   () =>

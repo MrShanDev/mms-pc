@@ -1,0 +1,1 @@
+import{ad as s}from"./BDcoAx8F.js";const l="http://beian.miit.gov.cn/",f="陕ICP备2026001012号";function p(o){var c,e,i;const n=((i=(e=(c=s().public)==null?void 0:c.site)==null?void 0:e.url)==null?void 0:i.replace(/\/$/,""))||"",t=n?[{rel:"canonical",href:`${n}${o==="/"?"/":o}`}]:[],r=n?[{property:"og:url",content:`${n}${o}`}]:[];return{link:t,og:r}}export{l as a,f as i,p as u};
