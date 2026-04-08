@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /member/
-Disallow: /login
-Disallow: /pay/
-Disallow: /settle/
-
-Sitemap: https://banmaid.com/sitemap.xml
