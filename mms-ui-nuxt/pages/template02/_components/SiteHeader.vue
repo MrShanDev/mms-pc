@@ -11,7 +11,6 @@
           </div>
         </div>
         <div class="col-9 text-right d-flex justify-content-end align-items-center flex-wrap">
-          <DemoLocaleSwitch class="site-demo-locale mb-2 mb-md-0" />
           <nav class="site-navigation text-right ml-auto" role="navigation" :aria-label="t('demo.common.mainNav')">
             <ul class="site-menu main-menu js-clone-nav ml-auto">
               <li
@@ -20,6 +19,9 @@
                 :class="{ active: isNavActive(item.to) }"
               >
                 <NuxtLink :to="item.to ?? '#'" class="nav-link">{{ item.label }}</NuxtLink>
+              </li>
+              <li>
+                <DemoLocaleSwitch class="site-demo-locale" />
               </li>
             </ul>
           </nav>

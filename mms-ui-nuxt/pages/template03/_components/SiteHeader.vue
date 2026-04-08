@@ -1,5 +1,4 @@
 <template>
-  <!-- 对齐 392 顶栏：pz_top / logo / menu / sub -->
   <div id="top" class="pz_top">
     <div class="top container-fluid" id="header">
       <div class="container">
@@ -9,7 +8,9 @@
               <img :src="logoSrc" :alt="c.siteTitle">
             </NuxtLink>
           </div>
-          <DemoLocaleSwitch />
+          <div>
+            <DemoLocaleSwitch />
+          </div>
         </div>
         <div class="menu">
           <ul>

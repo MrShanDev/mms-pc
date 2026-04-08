@@ -80,6 +80,7 @@ export default defineNuxtConfig({
     },
     css: [
         '~/assets/css/reset.css',
+        '~/assets/css/demo-template-scroll.css',
         '~/assets/css/common.css',
         '~/assets/css/iconfont.css',
         '~/assets/css/sxpcwlkj.css',

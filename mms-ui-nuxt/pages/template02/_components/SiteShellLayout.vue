@@ -1,8 +1,11 @@
 <template>
+  <div class="demo-template-scroll-root">
   <div id="home-section" class="site-wrap layout-template layout-template--template02 mstore-layout">
     <SiteHeader />
     <slot />
     <SiteFooter />
+  </div>
+    <DemoSiteServiceDock template-id="template02" />
   </div>
 </template>
 

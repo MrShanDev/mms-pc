@@ -36,12 +36,21 @@ function onLangChange(code: string) {
 </script>
 
 <style scoped>
+/* 保持 EP 默认 inline-block；勿在外层用 flex 覆盖本类，否则会破坏内部选中项布局 */
 .demo-locale-switch {
   min-width: 128px;
-  max-width: 100%;
 }
 
-.demo-locale-switch :deep(.el-input__wrapper) {
+.demo-locale-switch :deep(.el-select__wrapper) {
   box-shadow: 0 0 0 1px #ddd inset;
+}
+
+/* 避免占位/选中项 z-index:-1 落在 wrapper 底色之下导致「只见箭头不见字」 */
+.demo-locale-switch :deep(.el-select__placeholder) {
+  z-index: 1;
+}
+
+.demo-locale-switch :deep(.el-select__suffix) {
+  z-index: 2;
 }
 </style>

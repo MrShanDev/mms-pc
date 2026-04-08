@@ -13,3 +13,15 @@ mms-ui-nuxt/node_modules/zrender/lib/tool
 mms-ui-nuxt/node_modules/zrender/src/canvas
 mms-ui-nuxt/node_modules/zrender/lib/graphic
 mms-ui-nuxt/node_modules
+*.map
+*.mjs
+*.mjs
+*.mjs
+mms-ui-nuxt/scripts
+*.mjs
+*.mjs
+mms-ui-nuxt/scripts/packs
+mms-ui-nuxt/scripts/packs
+mms-ui-nuxt/scripts/packs
+mms-ui-nuxt/scripts/packs
+mms-ui-nuxt/scripts/packs

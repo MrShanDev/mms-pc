@@ -193,10 +193,13 @@ defineExpose({ openMobileMenu })
     float: none !important;
   }
 
+  /* 占满 Logo 列右侧剩余宽度，避免未设 col 时 flex 子项被压成极窄条，导致内联 el-select（width:100%）只剩 ~箭头宽度 */
   #topsearch {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
 
@@ -240,19 +243,29 @@ defineExpose({ openMobileMenu })
   align-items: center;
 }
 
+/* 勿把 .el-select 设成 display:flex，会覆盖 EP 的 inline-block，导致选中项（placeholder）布局塌陷只显示箭头 */
 .e7-topsearch-locale :deep(.demo-locale-switch) {
-  display: flex;
-  align-items: center;
+  flex: 0 0 auto;
+  width: 128px;
+  min-width: 128px;
+  max-width: none;
+  vertical-align: middle;
 }
 
-.e7-topsearch-locale :deep(.demo-locale-select) {
-  min-width: 100px;
-  max-width: 118px;
+.e7-topsearch-locale :deep(.demo-locale-switch .el-select__wrapper) {
   min-height: 38px;
   padding: 6px 10px;
   font-size: 13px;
   border-radius: 4px;
-  border-color: #ccc;
+}
+
+/* EP 单选展示文案用 .el-select__placeholder 且 z-index:-1，在部分 stacking 下会被画在底色下方；顶栏强制拉回可见 */
+.e7-topsearch-locale :deep(.demo-locale-switch .el-select__placeholder) {
+  z-index: 1;
+}
+
+.e7-topsearch-locale :deep(.demo-locale-switch .el-select__suffix) {
+  z-index: 2;
 }
 
 .e7-logo-locale {

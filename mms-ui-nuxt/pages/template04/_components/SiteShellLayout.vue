@@ -1,9 +1,12 @@
 <template>
+  <div class="demo-template-scroll-root">
   <div class="layout-template layout-template--template04 e9-layout">
     <SiteHeader ref="headerRef" />
     <slot />
     <FooterDockNav @open-menu="onFooterMenu" />
     <SiteFooter />
+  </div>
+    <DemoSiteServiceDock template-id="template04" />
   </div>
 </template>
 

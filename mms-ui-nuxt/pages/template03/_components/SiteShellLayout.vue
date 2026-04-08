@@ -1,4 +1,5 @@
 <template>
+  <div class="demo-template-scroll-root">
   <div class="layout-template layout-template--template03 ms392-layout">
     <SiteHeader />
     <div v-if="!is392Home" class="h_155" />
@@ -6,6 +7,8 @@
       <slot />
     </div>
     <SiteFooter />
+  </div>
+    <DemoSiteServiceDock template-id="template03" />
   </div>
 </template>
 

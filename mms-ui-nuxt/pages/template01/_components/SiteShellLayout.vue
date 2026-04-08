@@ -1,4 +1,5 @@
 <template>
+  <div class="demo-template-scroll-root">
   <div class="layout-template layout-template--template01 ms-layout">
     <header class="ms-header">
       <div class="ms-header-inner ms-w1440">
@@ -33,6 +34,8 @@
     <slot />
 
     <DemoSiteFooter />
+  </div>
+    <DemoSiteServiceDock template-id="template01" />
   </div>
 </template>
 
