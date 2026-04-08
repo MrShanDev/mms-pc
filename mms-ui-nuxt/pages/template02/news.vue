@@ -2,7 +2,7 @@
   <!-- 对齐 361 Blog 列表：内顶区 + post-entry-1 三列 + 分页 -->
   <main>
     <InnerPageCover
-      :title="C.newsPage.title"
+      :title="t('demo.common.crumbNewsCenter')"
       :lead="bannerLead"
       :background-image="innerBannerSrc"
     />
@@ -81,7 +81,7 @@ const route = useRoute()
 
 const innerBannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/image/20230524/1684918832729100.jpg')
-const bannerLead = C.contactPage.bannerLead ?? C.productCatalog?.pageLead ?? ''
+const bannerLead = computed(() => t('demo.common.innerNewsListBannerLead'))
 
 const activeCategory = computed(() => {
   const q = route.query.category as string | undefined

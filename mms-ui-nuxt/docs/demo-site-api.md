@@ -78,7 +78,7 @@ const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template06
 - **导航**：`nav: DemoNavItem[]`（`label`, `to?`, `hash?`, `children?`）
 - **首页**：`home: Record<string, unknown>`（各模版可解不同形状）
 - **关于**：`aboutPage`（`kicker`, `title`, `lead`, `paragraphs`, `image`, `cta?`, `trustBlocks?`）
-- **新闻**：`newsPage: { title, items: DemoNewsItem[] }`
+- **新闻**：`newsPage: { title, items: DemoNewsItem[]; subTabs?: DemoNewsSubTab[] }`（子栏目 Tab 文案与 `query`/`category` 见 `utils/demoNewsTabs.ts`）
 - **联系**：`contactPage`（标题、邮箱、电话、地址、表单说明、横幅图等）
 - **产品**：`productCatalog?`（`pageTitle`, `categories`, `products` 等）
 - **可选**：`privacyPage?`, `faqPage?`, `casesPage?`

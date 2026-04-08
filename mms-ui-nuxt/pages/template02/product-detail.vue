@@ -2,7 +2,7 @@
   <main v-if="product" class="tpl-sub-page tpl-sub-page--product-detail ms-product-detail">
     <InnerPageCover
       :title="product.title"
-      :lead="catalog.pageLead || ''"
+      :lead="innerProductBannerLead"
       :background-image="bannerSrc"
     />
     <div class="site-section">
@@ -22,7 +22,7 @@
         <nav class="small text-muted mb-3" :aria-label="t('demo.common.breadcrumb')">
           <NuxtLink to="/template02">{{ t('demo.common.home') }}</NuxtLink>
           /
-          <NuxtLink to="/template02/products">{{ catalog.pageTitle }}</NuxtLink>
+          <NuxtLink to="/template02/products">{{ t('demo.common.crumbProductCenter') }}</NuxtLink>
           /
           <span>{{ product.title }}</span>
         </nav>
@@ -137,6 +137,7 @@ definePageMeta({
 
 const route = useRoute()
 const { t, locale } = useAppLocale()
+const innerProductBannerLead = computed(() => t('demo.common.innerProductListBannerLead'))
 const slug = computed(() => String(route.query.slug || '').trim())
 const C = DEMO_SITE_TEMPLATES.template02
 const catalog = C.productCatalog!

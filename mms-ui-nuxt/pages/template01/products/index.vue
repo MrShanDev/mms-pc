@@ -3,8 +3,9 @@
     <InnerPageBanner
       home-path="/template01"
       :banner-src="bannerSrc"
+      :banner-title="t('demo.common.crumbProductCenter')"
       :banner-lead="bannerLead"
-      :banner-alt="catalog.pageTitle"
+      :banner-alt="t('demo.common.crumbProductCenter')"
       :crumbs="crumbs"
     >
       <template #sidenav>
@@ -69,7 +70,7 @@ const catalog = C.productCatalog!
 
 const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/cms/category/1688608258562.jpg')
-const bannerLead = catalog.pageLead ?? C.contactPage.bannerLead ?? ''
+const bannerLead = computed(() => t('demo.common.innerProductListBannerLead'))
 
 const route = useRoute()
 const { t, locale } = useAppLocale()

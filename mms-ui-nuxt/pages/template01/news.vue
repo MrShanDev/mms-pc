@@ -3,8 +3,9 @@
     <InnerPageBanner
       home-path="/template01"
       :banner-src="bannerSrc"
+      :banner-title="t('demo.common.crumbNewsCenter')"
       :banner-lead="bannerLead"
-      :banner-alt="C.newsPage.title"
+      :banner-alt="t('demo.common.crumbNewsCenter')"
       :crumbs="crumbs"
     >
       <template #sidenav>
@@ -67,13 +68,19 @@ const newsTabs = computed(() =>
   TEMPLATE01_NEWS_TABS.map((tab) => ({
     ...tab,
     label:
-      tab.category === 'company' ? t('demo.common.newsTabCompany') : t('demo.common.newsTabIndustry')
+      tab.category === 'company'
+        ? t('demo.common.newsTabCompany')
+        : tab.category === 'industry'
+          ? t('demo.common.newsTabIndustry')
+          : tab.category === 'faq'
+            ? t('demo.common.newsTabFaq')
+            : tab.label
   }))
 )
 
 const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/cms/category/1688608258562.jpg')
-const bannerLead = C.contactPage.bannerLead ?? C.productCatalog?.pageLead ?? ''
+const bannerLead = computed(() => t('demo.common.innerNewsListBannerLead'))
 
 const crumbs = computed(() => [
   { label: t('demo.common.home'), to: '/template01' },

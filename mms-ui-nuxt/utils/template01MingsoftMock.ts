@@ -2,7 +2,12 @@
  * template01 源演示数据（`TEMPLATE01_DEMO_SITE_CONTENT`）：B2B 工厂站信息架构参考 mingsoft 演示站。
  * 经 `demoSiteContent.buildDemoContentForTemplate` 复制为 template02～06；类型为 `DemoTemplateContent`（见 `docs/demo-site-api.md`）。
  */
-import type { DemoProductCategory, DemoProductDetail, DemoTemplateContent } from '@/utils/demoSite'
+import type {
+  DemoNewsCategoryKey,
+  DemoProductCategory,
+  DemoProductDetail,
+  DemoTemplateContent
+} from '@/utils/demoSite'
 
 export const TEMPLATE01_REFERENCE_URL = 'https://193.mstore.demo.mingsoft.net/' as const
 
@@ -152,10 +157,11 @@ export function template01RelatedProducts(
   return [...same, ...rest].slice(0, limit)
 }
 
-/** 新闻中心子 Tab（对齐演示站） */
-export const TEMPLATE01_NEWS_TABS = [
-  { category: 'company' as const, label: '公司新闻', query: 'company' },
-  { category: 'industry' as const, label: '行业资讯', query: 'industry' }
+/** 新闻中心子 Tab（与 `newsPage.subTabs` 一致，供列表/详情侧栏） */
+export const TEMPLATE01_NEWS_TABS: { category: DemoNewsCategoryKey; label: string; query: string }[] = [
+  { category: 'company', label: '公司新闻', query: 'company' },
+  { category: 'industry', label: '行业资讯', query: 'industry' },
+  { category: 'faq', label: '产品常见问题', query: 'faq' }
 ]
 
 export function template01NewsById(content: DemoTemplateContent, id: string) {
@@ -225,6 +231,11 @@ export const TEMPLATE01_DEMO_SITE_CONTENT: DemoTemplateContent = {
   },
   newsPage: {
     title: '新闻中心',
+    subTabs: [
+      { query: 'company', category: 'company', label: '公司新闻' },
+      { query: 'industry', category: 'industry', label: '行业资讯' },
+      { query: 'faq', category: 'faq', label: '产品常见问题' }
+    ],
     items: [
       {
         id: 'news-replace-mop-head',

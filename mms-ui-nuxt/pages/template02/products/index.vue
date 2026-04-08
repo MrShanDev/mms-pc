@@ -2,7 +2,7 @@
   <!-- 对齐 361 Products 列表：内顶区 + pro-category + 宫格 + 分页 -->
   <main>
     <InnerPageCover
-      :title="catalog.pageTitle"
+      :title="t('demo.common.crumbProductCenter')"
       :lead="bannerLead"
       :background-image="innerBannerSrc"
     />
@@ -64,7 +64,7 @@ const catalog = C.productCatalog!
 
 const innerBannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/image/20230524/1684918832729100.jpg')
-const bannerLead = catalog.pageLead ?? C.contactPage.bannerLead ?? ''
+const bannerLead = computed(() => t('demo.common.innerProductListBannerLead'))
 
 const route = useRoute()
 const activeSlug = computed(() => (route.query.category as string | undefined) || null)

@@ -10,10 +10,7 @@ export const availableLocales = [
   { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },
   { code: 'de', language: 'de-DE', name: 'Deutsch', file: 'de.json' },
   { code: 'es', language: 'es-ES', name: 'Español', file: 'es.json' },
-  { code: 'ru', language: 'ru-RU', name: 'Русский', file: 'ru.json' },
-  { code: 'pt', language: 'pt-BR', name: 'Português', file: 'pt.json' },
-  { code: 'it', language: 'it-IT', name: 'Italiano', file: 'it.json' },
-  { code: 'ar', language: 'ar', name: 'العربية', file: 'ar.json', dir: 'rtl' as const }
+  { code: 'ru', language: 'ru-RU', name: 'Русский', file: 'ru.json' }
 ] as const
 
 export type SiteLocaleCode = (typeof availableLocales)[number]['code']

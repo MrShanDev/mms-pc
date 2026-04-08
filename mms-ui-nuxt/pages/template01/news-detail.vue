@@ -9,6 +9,7 @@
       >
         <div class="pd-banner-overlay">
           <div class="pd-page-inner">
+            <h2 class="pd-banner-title">{{ t('demo.common.crumbNewsCenter') }}</h2>
             <h3 class="pd-banner-lead">{{ bannerLead }}</h3>
           </div>
         </div>
@@ -39,7 +40,7 @@
           <span class="pd-addr-sep">&gt;&gt;</span>
           <NuxtLink to="/template01">{{ t('demo.common.home') }}</NuxtLink>
           <span class="pd-addr-sep">&gt;&gt;</span>
-          <NuxtLink to="/template01/news">{{ C.newsPage.title }}</NuxtLink>
+          <NuxtLink to="/template01/news">{{ t('demo.common.crumbNewsCenter') }}</NuxtLink>
           <span class="pd-addr-sep">&gt;&gt;</span>
           <NuxtLink
             v-if="article.category"
@@ -128,13 +129,19 @@ watch(
 )
 
 const bannerSrc = template01DemoAsset('/upload/image/20220329/1648530475705552.jpg')
-const bannerLead = computed(() => C.productCatalog?.pageLead ?? '')
+const bannerLead = computed(() => t('demo.common.innerNewsListBannerLead'))
 
 const newsTabs = computed(() =>
   TEMPLATE01_NEWS_TABS.map((tab) => ({
     ...tab,
     label:
-      tab.category === 'company' ? t('demo.common.newsTabCompany') : t('demo.common.newsTabIndustry')
+      tab.category === 'company'
+        ? t('demo.common.newsTabCompany')
+        : tab.category === 'industry'
+          ? t('demo.common.newsTabIndustry')
+          : tab.category === 'faq'
+            ? t('demo.common.newsTabFaq')
+            : tab.label
   }))
 )
 
@@ -147,6 +154,7 @@ const categoryTabLabel = computed(() => {
   const cat = article.value?.category
   if (cat === 'company') return t('demo.common.newsTabCompany')
   if (cat === 'industry') return t('demo.common.newsTabIndustry')
+  if (cat === 'faq') return t('demo.common.newsTabFaq')
   return t('demo.common.industryNews')
 })
 
@@ -204,6 +212,16 @@ useHead(() => {
   display: flex;
   align-items: center;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 55%, transparent 100%);
+}
+
+.pd-banner-title {
+  margin: 0 0 12px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  max-width: 720px;
 }
 
 .pd-banner-lead {

@@ -79,6 +79,13 @@ export interface DemoNewsItem {
   category?: DemoNewsCategoryKey
 }
 
+/** 新闻列表侧栏子栏目（与演示数据 `newsPage.subTabs` 对齐） */
+export interface DemoNewsSubTab {
+  query: string
+  category: DemoNewsCategoryKey
+  label: string
+}
+
 export interface DemoProductTile {
   title: string
   image: string
@@ -151,7 +158,7 @@ export interface DemoTemplateContent {
     cta?: string
     trustBlocks?: { title: string; paragraphs: string[]; image?: string }[]
   }
-  newsPage: { title: string; items: DemoNewsItem[] }
+  newsPage: { title: string; items: DemoNewsItem[]; subTabs?: DemoNewsSubTab[] }
   contactPage: {
     title: string
     email: string

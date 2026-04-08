@@ -15,7 +15,7 @@
               <span class="menu-title">{{ entry.label }}</span>
             </template>
             <el-menu-item v-for="child in entry.children" :key="child.index" :index="child.index">
-              {{ child.label === null ? t('nav.allCategories') : child.label }}
+              {{ child.label }}
             </el-menu-item>
           </el-sub-menu>
           <el-menu-item v-else :index="entry.index">
@@ -33,7 +33,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
-const { t, locale } = useAppLocale()
+const { locale } = useAppLocale()
 const { theme } = useAppTheme()
 const { navDto } = useTemplate06Navigation()
 const r = useTemplate06Routes()

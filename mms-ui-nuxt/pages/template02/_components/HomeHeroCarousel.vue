@@ -1,8 +1,4 @@
 <template>
-  <!--
-    对齐 361.mstore 首页首屏：h700 背景图 + overlay + 左侧约 7/12 文案 + primary 标题 + More 按钮
-    参考：https://361.mstore.demo.mingsoft.net/html/web/index.html （ftco-blocks-cover-1 / site-section-cover overlay h700）
-  -->
   <section class="ms361-hero" :aria-label="t('demo.common.heroBannerAria')">
     <div v-if="slides.length <= 1">
       <div

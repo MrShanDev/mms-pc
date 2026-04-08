@@ -23,14 +23,18 @@
           <div class="detail-main">
             <h1>{{ product.title }}</h1>
             <p class="series">{{ category?.label }}</p>
-            <p class="price-line">
+            <p class="unit-price-line">
               <span class="price-label">{{ t('template06Shop.priceLabel') }}</span>
-              <span class="price-val">{{ t('template06Shop.currency') }}{{ priceYuan }}</span>
+              <span class="unit-amount">{{ t('template06Shop.currency') }}{{ unitPriceYuan }}</span>
             </p>
             <div class="qty-row">
               <span class="qty-label">{{ t('template06Shop.qty') }}</span>
               <el-input-number v-model="qty" :min="1" :max="99" size="default" />
             </div>
+            <p class="price-line">
+              <span class="price-label">{{ t('template06Shop.subtotal') }}</span>
+              <span class="price-val">{{ t('template06Shop.currency') }}{{ lineTotalYuan }}</span>
+            </p>
             <div class="actions">
               <el-button class="btn-outline-gold" size="large" @click="onAddCart">
                 {{ t('template06Shop.addToCart') }}
@@ -83,9 +87,9 @@ const category = computed(() => resolved.value?.category ?? null)
 const product = computed(() => resolved.value?.product ?? null)
 
 const priceCents = computed(() => (product.value ? demoProductPriceCents(product.value.slug) : 0))
-const priceYuan = computed(() => (priceCents.value / 100).toFixed(2))
-
 const qty = ref(1)
+const unitPriceYuan = computed(() => (priceCents.value / 100).toFixed(2))
+const lineTotalYuan = computed(() => ((priceCents.value * qty.value) / 100).toFixed(2))
 
 watch(
   () => product.value?.slug,
@@ -206,6 +210,23 @@ function onBuyNow() {
   margin: 0 0 16px;
   font-size: 14px;
   color: #666;
+}
+
+.unit-price-line {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #333;
+
+  .price-label {
+    margin-right: 8px;
+    color: #666;
+  }
+
+  .unit-amount {
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+  }
 }
 
 .price-line {

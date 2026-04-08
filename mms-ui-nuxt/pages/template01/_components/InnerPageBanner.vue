@@ -4,6 +4,7 @@
       <div class="pd-banner-bg" :style="{ backgroundImage: `url(${bannerSrc})` }" role="img" :aria-label="bannerAlt">
         <div class="pd-banner-overlay">
           <div class="pd-page-inner">
+            <h2 v-if="bannerTitle" class="pd-banner-title">{{ bannerTitle }}</h2>
             <h3 class="pd-banner-lead">{{ bannerLead }}</h3>
           </div>
         </div>
@@ -71,6 +72,16 @@ const { t } = useAppLocale()
   display: flex;
   align-items: center;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.12) 50%, transparent 100%);
+}
+
+.pd-banner-title {
+  margin: 0 0 12px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  max-width: 720px;
 }
 
 .pd-banner-lead {

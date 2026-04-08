@@ -15,7 +15,8 @@
         <div class="container">
           <div class="c_1530_3">
             <div class="tit_1">
-              <h3>{{ C.newsPage.title }}<span /></h3>
+              <h3>{{ t('demo.common.crumbNewsCenter') }}<span /></h3>
+              <p class="tpl03-product-list__lead">{{ t('demo.common.innerNewsListBannerLead') }}</p>
             </div>
             <div class="bd">
               <div>

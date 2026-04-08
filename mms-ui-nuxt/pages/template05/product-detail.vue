@@ -187,7 +187,7 @@ const pdCrumbs = computed((): E7Crumb[] => {
   if (!p) return []
   const cat = catalog.categories.find((c) => c.id === p.categoryId)
   return [
-    { label: catalog.pageTitle, to: '/template05/products' },
+    { label: t('demo.common.crumbProductCenter'), to: '/template05/products' },
     {
       label: cat?.label ?? '',
       to: cat ? { path: '/template05/products', query: { category: cat.slug } } : '/template05/products'

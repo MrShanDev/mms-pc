@@ -1,7 +1,7 @@
 <template>
   <main v-if="article" class="tpl-sub-page tpl-sub-page--news ms-news-detail">
     <InnerPageCover
-      :title="C.newsPage.title"
+      :title="t('demo.common.crumbNewsCenter')"
       :lead="bannerLead"
       :background-image="bannerSrc"
     />
@@ -21,7 +21,7 @@
         <nav class="small text-muted mb-3" :aria-label="t('demo.common.breadcrumb')">
           <NuxtLink to="/template02">{{ t('demo.common.home') }}</NuxtLink>
           /
-          <NuxtLink to="/template02/news">{{ C.newsPage.title }}</NuxtLink>
+          <NuxtLink to="/template02/news">{{ t('demo.common.crumbNewsCenter') }}</NuxtLink>
           /
           <span>{{ article.title }}</span>
         </nav>
@@ -101,7 +101,7 @@ watch(
 )
 
 const bannerSrc = template01DemoAsset('/upload/image/20230524/1684918832729100.jpg')
-const bannerLead = computed(() => C.productCatalog?.pageLead ?? '')
+const bannerLead = computed(() => t('demo.common.innerNewsListBannerLead'))
 const bodyParagraphs = computed(() => {
   const a = article.value
   if (!a) return []

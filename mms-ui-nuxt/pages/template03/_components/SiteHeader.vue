@@ -50,6 +50,7 @@ import { template01DemoAsset } from '@/utils/template01MingsoftMock'
 const c = DEMO_SITE_TEMPLATES.template03
 const home = c.home as Record<string, unknown>
 const route = useRoute()
+const { t } = useAppLocale()
 
 const logoSrc = computed(
   () =>

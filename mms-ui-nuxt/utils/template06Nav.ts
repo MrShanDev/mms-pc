@@ -34,8 +34,8 @@ function pickNavLabel(
 export type Template06NavProductChild = {
   /** `el-menu-item` 的 index：路由 path 或 `pc-{categoryId}` */
   index: string
-  /** `null` 表示「全部品类」，由页面 i18n 渲染 */
-  label: string | null
+  /** 展示文案来自演示数据 */
+  label: string
 }
 
 export type Template06NavEntry =
@@ -73,7 +73,7 @@ export function buildTemplate06NavDto(c: DemoTemplateContent): Template06NavDto 
       kind: 'product',
       label: pickNavLabel(c, 'product', '产品中心'),
       submenuIndex: 'product',
-      children: [{ index: productPath, label: null }, ...categories]
+      children: [{ index: productPath, label: '全部分类' }, ...categories]
     },
     {
       kind: 'link',

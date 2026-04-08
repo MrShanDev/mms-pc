@@ -5,7 +5,7 @@
       <div class="pd-banner-bg" :style="{ backgroundImage: `url(${bannerSrc})` }" role="img" :aria-label="product.title">
         <div class="pd-banner-overlay">
           <div class="pd-page-inner">
-            <h3 class="pd-banner-lead">{{ catalog.pageLead }}</h3>
+            <h3 class="pd-banner-lead">{{ t('demo.common.innerProductListBannerLead') }}</h3>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
           <span class="pd-addr-sep">&gt;&gt;</span>
           <NuxtLink to="/template01">{{ t('demo.common.home') }}</NuxtLink>
           <span class="pd-addr-sep">&gt;&gt;</span>
-          <NuxtLink to="/template01/products">{{ catalog.pageTitle }}</NuxtLink>
+          <NuxtLink to="/template01/products">{{ t('demo.common.crumbProductCenter') }}</NuxtLink>
           <span class="pd-addr-sep">&gt;&gt;</span>
           <NuxtLink :to="{ path: '/template01/products', query: categoryQuery }">{{ categoryLabel }}</NuxtLink>
           <span class="pd-addr-sep">&gt;&gt;</span>

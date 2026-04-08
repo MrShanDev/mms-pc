@@ -16,8 +16,8 @@
         <div class="container">
           <section class="c_1530_1 tpl03-product-list">
             <header class="tit_1 tpl03-product-list__header">
-              <h3>{{ catalog.pageTitle }}<span /></h3>
-              <p v-if="pageLead" class="tpl03-product-list__lead">{{ pageLead }}</p>
+              <h3>{{ t('demo.common.crumbProductCenter') }}<span /></h3>
+              <p class="tpl03-product-list__lead">{{ t('demo.common.innerProductListBannerLead') }}</p>
             </header>
 
             <div class="tpl03-product-list__filters" role="toolbar" :aria-label="t('demo.common.categories')">
@@ -97,12 +97,6 @@ const bannerSrc =
   C.contactPage.bannerImage ?? template01DemoAsset('/upload/image/20230703/1688374377849050.jpg')
 
 const activeSlug = computed(() => (route.query.category as string | undefined) || null)
-
-const pageLead = computed(() => {
-  const raw = catalog.pageLead
-  const s = raw != null ? String(raw).trim() : ''
-  return s || ''
-})
 
 const filteredProducts = computed(() => {
   const slug = activeSlug.value
