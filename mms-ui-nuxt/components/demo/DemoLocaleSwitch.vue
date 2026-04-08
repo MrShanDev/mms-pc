@@ -1,5 +1,5 @@
 <template>
-  <!-- 全站演示模版共用：与 template06 顶栏语言切换一致（Element Plus + availableLocales） -->
+  <!-- 全站演示模版共用：与 template06 顶栏一致 — el-select、availableLocales、aria-label=header.langSelect；外层可加 class="lang-select" -->
   <el-select
     :model-value="locale"
     class="demo-locale-switch"

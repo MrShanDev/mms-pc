@@ -191,16 +191,6 @@ function formatNewsTime(date: string) {
   height: 100%;
 }
 
-@media (max-width: 767px) {
-  .slide_banner :deep(.el-carousel.el-carousel--horizontal) {
-    height: 420px !important;
-  }
-
-  .slide_pic_1 :deep(.el-carousel.el-carousel--horizontal) {
-    height: 360px !important;
-  }
-}
-
 /* PRODUCTS 区块轮播略加高，单卡内容垂直更舒展 */
 .slide_pic_1 :deep(.el-carousel__item) {
   overflow: hidden;

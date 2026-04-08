@@ -17,7 +17,7 @@ export function getDemoSiteContentSync(id: DemoSiteTemplateId): DemoTemplateCont
 
 /**
  * 异步获取站点内容（未来可替换为 `GET /api/site/:templateId`）。
- * 当前实现返回与 template01 同构的 mock，仅路由前缀不同。
+ * 当前实现返回与 template01 同构的 mock，仅路由前缀不同；字段定义见 `docs/demo-site-api.md`。
  */
 export async function fetchDemoSiteContent(id: DemoSiteTemplateId): Promise<DemoTemplateContent> {
   await delay(MOCK_DELAY_MS)

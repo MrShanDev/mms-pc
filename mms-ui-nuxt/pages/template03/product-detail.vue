@@ -501,29 +501,6 @@ useHead(() => {
   margin-bottom: 16px;
 }
 
-@media (max-width: 900px) {
-  .p-d-c-form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .p-d-c-left {
-    flex-direction: column;
-  }
-
-  .slider-nav {
-    flex-direction: row;
-    flex: none;
-    width: 100%;
-    max-height: none;
-    overflow-x: auto;
-    padding: 10px;
-  }
-
-  .slider-nav-item {
-    flex: 0 0 72px;
-  }
-}
-
 .p-d-c-field {
   display: flex;
   flex-direction: column;
@@ -585,18 +562,6 @@ useHead(() => {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .p-d-c-related-list ul li {
-    width: 48%;
-  }
-}
-
-@media (max-width: 480px) {
-  .p-d-c-related-list ul li {
-    width: 100%;
-  }
 }
 
 .p-d-c-related-card {

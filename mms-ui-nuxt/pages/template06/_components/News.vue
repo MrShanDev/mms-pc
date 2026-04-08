@@ -73,10 +73,6 @@ const r = useTemplate06Routes()
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .news-card {
@@ -92,10 +88,6 @@ const r = useTemplate06Routes()
 
   &:hover {
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -114,10 +106,6 @@ const r = useTemplate06Routes()
 
 .news-body {
   padding: 16px 20px 16px 0;
-
-  @media (max-width: 640px) {
-    padding: 0 16px 16px;
-  }
 
   h2 {
     margin: 0 0 10px;

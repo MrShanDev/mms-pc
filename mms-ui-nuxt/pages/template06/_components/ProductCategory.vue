@@ -89,14 +89,6 @@ const r = useTemplate06Routes()
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px 20px;
-
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .product-card {

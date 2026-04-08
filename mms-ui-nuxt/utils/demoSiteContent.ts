@@ -1,7 +1,10 @@
+/**
+ * 演示站「整站内容」深拷贝与路径重写：`SITE_DEMO_CONTENT` 来自 template01 源数据，
+ * {@link buildDemoContentForTemplate} 将 `/template01` 替换为 `/template0X`。字段定义见 `docs/demo-site-api.md`。
+ */
 import type { DemoSiteTemplateId, DemoTemplateContent } from '@/utils/demoSite'
 import { TEMPLATE01_DEMO_SITE_CONTENT } from '@/utils/template01MingsoftMock'
 
-/** 与 template01 静态 mock 同源；各模版通过 {@link buildDemoContentForTemplate} 仅替换路由前缀 */
 export const SITE_DEMO_CONTENT: DemoTemplateContent = TEMPLATE01_DEMO_SITE_CONTENT
 
 function rewriteTemplatePaths<T>(content: T, fromPrefix: string, toPrefix: string): T {

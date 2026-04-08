@@ -224,14 +224,4 @@ useHead(() => {
   text-align: center;
   box-sizing: border-box;
 }
-
-@media (max-width: 767px) {
-  .news-details-1 {
-    padding: 16px 0 28px;
-  }
-
-  .news-details-1-title {
-    font-size: 22px;
-  }
-}
 </style>

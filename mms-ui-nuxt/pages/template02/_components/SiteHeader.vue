@@ -21,7 +21,7 @@
                 <NuxtLink :to="item.to ?? '#'" class="nav-link">{{ item.label }}</NuxtLink>
               </li>
               <li>
-                <DemoLocaleSwitch class="site-demo-locale" />
+                <DemoLocaleSwitch class="lang-select site-demo-locale" />
               </li>
             </ul>
           </nav>

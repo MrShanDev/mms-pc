@@ -29,20 +29,16 @@ const C = DEMO_SITE_TEMPLATES.template02 // 或 template01 … template06
 
 ---
 
-## 2. 静态文案与中英文切换
+## 2. 静态文案与中英文切换（与接口字段划分）
 
-### 2.1 已走 i18n 的部分（`zh` / `en` 等）
+**原则：以本文档 §4 `DemoTemplateContent` 及下方接口表为准——文档里有的字段才算「接口/CMS 数据」，从 `DEMO_SITE_TEMPLATES`（或未来 HTTP 接口）原样展示，不走 `t()`。文档未列出的界面文案（表单标签、区块小标题、无障碍说明、按钮「提交」、上一篇/下一篇提示等）视为前端静态 UI，用 `useAppLocale()` / `t('demo.common.*')` 或 `common.*` / `nav.*` 等做中英文切换。**
 
-- 各模版页面与组件中的**界面壳层**文案：通过 `useI18n()` 的 `t('demo.common.*')` 等键读取。
-- 语言资源：`i18n/locales/zh.json`、`i18n/locales/en.json` 等（`demo` 命名空间下为演示站专用键）。
-- `html` 的 `lang` / `dir`：多数页面通过 `getLocaleLanguage` / `getLocaleDir`（`i18n/available-locales.ts`）与当前 `locale` 同步。
+| 来源 | 示例 | 切换语言 |
+|------|------|----------|
+| 接口字段（见 §4） | `nav[].label`、`aboutPage.*`、`newsPage.title` / `items`、`productCatalog`、`contactPage.title` 等 | 不随 i18n；将来由后端按语言返回或扩展多语言字段 |
+| 非接口 UI | 产品详情页「规格参数」「留言」、面包屑 aria、`placeholder`、校验提示 | `t(...)` |
 
-### 2.2 仍来自演示数据 JSON 的部分（当前主要为中文）
-
-- `C.nav[].label`、`C.aboutPage`、`C.newsPage`、`C.contactPage`、`C.productCatalog` 等 **CMS 形态字段**来自 `TEMPLATE01_DEMO_SITE_CONTENT` 经前缀重写后的结果，**未按 locale 拆中英文副本**。
-- 类型上预留 `siteTitleEn` 等字段，但**页面标题与正文目前仍以 `siteTitle` 等主字段为主**；切到英文界面时，**正文与导航标签仍会显示中文演示文案**（与「界面语言」分离）。
-
-若上线需要全文双语，建议在 `DemoTemplateContent` 侧增加 `en` 分支或由后端按 `Accept-Language` 返回对应语言块，再在页面用 `locale` 选择展示字段。
+语言资源：`i18n/locales/zh.json`、`en.json` 等。`html` 的 `lang` / `dir` 见 `getLocaleLanguage` / `getLocaleDir`。
 
 ---
 

@@ -221,16 +221,10 @@ useHead(() => {
 }
 
 .pd-banner-bg {
-  min-height: 220px;
+  min-height: 280px;
   background-size: cover;
   background-position: center;
   position: relative;
-}
-
-@media (min-width: 900px) {
-  .pd-banner-bg {
-    min-height: 280px;
-  }
 }
 
 .pd-banner-overlay {
@@ -242,23 +236,15 @@ useHead(() => {
 
 .pd-banner-lead {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  color: #029c6a;
   max-width: 720px;
   line-height: 1.55;
-}
-
-@media (min-width: 768px) {
-  .pd-banner-lead {
-    font-size: 22px;
-    color: #029c6a;
-    text-shadow: none;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 16px 22px;
-    border-radius: 2px;
-  }
+  text-shadow: none;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 16px 22px;
+  border-radius: 2px;
 }
 
 .pd-toolbar-bg {
@@ -317,12 +303,6 @@ useHead(() => {
 
 .pd-addr-current {
   color: #666;
-}
-
-@media (max-width: 1279px) {
-  .pd-toolbar--contact {
-    justify-content: flex-start;
-  }
 }
 
 .product-context {
@@ -411,29 +391,6 @@ useHead(() => {
   width: 108px;
   height: 108px;
   object-fit: contain;
-}
-
-@media (max-width: 991px) {
-  .contact-1 {
-    padding-top: 12px;
-  }
-
-  .contact-1-left {
-    width: 49%;
-    margin-right: 2%;
-    margin-bottom: 12px;
-  }
-
-  .contact-1-left:nth-child(2n) {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 520px) {
-  .contact-1-left {
-    width: 100%;
-    margin-right: 0;
-  }
 }
 
 .contact-bg-1 {
@@ -526,23 +483,6 @@ useHead(() => {
 
 .p-d-c-form-1-input-3.bg-323232 {
   background: #323232;
-}
-
-@media (max-width: 900px) {
-  .contact-form-1 {
-    padding: 28px 4% 40px;
-  }
-
-  .p-d-c-form-1-input-1 {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 12px;
-  }
-
-  .p-d-c-form-1-input-3 {
-    width: 46%;
-    margin-right: 4%;
-  }
 }
 
 .contact-extra-links {

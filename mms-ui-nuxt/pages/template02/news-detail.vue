@@ -145,16 +145,10 @@ useHead(() => {
 }
 
 .pd-banner-bg {
-  min-height: 220px;
+  min-height: 280px;
   background-size: cover;
   background-position: center;
   position: relative;
-}
-
-@media (min-width: 900px) {
-  .pd-banner-bg {
-    min-height: 280px;
-  }
 }
 
 .pd-banner-overlay {
@@ -166,23 +160,15 @@ useHead(() => {
 
 .pd-banner-lead {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  color: #029c6a;
   max-width: 720px;
   line-height: 1.55;
-}
-
-@media (min-width: 768px) {
-  .pd-banner-lead {
-    font-size: 22px;
-    color: #029c6a;
-    text-shadow: none;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 16px 22px;
-    border-radius: 2px;
-  }
+  text-shadow: none;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 16px 22px;
+  border-radius: 2px;
 }
 
 .pd-toolbar-bg {
@@ -273,12 +259,6 @@ useHead(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-@media (max-width: 1279px) {
-  .pd-address {
-    display: none;
-  }
 }
 
 .pd-main {
@@ -373,21 +353,5 @@ useHead(() => {
   color: #999;
   text-align: center;
   box-sizing: border-box;
-}
-
-@media (max-width: 767px) {
-  .news-details-1 {
-    padding: 16px 0 28px;
-  }
-
-  .news-details-1-title {
-    font-size: 22px;
-  }
-
-  .news-details-1-time span {
-    display: inline-block;
-    margin-left: 12px;
-    float: right;
-  }
 }
 </style>

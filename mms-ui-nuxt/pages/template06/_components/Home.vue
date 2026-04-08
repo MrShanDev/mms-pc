@@ -170,14 +170,6 @@ const { companyName, heroSlides, newsList, aboutSideImage, profileParagraphs, sh
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px 20px;
-
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .product-card {
@@ -224,10 +216,6 @@ const { companyName, heroSlides, newsList, aboutSideImage, profileParagraphs, sh
   grid-template-columns: 1.1fr 0.9fr;
   gap: 40px;
   align-items: start;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .about-name {
@@ -264,10 +252,6 @@ const { companyName, heroSlides, newsList, aboutSideImage, profileParagraphs, sh
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .news-card {
@@ -283,10 +267,6 @@ const { companyName, heroSlides, newsList, aboutSideImage, profileParagraphs, sh
 
   &:hover {
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -305,10 +285,6 @@ const { companyName, heroSlides, newsList, aboutSideImage, profileParagraphs, sh
 
 .news-body {
   padding: 16px 20px 16px 0;
-
-  @media (max-width: 640px) {
-    padding: 0 16px 16px;
-  }
 
   h3 {
     margin: 0 0 10px;

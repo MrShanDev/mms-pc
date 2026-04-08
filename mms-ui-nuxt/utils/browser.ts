@@ -1,6 +1,5 @@
 /**
- * 浏览器环境相关的工具函数
- * 用于安全地访问浏览器 API，防止 SSR 错误
+ * 浏览器环境工具：SSR 安全访问 `localStorage`、判断 `isClient` 等；供登录态、auth 插件与 `stores/user` 使用。
  */
 
 /**

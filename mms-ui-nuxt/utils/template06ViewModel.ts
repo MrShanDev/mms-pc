@@ -1,3 +1,7 @@
+/**
+ * 将 `DEMO_SITE_TEMPLATES`（同源演示数据）转换为 template06 首页/列表展示结构：
+ * 轮播、产品网格、新闻列表、分类详情等；与 `composables/useTitaSite.ts` 配合。
+ */
 import type { DemoTemplateContent } from '@/utils/demoSite'
 import type { ProductCategoryDetail, NewsItem, ShowcaseProduct } from '@/utils/titaSiteContent'
 

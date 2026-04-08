@@ -111,12 +111,6 @@ defineProps<{
   max-width: 58.333333%;
 }
 
-@media (max-width: 767px) {
-  .ms361-hero__copy {
-    max-width: 100%;
-  }
-}
-
 /* 与演示站 .text-primary 一致 */
 .ms361-hero__title {
   margin: 0 0 12px;

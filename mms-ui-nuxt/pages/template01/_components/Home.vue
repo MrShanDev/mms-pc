@@ -318,16 +318,6 @@ const newsCards = computed(() =>
   margin-left: 0;
 }
 
-@media (max-width: 991px) {
-  .ms-adv-li {
-    width: 48%;
-    margin-left: 2%;
-  }
-  .ms-adv-li:nth-child(2n + 1) {
-    margin-left: 0;
-  }
-}
-
 .ms-adv-img {
   width: 100%;
   height: 100%;
@@ -374,13 +364,6 @@ const newsCards = computed(() =>
   background: #fff;
   padding: 23px 20px 19px;
     box-sizing: border-box;
-}
-
-@media (max-width: 991px) {
-  .ms-news-li {
-    width: 100%;
-    margin-bottom: 16px;
-  }
 }
 
 .ms-news-title {

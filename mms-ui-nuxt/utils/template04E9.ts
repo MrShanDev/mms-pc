@@ -1,3 +1,6 @@
+/**
+ * template04（e9 风格）内页专用：面包屑类型与新闻子栏目 Tab 常量，与侧栏布局、新闻列表筛选一致。
+ */
 import type { RouteLocationRaw } from 'vue-router'
 
 /** 内页 path_bg 面包屑 */

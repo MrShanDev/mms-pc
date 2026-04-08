@@ -9,7 +9,7 @@
             </NuxtLink>
           </div>
           <div>
-            <DemoLocaleSwitch />
+            <DemoLocaleSwitch class="lang-select" />
           </div>
         </div>
         <div class="menu">

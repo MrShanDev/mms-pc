@@ -113,19 +113,11 @@ const activeKey = computed(() => {
   display: flex;
   align-items: flex-start;
   gap: 24px;
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-  }
 }
 
 .account-aside {
   width: 260px;
   flex-shrink: 0;
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
 }
 
 .user-card {
@@ -235,9 +227,5 @@ const activeKey = computed(() => {
   border: 1px solid #eee;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   padding: 24px 20px 28px;
-
-  @media (max-width: 900px) {
-    min-height: 360px;
-  }
 }
 </style>

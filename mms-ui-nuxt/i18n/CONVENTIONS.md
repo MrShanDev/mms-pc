@@ -2,9 +2,10 @@
 
 ## 原则
 
-1. **页面静态 UI**（导航词、按钮、表单标签、区块标题、`useHead` 里依赖的模板文案等）放在 `i18n/locales/*.json`，通过 `useI18n()` / `t('...')` 按当前界面语言切换。
-2. **模拟数据与接口数据**（产品名、简介、新闻标题与摘要、接口返回的富文本等）**不走 i18n**：按数据源原样展示，不做 `t()` 或按 UI 语言切换。当前仓库里这类数据集中在 `utils/titaSiteContent.ts`（英文占位，模拟后端字段）。
-3. 接入真实 API 后：在页面/composable 中请求数据并绑定到模板；**不要**把接口字符串再塞进 locale 文件，除非产品明确要做「内容多语言」（那时应由后端按语言返回或单独 CMS）。
+1. **哪些走接口、哪些走 i18n** 以 **`docs/demo-site-api.md`** 为准：`DemoTemplateContent` 及该文档描述的字段 = 演示接口数据，从 `DEMO_SITE_TEMPLATES` / `api/demoSite.ts` 绑定，**不用 `t()`**。文档未列出的界面壳层（表单标签、详情页固定小标题、aria、分页提示等）= **静态 UI**，用 `useAppLocale()` / `t(...)` 做中英文切换。
+2. **键名习惯**：与 template06 对齐时优先根级 `header`、`common`、`nav`、`about`、`news`、`contact`、`product`、`template06Shop`；演示站补充键可用 `demo.common.*`。
+3. **语言切换组件**：`components/demo/DemoLocaleSwitch.vue`（`aria-label` → `header.langSelect`），可与主站一样加 `class="lang-select"`。
+4. 接入真实 API 后：接口字符串不进 locale；若要做内容多语言，由后端或 CMS 按语言返回。
 
 ## 目录速查
 

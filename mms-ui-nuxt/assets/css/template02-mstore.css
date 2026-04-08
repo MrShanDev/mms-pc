@@ -9,6 +9,11 @@
   flex: 1 0 auto;
 }
 
+/* 内页「关于我们」等为白底 + .about-me；官方 .about-me p 为浅色字（适配首页黑底品牌区），白底上需恢复正文色 */
+.mstore-layout .site-section.bg-white.about-me p {
+  color: #333;
+}
+
 /* 演示站导航在窄屏也展示链接（不依赖 jQuery 移动菜单） */
 @media (max-width: 991px) {
   .mstore-layout .site-navigation .site-menu {

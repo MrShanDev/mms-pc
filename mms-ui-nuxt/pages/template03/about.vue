@@ -23,7 +23,6 @@
                 <div class="p">
                   <p v-for="(para, j) in a.paragraphs" :key="j">{{ para }}</p>
                 </div>
-                <NuxtLink v-if="a.cta" class="btn btn-primary mt-2" to="/template03/products">{{ a.cta }}</NuxtLink>
               </div>
             </div>
           </div>

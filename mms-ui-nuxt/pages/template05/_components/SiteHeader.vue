@@ -37,7 +37,7 @@
               </div>
             </form>
             <div class="e7-topsearch-locale">
-              <DemoLocaleSwitch />
+              <DemoLocaleSwitch class="lang-select" />
             </div>
           </div>
         </div>
@@ -181,26 +181,22 @@ defineExpose({ openMobileMenu })
 
 <style scoped>
 /* 顶栏第一行：与 Logo 列等高时搜索区垂直居中（避免 float 列顶对齐） */
-/* 与 e7 style.css 一致：769px 以上才显示 #topsearch，此处同步用 769px */
-@media (min-width: 769px) {
-  .e7-top-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+.e7-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-  .e7-top-row > [class*='col-'] {
-    float: none !important;
-  }
+.e7-top-row > [class*='col-'] {
+  float: none !important;
+}
 
-  /* 占满 Logo 列右侧剩余宽度，避免未设 col 时 flex 子项被压成极窄条，导致内联 el-select（width:100%）只剩 ~箭头宽度 */
-  #topsearch {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1 1 0;
-    min-width: 0;
-  }
+#topsearch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 /* 搜索框与语言切换同一行：垂直居中对齐，不拉伸占满整列高度 */
@@ -281,12 +277,10 @@ defineExpose({ openMobileMenu })
   width: auto;
 }
 
-@media (min-width: 768px) {
-  #navbar.collapse {
-    display: block !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
+#navbar.collapse {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 .e7-dropdown-toggle {

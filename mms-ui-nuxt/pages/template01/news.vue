@@ -150,29 +150,6 @@ useHead(() => ({
   margin-right: 0;
 }
 
-@media (max-width: 991px) {
-  .news-list-1 ul li {
-    width: 48%;
-    margin-right: 4%;
-  }
-
-  .news-list-1 ul li:nth-child(3n) {
-    margin-right: 4%;
-  }
-
-  .news-list-1 ul li:nth-child(2n) {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .news-list-1 ul li {
-    width: 100%;
-    margin-right: 0 !important;
-    margin-top: 16px;
-  }
-}
-
 .news-list-1 ul li:hover {
   background: #029c6a;
   border-color: #029c6a;

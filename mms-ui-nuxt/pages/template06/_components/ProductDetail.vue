@@ -180,10 +180,6 @@ function onBuyNow() {
   background: #fff;
   border: 1px solid #e8e8e8;
   padding: 32px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .detail-img {

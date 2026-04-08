@@ -75,10 +75,6 @@ const r = useTemplate06Routes()
   grid-template-columns: 1.1fr 0.9fr;
   gap: 40px;
   align-items: start;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .about-name {

@@ -414,10 +414,6 @@ useHead(() => ({
   gap: 16px;
   align-items: stretch;
   padding: 16px;
-
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .goods-block {
@@ -502,26 +498,10 @@ useHead(() => ({
   padding-left: 12px;
   border-left: 1px solid #f0f0f0;
   min-width: 160px;
-
-  @media (max-width: 720px) {
-    align-items: stretch;
-    padding-left: 0;
-    padding-top: 12px;
-    border-left: none;
-    border-top: 1px solid #f0f0f0;
-    min-width: 0;
-  }
 }
 
 .pay-line {
   text-align: right;
-
-  @media (max-width: 720px) {
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
 }
 
 .pay-line__label {
@@ -529,12 +509,6 @@ useHead(() => ({
   font-size: 12px;
   color: #999;
   margin-bottom: 4px;
-
-  @media (max-width: 720px) {
-    display: inline;
-    margin-bottom: 0;
-    margin-right: 8px;
-  }
 }
 
 .pay-line__num {
@@ -548,14 +522,6 @@ useHead(() => ({
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
-
-  @media (max-width: 720px) {
-    justify-content: stretch;
-    .btn {
-      flex: 1;
-      text-align: center;
-    }
-  }
 }
 
 .btn {

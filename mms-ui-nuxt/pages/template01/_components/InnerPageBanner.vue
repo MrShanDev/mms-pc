@@ -60,16 +60,10 @@ const { t } = useAppLocale()
 }
 
 .pd-banner-bg {
-  min-height: 220px;
+  min-height: 280px;
   background-size: cover;
   background-position: center;
   position: relative;
-}
-
-@media (min-width: 900px) {
-  .pd-banner-bg {
-    min-height: 280px;
-  }
 }
 
 .pd-banner-overlay {
@@ -81,23 +75,15 @@ const { t } = useAppLocale()
 
 .pd-banner-lead {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  color: #029c6a;
   max-width: 720px;
   line-height: 1.55;
-}
-
-@media (min-width: 768px) {
-  .pd-banner-lead {
-    font-size: 22px;
-    color: #029c6a;
-    text-shadow: none;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 16px 22px;
-    border-radius: 2px;
-  }
+  text-shadow: none;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 16px 22px;
+  border-radius: 2px;
 }
 
 .pd-toolbar-bg {
@@ -158,15 +144,6 @@ const { t } = useAppLocale()
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
-@media (max-width: 991px) {
-  .ms-sidenav-ul :deep(a) {
-    height: 48px;
-    line-height: 48px;
-    padding: 0 18px;
-    font-size: 15px;
-  }
-}
-
 .ms-sidenav-ul :deep(li.active a),
 .ms-sidenav-ul :deep(li:hover a) {
   background: #029c6a;
@@ -210,12 +187,5 @@ const { t } = useAppLocale()
 
 .pd-addr-current {
   color: #666;
-}
-
-@media (max-width: 1279px) {
-  .pd-address {
-    width: 100%;
-    margin-top: 8px;
-  }
 }
 </style>

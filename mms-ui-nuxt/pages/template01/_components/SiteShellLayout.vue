@@ -26,7 +26,7 @@
         </nav>
 
         <div class="ms-header-right-tools">
-          <DemoLocaleSwitch />
+          <DemoLocaleSwitch class="lang-select" />
         </div>
       </div>
     </header>
@@ -104,12 +104,6 @@ watch(
   transition: height 0.3s;
 }
 
-@media (max-width: 1199px) {
-  .ms-header {
-    height: 70px;
-  }
-}
-
 .ms-w1440 {
   width: 100%;
   max-width: 1440px;
@@ -141,23 +135,11 @@ watch(
   width: auto;
 }
 
-@media (max-width: 1199px) {
-  .ms-logo {
-    margin-top: 0;
-  }
-}
-
 .ms-header-right-tools {
   position: relative;
   z-index: 1002;
   flex-shrink: 0;
   margin-left: 12px;
-}
-
-@media (max-width: 1199px) {
-  .ms-header-right-tools {
-    margin-left: auto;
-  }
 }
 
 .ms-nav-toggle {
@@ -181,43 +163,15 @@ watch(
   border-radius: 1px;
 }
 
-@media (max-width: 1199px) {
-  .ms-nav-toggle {
-    display: flex;
-  }
-}
-
 .ms-nav {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 16px;
   flex-wrap: wrap;
   gap: 0 12px;
   min-width: 0;
-}
-
-@media (min-width: 1200px) {
-  .ms-nav {
-    justify-content: flex-end;
-    padding-right: 16px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .ms-nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    background: #fff;
-    border-top: 1px solid #eee;
-    padding: 12px 0 16px;
-    order: 10;
-  }
-  .ms-nav.ms-nav--open {
-    display: flex;
-  }
 }
 
 .ms-nav-list {
@@ -227,13 +181,6 @@ watch(
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-}
-
-@media (max-width: 1199px) {
-  .ms-nav-list {
-    flex-direction: column;
-    width: 100%;
-  }
 }
 
 .ms-nav-list li {
@@ -250,14 +197,6 @@ watch(
   color: #666565;
   text-decoration: none;
   transition: background 0.35s, color 0.35s;
-}
-
-@media (max-width: 1199px) {
-  .ms-nav-list a {
-    line-height: 48px;
-    width: 100%;
-    padding: 0 16px;
-  }
 }
 
 .ms-nav-list li:hover a,

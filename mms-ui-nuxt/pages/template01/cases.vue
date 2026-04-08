@@ -69,12 +69,6 @@ useHead(() => ({
   background: #fff;
 }
 
-@media (max-width: 640px) {
-  .case-card {
-    grid-template-columns: 1fr;
-  }
-}
-
 .thumb {
   background: #f3f3f3;
   min-height: 140px;
@@ -89,12 +83,6 @@ useHead(() => ({
 
 .body {
   padding: 18px 20px 20px 0;
-}
-
-@media (max-width: 640px) {
-  .body {
-    padding: 0 16px 16px;
-  }
 }
 
 .client {

@@ -137,10 +137,4 @@ useHead(() => ({
 .about-cta:hover {
   text-decoration: underline;
 }
-
-@media (max-width: 767px) {
-  .about-1 {
-    padding: 32px 0 40px;
-  }
-}
 </style>

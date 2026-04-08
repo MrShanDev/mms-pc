@@ -1,3 +1,6 @@
+/**
+ * template06 商城演示价与运费：无真实计价接口时用确定性伪随机单价（分）及满额免邮规则。
+ */
 import type { LogisticsId } from '@/types/template06-shop'
 
 /** 演示单价（分），由 slug 稳定派生 */

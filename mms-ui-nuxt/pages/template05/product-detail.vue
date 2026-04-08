@@ -297,13 +297,7 @@ useHead(() => {
 }
 
 .tpl05-pd-gallery {
-  margin-bottom: 1.25rem;
-}
-
-@media (min-width: 992px) {
-  .tpl05-pd-gallery {
-    margin-bottom: 0;
-  }
+  margin-bottom: 0;
 }
 
 .tpl05-pd-figure {

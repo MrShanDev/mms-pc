@@ -140,25 +140,6 @@ useHead(() => ({
   margin-right: 0;
 }
 
-@media (max-width: 767px) {
-  .case-list-1 ul li {
-    width: 47%;
-    margin-left: 2%;
-    margin-right: 0;
-  }
-
-  .case-list-1 ul li:nth-child(3n) {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 520px) {
-  .case-list-1 ul li {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
 .case-img-1 {
   position: relative;
   width: 100%;

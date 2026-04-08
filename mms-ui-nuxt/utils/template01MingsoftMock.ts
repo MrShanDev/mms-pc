@@ -1,6 +1,6 @@
 /**
- * template01 静态演示数据：对齐 B2B 工厂站信息架构（参考 https://193.mstore.demo.mingsoft.net/ 文案风格）
- * 仅作前端展示/mock。
+ * template01 源演示数据（`TEMPLATE01_DEMO_SITE_CONTENT`）：B2B 工厂站信息架构参考 mingsoft 演示站。
+ * 经 `demoSiteContent.buildDemoContentForTemplate` 复制为 template02～06；类型为 `DemoTemplateContent`（见 `docs/demo-site-api.md`）。
  */
 import type { DemoProductCategory, DemoProductDetail, DemoTemplateContent } from '@/utils/demoSite'
 

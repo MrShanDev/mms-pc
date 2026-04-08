@@ -110,17 +110,6 @@ const productsPath = computed(() => `/${templateId.value}/products`)
   color: #aaa;
 }
 
-@media (max-width: 767px) {
-  .foot-copy {
-    text-align: center;
-  }
-  .foot-copy-left,
-  .foot-copy-right {
-    float: none;
-    width: 100%;
-  }
-}
-
 .foot-extra-links {
   clear: both;
   padding-bottom: 28px;

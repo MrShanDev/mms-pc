@@ -1,3 +1,7 @@
+/**
+ * template06 顶栏导航 DTO：由演示站 `nav` 与产品分类拼装，
+ * 供 `buildTemplate06NavDto`、`api/demoSite.fetchDemoSiteNavigation` 使用。
+ */
 import type { DemoNavItem, DemoTemplateContent } from '@/utils/demoSite'
 import { MAIN_SITE_ROUTE_PREFIX } from '@/utils/demoSite'
 

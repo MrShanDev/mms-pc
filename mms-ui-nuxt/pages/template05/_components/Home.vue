@@ -185,10 +185,4 @@ function excerptShort(text: string, max = 160) {
 .link_list:not(.link_list--open) {
   display: inline;
 }
-
-@media (max-width: 767px) {
-  .link_list:not(.link_list--open) {
-    display: none;
-  }
-}
 </style>

@@ -1,3 +1,7 @@
+/**
+ * 全站 HTTP 封装（基于 ofetch/axios 风格）：业务 API、上传、客服聊天等请求出口。
+ * 基址与环境见 `api/config.ts`；业务模块通过 `import { http } from '@/utils/request'` 调用。
+ */
 import { $fetch } from 'ofetch'
 import { ElLoading, ElMessage, ElMessageBox } from 'element-plus'
 import * as qs from 'qs'

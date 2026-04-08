@@ -280,16 +280,10 @@ useHead(() => {
 }
 
 .pd-banner-bg {
-  min-height: 220px;
+  min-height: 280px;
   background-size: cover;
   background-position: center;
   position: relative;
-}
-
-@media (min-width: 900px) {
-  .pd-banner-bg {
-    min-height: 280px;
-  }
 }
 
 .pd-banner-overlay {
@@ -301,23 +295,15 @@ useHead(() => {
 
 .pd-banner-lead {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  color: #029c6a;
   max-width: 720px;
   line-height: 1.55;
-}
-
-@media (min-width: 768px) {
-  .pd-banner-lead {
-    font-size: 22px;
-    color: #029c6a;
-    text-shadow: none;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 16px 22px;
-    border-radius: 2px;
-  }
+  text-shadow: none;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 16px 22px;
+  border-radius: 2px;
 }
 
 .pd-toolbar-bg {
@@ -408,12 +394,6 @@ useHead(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-@media (max-width: 1279px) {
-  .pd-address {
-    display: none;
-  }
 }
 
 .pd-main {
@@ -610,29 +590,6 @@ useHead(() => {
   margin-bottom: 16px;
 }
 
-@media (max-width: 900px) {
-  .p-d-c-form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .p-d-c-left {
-    flex-direction: column;
-  }
-
-  .slider-nav {
-    flex-direction: row;
-    flex: none;
-    width: 100%;
-    max-height: none;
-    overflow-x: auto;
-    padding: 10px;
-  }
-
-  .slider-nav-item {
-    flex: 0 0 72px;
-  }
-}
-
 .p-d-c-field {
   display: flex;
   flex-direction: column;
@@ -694,18 +651,6 @@ useHead(() => {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .p-d-c-related-list ul li {
-    width: 48%;
-  }
-}
-
-@media (max-width: 480px) {
-  .p-d-c-related-list ul li {
-    width: 100%;
-  }
 }
 
 .p-d-c-related-card {

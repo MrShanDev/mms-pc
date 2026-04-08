@@ -51,7 +51,7 @@
             </template>
           </li>
           <li class="e9-demo-locale-bar">
-            <DemoLocaleSwitch />
+            <DemoLocaleSwitch class="lang-select" />
           </li>
         </ul>
       
@@ -144,12 +144,10 @@ defineExpose({ openMobileMenu })
   display: block;
 }
 
-@media (min-width: 768px) {
-  #navbar.collapse {
-    display: block !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
+#navbar.collapse {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* 无三角图标，仅保留可点击区域（移动端展开子菜单） */

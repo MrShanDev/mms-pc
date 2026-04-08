@@ -1,12 +1,22 @@
 /**
- * 演示站六个模版（template01–06）统一：窄视口保持桌面最小宽度，出现整页横向滚动条；
- * 与 template05 外链 e7 style 中 body{min-width:1350px} 的体验对齐，不在此改各模版栅格/断点。
+ * 演示站六个模版（template01–06）统一：
+ * - 根节点保持设计稿最小宽度；
+ * - 窄视口整页缩放由 `plugins/demo-viewport-scale.client.ts` 对 `.demo-template-scroll-root` 设置 zoom；
+ * - 覆盖 reset.css 中 body 的 min-width，避免与缩放策略叠加出双横向滚动。
  */
+:root {
+    --demo-design-width: 1350px;
+}
+
+html:has(.demo-template-scroll-root) body {
+    min-width: 0;
+}
+
 .demo-template-scroll-root {
-  min-width: 1350px;
-  box-sizing: border-box;
+    min-width: var(--demo-design-width);
+    box-sizing: border-box;
 }
 
 html:has(.demo-template-scroll-root) {
-  overflow-x: auto;
+    overflow-x: hidden;
 }
