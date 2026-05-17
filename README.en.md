@@ -1,36 +1,40 @@
-# mms-unxt
+# mms-unxt (Nuxt PC/Site Scaffold)
 
-#### Description
-前端PC脚手架
+English | [简体中文](README.md)
 
-#### Software Architecture
-Software architecture description
+This folder hosts a **Nuxt 3** PC/site scaffold and demo templates. The main app lives under `mms-unxt/mms-ui-nuxt/`.
 
-#### Installation
+---
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Projects
 
-#### Instructions
+| Path | Description |
+|---|---|
+| `mms-ui-nuxt/` | Nuxt 3 app: multiple site templates (template01~06), i18n, themes, auth state, and sample API layer |
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+---
 
-#### Contribution
+## Quick Start (mms-ui-nuxt)
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+```bash
+cd mms-unxt/mms-ui-nuxt
+pnpm install   # or npm / yarn
+pnpm dev
+```
 
+### Env modes
 
-#### Gitee Feature
+The scripts switch env via `NUXT_PUBLIC_APP_ENV`:
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+```bash
+pnpm local
+pnpm dev
+pnpm prod
+```
+
+### Build & preview
+
+```bash
+pnpm build
+pnpm preview
+```

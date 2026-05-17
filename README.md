@@ -1,37 +1,58 @@
-# mms-unxt
+# mms-unxt（Nuxt PC/站点脚手架）
 
-#### 介绍
-前端PC脚手架
+[English](README.en.md) | 简体中文
 
-#### 软件架构
-软件架构说明
+本目录用于承载 **Nuxt 3** 的 PC 端/站点脚手架与演示模板。当前主要项目位于：`mms-unxt/mms-ui-nuxt/`。
 
+---
 
-#### 安装教程
+## 项目组成
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+| 路径 | 说明 |
+|---|---|
+| `mms-ui-nuxt/` | Nuxt 3 应用：多套站点模板（template01~06）、i18n、多主题、登录态与示例接口层等 |
 
-#### 使用说明
+---
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 快速开始（mms-ui-nuxt）
 
-#### 参与贡献
+```bash
+cd mms-unxt/mms-ui-nuxt
+pnpm install   # 或 npm / yarn，建议团队统一一种
+pnpm dev       # dev 环境
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+### 多环境启动
 
+该项目通过环境变量 `NUXT_PUBLIC_APP_ENV` 切换：
 
-#### 特技
+```bash
+# 本地
+pnpm local
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+# 开发/测试
+pnpm dev
+
+# 生产配置（仍是 nuxt dev，但读取 prod 环境配置）
+pnpm prod
+```
+
+### 构建与预览
+
+```bash
+pnpm build
+pnpm preview
+```
+
+---
+
+## 目录提示（mms-ui-nuxt）
+
+常用目录：
+
+- `pages/`：页面与模板路由（`template01~06`）
+- `layouts/`：不同模板布局
+- `i18n/`：多语言资源与约定（含 `CONVENTIONS.md`）
+- `stores/`：Pinia store（含登录态）
+- `utils/` / `api/`：请求封装与示例 API
+- `docs/`：项目内部说明文档（登录态、SEO 等）
