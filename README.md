@@ -1,58 +1,20 @@
-# mms-unxt（Nuxt PC/站点脚手架）
+# 部署说明
 
-[English](README.en.md) | 简体中文
+## 构建与部署
 
-本目录用于承载 **Nuxt 3** 的 PC 端/站点脚手架与演示模板。当前主要项目位于：`mms-unxt/mms-ui-nuxt/`。
+使用 `npm run build` 命令进行构建，生成的文件位于 `.output/public` 目录。
 
----
+## 配置切换
 
-## 项目组成
+在部署前，修改 `api/config.ts` 顶部的地址常量即可：
 
-| 路径 | 说明 |
-|---|---|
-| `mms-ui-nuxt/` | Nuxt 3 应用：多套站点模板（template01~06）、i18n、多主题、登录态与示例接口层等 |
+- **本地**：`LOCAL_APP_URL`
+- **开发**：`DEV_APP_URL`
+- **生产**：`PROD_APP_URL`（含 /prod-api 路径）、`PROD_WS_URL`（WebSocket）
 
----
+## 部署步骤
 
-## 快速开始（mms-ui-nuxt）
-
-```bash
-cd mms-unxt/mms-ui-nuxt
-pnpm install   # 或 npm / yarn，建议团队统一一种
-pnpm dev       # dev 环境
-```
-
-### 多环境启动
-
-该项目通过环境变量 `NUXT_PUBLIC_APP_ENV` 切换：
-
-```bash
-# 本地
-pnpm local
-
-# 开发/测试
-pnpm dev
-
-# 生产配置（仍是 nuxt dev，但读取 prod 环境配置）
-pnpm prod
-```
-
-### 构建与预览
-
-```bash
-pnpm build
-pnpm preview
-```
-
----
-
-## 目录提示（mms-ui-nuxt）
-
-常用目录：
-
-- `pages/`：页面与模板路由（`template01~06`）
-- `layouts/`：不同模板布局
-- `i18n/`：多语言资源与约定（含 `CONVENTIONS.md`）
-- `stores/`：Pinia store（含登录态）
-- `utils/` / `api/`：请求封装与示例 API
-- `docs/`：项目内部说明文档（登录态、SEO 等）
+1. 修改 `api/config.ts` 中的 API 配置
+2. 运行 `npm run build`
+3. 将 `.output/public` 目录内容上传到服务器
+4. 配置API 接口的代理规则
