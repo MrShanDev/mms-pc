@@ -1,40 +1,69 @@
-# mms-unxt (Nuxt PC/Site Scaffold)
+# mms-pc (PC Portal / Website)
 
 English | [简体中文](README.md)
 
-This folder hosts a **Nuxt 3** PC/site scaffold and demo templates. The main app lives under `mms-unxt/mms-ui-nuxt/`.
+`mms-pc` is the **PC web / portal** of MMS, built with **Nuxt 3**. Server-side rendering gives it strong **SEO**. It ships **6 site templates** (`pages/template01~06`), **i18n** (`i18n/`), **multiple themes** (`themes/`: classic / modern), and a sample API layer (`api/`) for portal and website scenarios.
+
+- Repository: <https://gitee.com/LumeCode/mms-pc> (public)
+- Backend: open APIs served by `mms/mms-admin`; API endpoints are centralized in `api/config.ts`
 
 ---
 
-## Projects
+## Tech Stack
 
-| Path | Description |
-|---|---|
-| `mms-ui-nuxt/` | Nuxt 3 app: multiple site templates (template01~06), i18n, themes, auth state, and sample API layer |
+- Nuxt 3 + Vue 3 + TypeScript
+- Pinia / Vue Router
+- `@nuxtjs/i18n`
+
+## Requirements
+
+- Node.js 18+
 
 ---
 
-## Quick Start (mms-ui-nuxt)
+## Quick Start
 
 ```bash
-cd mms-unxt/mms-ui-nuxt
-pnpm install   # or npm / yarn
-pnpm dev
+npm install
+
+# Local development (pick one environment)
+npm run local   # local environment
+npm run dev     # dev environment
+npm run prod    # production config for debugging
 ```
 
-### Env modes
+## Scripts
 
-The scripts switch env via `NUXT_PUBLIC_APP_ENV`:
+| Command | Description |
+|---------|-------------|
+| `npm run local` / `dev` / `prod` | Start `nuxt dev` with the matching env variables |
+| `npm run build` | Production build (`nuxt generate`), output in `.output/public` |
+| `npm run generate` | Static site generation |
+| `npm run preview` | Preview the build result locally |
 
-```bash
-pnpm local
-pnpm dev
-pnpm prod
-```
+---
 
-### Build & preview
+## Build & Deploy
 
-```bash
-pnpm build
-pnpm preview
-```
+Run `npm run build`; the generated files land in the `.output/public` directory.
+
+### Switching API configuration
+
+Before deploying, edit the address constants at the top of `api/config.ts`:
+
+- **Local**: `LOCAL_APP_URL`
+- **Dev**: `DEV_APP_URL`
+- **Production**: `PROD_APP_URL` (with the `/prod-api` path) and `PROD_WS_URL` (WebSocket)
+
+### Deployment steps
+
+1. Update the API configuration in `api/config.ts`
+2. Run `npm run build`
+3. Upload the contents of `.output/public` to the server
+4. Configure the reverse-proxy rules for API endpoints
+
+---
+
+## License
+
+MIT; see the [LICENSE](LICENSE) file.
