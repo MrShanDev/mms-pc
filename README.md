@@ -6,7 +6,7 @@
    <h1>模块化管理系统</h1>
    <p>MMS · Modular Management System</p>
    <p><strong>mms-pc · PC 门户 / 官网（Nuxt 3）</strong></p>
-   <p><a href="https://mmsadmin.cn/">📘 在线文档 · mmsadmin.cn</a> · <a href="https://gitee.com/LumeCode/mms-pc">Gitee</a> · <a href="https://github.com/MrShanDev/mms-pc">GitHub</a></p>
+   <p><a href="https://mmsadmin.cn/">📘 在线文档 · mmsadmin.cn</a> · <a href="https://gitee.com/MrShanDev/mms-pc">Gitee</a> · <a href="https://github.com/MrShanDev/mms-pc">GitHub</a></p>
    <br/>
 </div>
 
@@ -14,7 +14,7 @@
 
 `mms-pc` 是 **MMS 的 PC 端网页 / 门户**，基于 **Nuxt 3** 开发，服务端渲染带来良好的 **SEO** 表现。内置 **6 套站点模板**（`pages/template01~06`）、**i18n 多语言**（`i18n/`）、**多主题**（`themes/`：classic / modern）与示例 API 层（`api/`），面向门户与官网场景。
 
-- 仓库：<https://gitee.com/LumeCode/mms-pc>（公开）
+- 仓库：<https://gitee.com/MrShanDev/mms-pc>（公开）
 - 后端对接：`mms/mms-admin` 等开放接口，API 地址集中在 `api/config.ts`
 
 ---

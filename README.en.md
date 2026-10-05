@@ -5,7 +5,7 @@
    </a>
    <h1>Modular Management System (MMS)</h1>
    <p><strong>mms-pc · PC Portal / Website (Nuxt 3)</strong></p>
-   <p><a href="https://mmsadmin.cn/">📘 Online Docs · mmsadmin.cn</a> · <a href="https://gitee.com/LumeCode/mms-pc">Gitee</a> · <a href="https://github.com/MrShanDev/mms-pc">GitHub</a></p>
+   <p><a href="https://mmsadmin.cn/">📘 Online Docs · mmsadmin.cn</a> · <a href="https://gitee.com/MrShanDev/mms-pc">Gitee</a> · <a href="https://github.com/MrShanDev/mms-pc">GitHub</a></p>
    <br/>
 </div>
 
@@ -13,7 +13,7 @@ English | [简体中文](README.md)
 
 `mms-pc` is the **PC web / portal** of MMS, built with **Nuxt 3**. Server-side rendering gives it strong **SEO**. It ships **6 site templates** (`pages/template01~06`), **i18n** (`i18n/`), **multiple themes** (`themes/`: classic / modern), and a sample API layer (`api/`) for portal and website scenarios.
 
-- Repository: <https://gitee.com/LumeCode/mms-pc> (public)
+- Repository: <https://gitee.com/MrShanDev/mms-pc> (public)
 - Backend: open APIs served by `mms/mms-admin`; API endpoints are centralized in `api/config.ts`
 
 ---
