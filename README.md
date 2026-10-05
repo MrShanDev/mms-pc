@@ -3,7 +3,8 @@
    <a href="https://mmsadmin.cn">
      <img width="150" src="https://mmsadmin.cn/logo.png" alt="MMS logo">
    </a>
-   <h1>MMS（模块化管理系统，Modular Management System）</h1>
+   <h1>模块化管理系统</h1>
+   <p>MMS · Modular Management System</p>
    <p><strong>mms-pc · PC 门户 / 官网（Nuxt 3）</strong></p>
    <br/>
 </div>
