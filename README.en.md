@@ -5,6 +5,7 @@
    </a>
    <h1>Modular Management System (MMS)</h1>
    <p><strong>mms-pc · PC Portal / Website (Nuxt 3)</strong></p>
+   <p><a href="https://mmsadmin.cn/">📘 Online Docs · mmsadmin.cn</a> · <a href="https://gitee.com/LumeCode/mms-pc">Gitee</a> · <a href="https://github.com/MrShanDev/mms-pc">GitHub</a></p>
    <br/>
 </div>
 
