@@ -1,4 +1,12 @@
-# mms-pc (PC Portal / Website)
+<div align="center">
+   <br/>
+   <a href="https://mmsadmin.cn">
+     <img width="150" src="https://mmsadmin.cn/logo.png" alt="MMS logo">
+   </a>
+   <h1>MMS (Modular Management System)</h1>
+   <p><strong>mms-pc · PC Portal / Website (Nuxt 3)</strong></p>
+   <br/>
+</div>
 
 English | [简体中文](README.md)
 
